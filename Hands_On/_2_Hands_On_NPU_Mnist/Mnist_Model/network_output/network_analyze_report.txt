@@ -1,0 +1,112 @@
+ST Edge AI Core v2.0.0-20049
+Created date          : 2025-03-02 19:57:09
+Parameters            : analyze --target stm32n6 --name network -m D:/____N6M/STM32_Expert_Training_AI_STM32N6/Hands_On/_2_Hands_On_NPU_Mnist/Mnist_Model/cnn_mnist_quantized.tflite --st-neural-art n6-allmems-O3@C:/Users/grand/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.0.0/scripts/N6_scripts/user_neuralart.json --workspace C:/Users/grand/AppData/Local/Temp/mxAI_workspace344662951960400010246414179872176958 --output C:/Users/grand/.stm32cubemx/network_output
+
+Model name - cnn_mnist_quantized
+------ ----------------------------------- ---------------------- --------------- ----------- -------------------------------- 
+m_id   layer (original)                    oshape                 param/size             macc                     connected to 
+------ ----------------------------------- ---------------------- --------------- ----------- -------------------------------- 
+0      serving_default_input_10 ()         [b:1,h:28,w:28,c:1]                                                                 
+       conversion_0 (QUANTIZE)             [b:1,h:28,w:28,c:1]                          1,568         serving_default_input_10 
+------ ----------------------------------- ---------------------- --------------- ----------- -------------------------------- 
+1      conv2d_1 (CONV_2D)                  [b:1,h:26,w:26,c:32]   320/416             194,720                     conversion_0 
+       nl_1_nl (CONV_2D)                   [b:1,h:26,w:26,c:32]                        21,632                         conv2d_1 
+------ ----------------------------------- ---------------------- --------------- ----------- -------------------------------- 
+2      pool_2 (MAX_POOL_2D)                [b:1,h:13,w:13,c:32]                        21,632                          nl_1_nl 
+------ ----------------------------------- ---------------------- --------------- ----------- -------------------------------- 
+3      conv2d_3 (CONV_2D)                  [b:1,h:11,w:11,c:64]   18,496/18,688     2,230,336                           pool_2 
+       nl_3_nl (CONV_2D)                   [b:1,h:11,w:11,c:64]                         7,744                         conv2d_3 
+------ ----------------------------------- ---------------------- --------------- ----------- -------------------------------- 
+4      pool_4 (MAX_POOL_2D)                [b:1,h:5,w:5,c:64]                           6,400                          nl_3_nl 
+------ ----------------------------------- ---------------------- --------------- ----------- -------------------------------- 
+5      reshape_5 (RESHAPE)                 [b:1,c:1600]                                                                 pool_4 
+------ ----------------------------------- ---------------------- --------------- ----------- -------------------------------- 
+6      sequential_dense_MatMul ()          [b:10,c:1600]          16,000/16,000                                                
+       sequential_dense_B..VariableOp ()   [b:10]                 10/40                                                        
+       gemm_6 (FULLY_CONNECTED)            [b:1,c:10]                                  16,010                        reshape_5 
+                                                                                                       sequential_dense_MatMul 
+                                                                                                sequential_dense_B..VariableOp 
+------ ----------------------------------- ---------------------- --------------- ----------- -------------------------------- 
+7      nl_7 (SOFTMAX)                      [b:1,c:10]                                     150                           gemm_6 
+------ ----------------------------------- ---------------------- --------------- ----------- -------------------------------- 
+8      conversion_8 (DEQUANTIZE)           [b:1,c:10]                                      20                             nl_7 
+------ ----------------------------------- ---------------------- --------------- ----------- -------------------------------- 
+model: macc=2,500,212 weights=35,144 activations=-- io=--
+
+
+
+
+
+Compilation details
+------------------------------------------------------------------------------------
+Compiler version: 0.0.0-0000
+Compiler arguments:  -i C:\Users\grand\.stm32cubemx\network_output\cnn_mnist_quantized_OE_3_1_0.onnx --json-quant-file C:\Users\grand\.stm32cubemx\network_output\cnn_mnist_quantized_OE_3_1_0_Q.json -g network.c --load-mdesc C:\Users\grand\STM32Cube\Repository\Packs\STMicroelectronics\X-CUBE-AI\10.0.0\Utilities\configs\stm32n6.mdesc --load-mpool C:\Users\grand\STM32Cube\Repository\Packs\STMicroelectronics\X-CUBE-AI\10.0.0\scripts\N6_scripts\my_mpools\stm32n6.mpool --save-mpool-file C:\Users\grand\AppData\Local\Temp\mxAI_workspace344662951960400010246414179872176958\neural_art__network\stm32n6.mpool --out-dir-prefix C:\Users\grand\AppData\Local\Temp\mxAI_workspace344662951960400010246414179872176958\neural_art__network/ --optimization 3 --all-buffers-info --mvei --no-hw-sw-parallelism --cache-maintenance --Oalt-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Oshuffle-dma --Ocache-opt --Os --output-info-file c_info.json
+====================================================================================
+
+Memory usage information
+------------------------------------------------------------------------------------
+	flexMEM    [0x34000000 - 0x34000000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	cpuRAM1    [0x34064000 - 0x34064000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	cpuRAM2    [0x34100000 - 0x34200000]:          0  B /      1.000 MB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM3    [0x34200000 - 0x34270000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM4    [0x34270000 - 0x342E0000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM5    [0x342E0000 - 0x34350000]:      8.734 kB /    448.000 kB  (  1.95 % used) -- weights:          0  B (  0.00 % used)  activations:      8.734 kB (  1.95 % used)
+	npuRAM6    [0x34350000 - 0x343BFFF8]:          0  B /    447.992 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	octoFlash  [0x70000000 - 0x73FFFFF8]:     34.720 kB /     64.000 MB  (  0.05 % used) -- weights:     34.720 kB (  0.05 % used)  activations:          0  B (  0.00 % used)
+	hyperRAM   [0x90000000 - 0x91FFFFF8]:          0  B /     32.000 MB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+---
+Total:                                            43.454 kB                                  -- weights:     34.720 kB                  activations:      8.734 kB                   
+====================================================================================
+
+
+Used memory ranges
+------------------------------------------------------------------------------------
+	npuRAM5    [0x342E0000 - 0x34350000]: 0x342E0000-0x342E22F0
+	octoFlash  [0x70000000 - 0x73FFFFF8]: 0x70000000-0x70008AF0
+====================================================================================
+
+Epochs details
+------------------------------------------------------------------------------------
+Total number of epochs: 9 of which 3 implemented in software
+---
+epoch ID   HW/SW/EC Operation (SW only)
+epoch 1       HW    
+epoch 2      -SW-   (   QuantizeLinear   )
+epoch 3       HW    
+epoch 4       HW    
+epoch 5       HW    
+epoch 6       HW    
+epoch 7       HW    
+epoch 8      -SW-   (      Softmax       )
+epoch 9      -SW-   (  DequantizeLinear  )
+==================================================================================== 
+ Requested memory size by section - "stm32n6npu" target
+ ------------------------------- -------- -------- ------ -------- 
+ module                              text   rodata   data      bss 
+ ------------------------------- -------- -------- ------ -------- 
+ NetworkRuntime1000_CM55_GCC.a     12,908        0      0        0 
+ network.o                          1,252    7,266    264        0 
+ lib (toolchain)*                     902      624      0        0 
+ ll atonn runtime                   7,714    7,103      0       29 
+ ------------------------------- -------- -------- ------ -------- 
+ RT total**                        22,776   14,993    264       29 
+ ------------------------------- -------- -------- ------ -------- 
+ weights                                0   35,553      0        0 
+ activations                            0        0      0    8,944 
+ io                                     0        0      0    3,176 
+ ------------------------------- -------- -------- ------ -------- 
+ TOTAL                             22,776   50,546    264   12,149 
+ ------------------------------- -------- -------- ------ -------- 
+ *  toolchain objects (libm/libgcc*)
+ ** RT AI runtime objects (kernels+infrastructure)
+  
+  Summary - "stm32n6npu" target
+  --------------------------------------------------
+               FLASH (ro)      %*   RAM (rw)      % 
+  --------------------------------------------------
+  RT total         38,033   51.7%        293   2.4% 
+  --------------------------------------------------
+  TOTAL            73,586             12,413        
+  --------------------------------------------------
+  *  rt/total
+

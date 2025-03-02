@@ -1,0 +1,298 @@
+{
+    "_allocate_inputs": 8,
+    "_allocate_outputs": 8,
+    "cli_parameters": "generate --target stm32n6 --name network -m D:/____N6M/STM32_Expert_Training_AI_STM32N6/Hands_On/_2_Hands_On_NPU_Mnist/Mnist_Model/cnn_mnist_quantized.tflite --st-neural-art n6-allmems-O3@C:/Users/grand/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.0.0/scripts/N6_scripts/user_neuralart.json --workspace C:/Users/grand/AppData/Local/Temp/mxAI_workspace34470584857550007798035824385886647 --output C:/Users/grand/.stm32cubemx/network_output",
+    "cli_version": {
+        "extra": "20049",
+        "major": 2,
+        "micro": 0,
+        "minor": 0
+    },
+    "cli_version_str": "2.0.0-20049",
+    "code_size": 0,
+    "compression": [],
+    "date_time": "2025-03-02 20:03:22",
+    "error": 0,
+    "error_str": [],
+    "exec_cmd": "generate",
+    "exec_duration": 0.0,
+    "hash": "0x1a4cedbe8d6c8cf1b9e779db858eb666",
+    "inputs": [
+        "Input_0_out_0"
+    ],
+    "layers": [
+        {
+            "c_id": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 53825
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "serving_default_input_10",
+            "original": "",
+            "type": "Input"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 1568,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [
+                "serving_default_input_10"
+            ],
+            "name": "conversion_0",
+            "original": "QUANTIZE",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 194720,
+                "n_params": 320,
+                "psize": 416,
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [
+                "conversion_0"
+            ],
+            "name": "conv2d_1",
+            "original": "CONV_2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 21632,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [
+                "conv2d_1"
+            ],
+            "name": "nl_1_nl",
+            "original": "CONV_2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 21632,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [
+                "nl_1_nl"
+            ],
+            "name": "pool_2",
+            "original": "MAX_POOL_2D",
+            "type": "Pool"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 2230336,
+                "n_params": 18496,
+                "psize": 18688,
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "pool_2"
+            ],
+            "name": "conv2d_3",
+            "original": "CONV_2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 7744,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "conv2d_3"
+            ],
+            "name": "nl_3_nl",
+            "original": "CONV_2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 6400,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 4,
+            "inputs": [
+                "nl_3_nl"
+            ],
+            "name": "pool_4",
+            "original": "MAX_POOL_2D",
+            "type": "Pool"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [
+                "pool_4"
+            ],
+            "name": "reshape_5",
+            "original": "RESHAPE",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 16000,
+                "psize": 16000,
+                "rom_size": 0
+            },
+            "id": 6,
+            "inputs": [],
+            "name": "sequential_dense_MatMul",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 10,
+                "psize": 40,
+                "rom_size": 0
+            },
+            "id": 6,
+            "inputs": [],
+            "name": "sequential_dense_BiasAdd_ReadVariableOp",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 16010,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 6,
+            "inputs": [
+                "reshape_5",
+                "sequential_dense_MatMul",
+                "sequential_dense_BiasAdd_ReadVariableOp"
+            ],
+            "name": "gemm_6",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 150,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 7,
+            "inputs": [
+                "gemm_6"
+            ],
+            "name": "nl_7",
+            "original": "SOFTMAX",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 20,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 8,
+            "inputs": [
+                "nl_7"
+            ],
+            "name": "conversion_8",
+            "original": "DEQUANTIZE",
+            "type": "Conversion"
+        }
+    ],
+    "model_files": [
+        "D:\\____N6M\\STM32_Expert_Training_AI_STM32N6\\Hands_On\\_2_Hands_On_NPU_Mnist\\Mnist_Model\\cnn_mnist_quantized.tflite"
+    ],
+    "model_n_params": 34826,
+    "model_name": "cnn_mnist_quantized",
+    "model_size": 35144,
+    "model_type": "tflite",
+    "name": "network",
+    "outputs": [
+        "Dequantize_21_out_0"
+    ],
+    "ram_io_size": [
+        0,
+        0
+    ],
+    "ram_size": 8944,
+    "report_version": 1.1,
+    "rom_cfact": 1.0,
+    "rom_heap_inspector": 2048,
+    "rom_inputs": [
+        {
+            "c_size": 3136,
+            "c_type": "float",
+            "name": "Input_0_out_0"
+        }
+    ],
+    "rom_n_macc": 0,
+    "rom_outputs": [
+        {
+            "c_size": 40,
+            "c_type": "float",
+            "name": "Dequantize_21_out_0"
+        }
+    ],
+    "rom_size": 35553,
+    "strategy": "",
+    "tools_api_version": "2.0.0-20049",
+    "tools_version": "2.0.0-20049",
+    "val_error": -1.0,
+    "val_error_desc": "None (None) #-1",
+    "val_metrics": []
+}
