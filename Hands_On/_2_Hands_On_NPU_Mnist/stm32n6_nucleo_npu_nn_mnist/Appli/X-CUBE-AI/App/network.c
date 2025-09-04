@@ -18,29 +18,34 @@
   */
 
 /*
- * GIT_SHA         "0307e413493a9893cb1f0a1266b856e2af3bba2b"
- * GIT_BRANCH      "STAI-2.0"
- * GIT_DESCRIPTION "STAI-2.0-RC1-1-1-g0307e413"
+ * GIT_SHA         "e619e8606099384540d70eeaaa8091752b1bebe9"
+ * GIT_BRANCH      "STAI-2.2"
+ * GIT_DESCRIPTION "atonn-v1.1.1-14-ge619e8606"
+ *
+ * BUILD_DIR       "/c/local/jenkins_cloud/workspace/2-STEDGEAI_BuildAtonnExe_Win/git/onnx_backend/build"
+ * BUILD_DATE      "25/06/2025"
+ * BUILD_AUTHOR    "aitest"
  *
  * Command Line options:
- * --onnx-input = "C:/Users/grand/.stm32cubemx/network_output/cnn_mnist_quantized_OE_3_1_0.onnx"
- * --out-dir-prefix = "C:/Users/grand/AppData/Local/Temp/mxAI_workspace34470584857550007798035824385886647/neural_art__network/"
- * --all-buffers-info = true
- * --mvei = true
- * --load-mdesc-file = "C:/Users/grand/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.0.0/Utilities/configs/stm32n6"
- * --load-mpool-file = "C:/Users/grand/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.0.0/scripts/N6_scripts/my_mpools/stm32n6"
+ * --load-mdesc-file = "C:/Users/grand/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.2.0/scripts/N6_scripts/my_mdescs/stm32n6"
+ * --load-mpool-file = "C:/Users/grand/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.2.0/scripts/N6_scripts/my_mpools/stm32n6"
  * --cache-maintenance = true
  * --enable-virtual-mem-pools = true
  * --native-float = true
- * --json-quant-file = "C:/Users/grand/.stm32cubemx/network_output/cnn_mnist_quantized_OE_3_1_0_Q.json"
+ * --json-quant-file = "C:/Users/grand/.stm32cubemx/network_output/cnn_mnist_quantized_OE_3_3_0_Q.json"
  * --optimization = 3
  * --Os = true
  * --Omax-ca-pipe = 4
  * --Ocache-opt = true
  * --output-info-file = "c_info"
- * --Oalt-sched = true
- * --no-hw-sw-parallelism = true
- * --Oshuffle-dma = true
+ * --onnx-input = "C:/Users/grand/.stm32cubemx/network_output/cnn_mnist_quantized_OE_3_3_0.onnx"
+ * --out-dir-prefix = "C:/Users/grand/AppData/Local/Temp/mxAI_workspace91642465430011687504193805699592/neural_art__network/"
+ * --all-buffers-info = true
+ * --mvei = true
+ * --Oauto-sched = true
+ *
+ * auto* option expanded into:
+ *   alt-scheduler = false
  */
 
 #include "ll_aton_NN_interface.h"
@@ -49,7 +54,7 @@
 #include "ll_aton_version.h"
 #include "ll_sw.h"
 
-#if LL_ATON_VERSION_MAJOR != 1 || LL_ATON_VERSION_MINOR != 0 || LL_ATON_VERSION_MICRO != 0 || LL_ATON_VERSION_DEV != 16
+#if LL_ATON_VERSION_MAJOR != 1 || LL_ATON_VERSION_MINOR != 1 || LL_ATON_VERSION_MICRO != 1 || LL_ATON_VERSION_DEV != 14
 #  warning "Possible mismatch in ll_aton library used"
 #endif
 
@@ -60,7 +65,7 @@
 /* global pool 7 is ? */
 /* index=7 file postfix=xSPI1 name=hyperRAM offset=0x90000000  absolute_mode size=33554424 READ_WRITE THROUGHPUT=MID LATENCY=HIGH byte width=2 freq ratio=5 burst max length=MAXINT burst penalty=0 pipelined=ON cacheable=ON read_power=380 write_power=340 use4initializers=YES score=82  */
 /* global pool 8 is 34.72 KB */
-/* index=8 file postfix=xSPI2 name=octoFlash offset=0x70000000  absolute_mode size=67108856 READ_ONLY THROUGHPUT=MID LATENCY=HIGH byte width=1 freq ratio=6 burst max length=MAXINT burst penalty=0 pipelined=ON cacheable=ON read_power=110 write_power=400 use4initializers=YES score=50  */
+/* index=8 file postfix=xSPI2 name=octoFlash offset=0x71000000  absolute_mode size=117440504 READ_ONLY THROUGHPUT=MID LATENCY=HIGH byte width=1 freq ratio=6 burst max length=MAXINT burst penalty=0 pipelined=ON cacheable=ON read_power=110 write_power=400 use4initializers=YES score=50  */
 /* global pool 1 is 8.73 KB */
 /* index=1 file postfix=AXISRAM5 name=npuRAM5 offset=0x342e0000  absolute_mode size=458752 READ_WRITE THROUGHPUT=HIGH LATENCY=LOW byte width=8 freq ratio=1.25 burst max length=MAXINT burst penalty=0 pipelined=ON cacheable=OFF read_power=18.531 write_power=16.201 use4initializers=NO score=94  */
 /* global pool 2 is ? */
@@ -69,8 +74,8 @@
 /* index=3 file postfix=AXISRAM3 name=npuRAM3 offset=0x34200000  absolute_mode size=458752 READ_WRITE THROUGHPUT=HIGH LATENCY=LOW byte width=8 freq ratio=1.25 burst max length=MAXINT burst penalty=0 pipelined=ON cacheable=OFF read_power=18.531 write_power=16.201 use4initializers=NO score=94  */
 /* global pool 0 is ? */
 /* index=0 file postfix=AXISRAM6 name=npuRAM6 offset=0x34350000  absolute_mode size=458744 READ_WRITE THROUGHPUT=HIGH LATENCY=LOW byte width=8 freq ratio=1.25 burst max length=MAXINT burst penalty=0 pipelined=ON cacheable=OFF read_power=19.006 write_power=15.79 use4initializers=NO score=94  */
-/* global pool 10 is 1.88 MB */
-/* index=10 file postfix=AXISRAM2_AXISRAM3_AXISRAM4_AXISRAM5_AXISRAM6 name=cpuRAM2_npuRAM3_npuRAM4_npuRAM5_npuRAM6 offset=0x34100000  absolute_mode size=2883576 vpool READ_WRITE THROUGHPUT=MID LATENCY=MID byte width=8 freq ratio=2.5 burst max length=MAXINT burst penalty=0 pipelined=ON cacheable=OFF read_power=19.006 write_power=16.201 use4initializers=NO score=85  */
+/* global pool 11 is 1.88 MB */
+/* index=11 file postfix=AXISRAM2_AXISRAM3_AXISRAM4_AXISRAM5_AXISRAM6 name=cpuRAM2_npuRAM3_npuRAM4_npuRAM5_npuRAM6 offset=0x34100000  absolute_mode size=2883576 vpool READ_WRITE THROUGHPUT=MID LATENCY=MID byte width=8 freq ratio=2.5 burst max length=MAXINT burst penalty=0 pipelined=ON cacheable=OFF read_power=19.006 write_power=16.201 use4initializers=NO score=85  */
 /* global pool 4 is ? */
 /* index=4 file postfix=AXISRAM2 name=cpuRAM2 offset=0x34100000  absolute_mode size=1048576 READ_WRITE THROUGHPUT=MID LATENCY=MID byte width=8 freq ratio=2.5 burst max length=MAXINT burst penalty=0 pipelined=ON cacheable=OFF read_power=17.324 write_power=15.321 use4initializers=NO score=84  */
 /* global pool 5 is ? */
@@ -124,21 +129,13 @@ bool LL_ATON_EC_Inference_Init_Default(void)
 
 static void LL_ATON_End_EpochBlock_2(const void *epoch_block)
 {
-  // Lock MCU cache
-  LL_ATON_LOCK_MCU_CACHE();
+  LL_ATON_LIB_UNUSED(epoch_block);
 
-#if (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
   /* *** MCU cache invalidate (only) operation for unaligned buffer end address (last line) *** */
   /*     memory pool: 1 */
-  /*     start: (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3904) */
-  /*     end:   (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3936) */
-  mcu_cache_invalidate_range((uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3904) /* Equivalent hex address = 0x342e0f40UL */, (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3936) /* Equivalent hex address = 0x342e0f60UL */);
-#endif // (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
-
-  // Un-lock MCU cache
-  LL_ATON_UNLOCK_MCU_CACHE();
-
-  LL_ATON_LIB_UNUSED(epoch_block);
+  /*     start: ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3904))) */
+  /*     end:   ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3936))) */
+  LL_ATON_Cache_MCU_Invalidate_Range(((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3904))) /* Equivalent hex address = 0x342e0f40UL */, 32);
 
 
 /* Unit= 27 [PROCESSOR 0] */
@@ -154,14 +151,14 @@ static void LL_ATON_End_EpochBlock_2(const void *epoch_block)
     .general.input.stride.h = 112,
     .general.input.stride.w = 4,
     .general.input.stride.c = 4,
-    .general.input.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 0) /* Equivalent hex address = 0x342e0000UL */,
+    .general.input.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 0))) /* Equivalent hex address = 0x342e0000UL */,
     .general.input.format.is_signed = 0,
     /* "os" tensor-related info: */
-    .os.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x70000000UL + 35408) /* Equivalent hex address = 0x70008a50UL */,
+    .os.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x71000000UL + 35408))) /* Equivalent hex address = 0x71008a50UL */,
     .os.format.is_signed = 1,
     .os.dim.num_elem = 1,
     /* "ozp" tensor-related info: */
-    .ozp.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x70000000UL + 35536) /* Equivalent hex address = 0x70008ad0UL */,
+    .ozp.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x71000000UL + 35536))) /* Equivalent hex address = 0x71008ad0UL */,
     .ozp.format.is_signed = 1,
     .ozp.dim.num_elem = 1,
     /* "general.output" tensor-related info: */
@@ -174,7 +171,7 @@ static void LL_ATON_End_EpochBlock_2(const void *epoch_block)
     .general.output.stride.h = 28,
     .general.output.stride.w = 1,
     .general.output.stride.c = 1,
-    .general.output.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3136) /* Equivalent hex address = 0x342e0c40UL */,
+    .general.output.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3136))) /* Equivalent hex address = 0x342e0c40UL */,
     .general.output.format.is_signed = 1,
     .general.type = LL_SW_QUANTIZELINEAR,
   };
@@ -182,19 +179,11 @@ static void LL_ATON_End_EpochBlock_2(const void *epoch_block)
   /* Low Level SW Layer function invocation. This will exploit EmbedNets libs) */
   /* Node Quantize_2 mapped on EmbedNets (INTEGER) as QuantizeLinear | Category: Format-Converter */
   ll_sw_forward_quantizelinear(&quantizelinear1_sw_info);
-  // Lock MCU cache
-  LL_ATON_LOCK_MCU_CACHE();
-
-#if (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
   /* *** MCU cache clean (only) operation (SW, whole range) *** */
   /*     memory pool: 1 */
-  /*     start: (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3136) */
-  /*     end:   (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3936) */
-  mcu_cache_clean_range((uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3136) /* Equivalent hex address = 0x342e0c40UL */, (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3936) /* Equivalent hex address = 0x342e0f60UL */);
-#endif // (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
-
-  // Un-lock MCU cache
-  LL_ATON_UNLOCK_MCU_CACHE();
+  /*     start: ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3136))) */
+  /*     end:   ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3936))) */
+  LL_ATON_Cache_MCU_Clean_Range(((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 3136))) /* Equivalent hex address = 0x342e0c40UL */, 800);
 
 }
 
@@ -255,7 +244,7 @@ static void LL_ATON_Start_EpochBlock_3(const void *epoch_block)
 
 
   /* Dma inputs units to cycle: */
-  /* Unit= 5 [STREAM_ENG_V2 5] */
+  /* Unit= 1 [STREAM_ENG_V2 1] */
   /* Emit conf for STREAM_ENG_V2 node=Conv2D_4_suboff_6 input ports=0 range=1[3136,3920] */
 
   static const LL_Streng_TensorInitTypeDef Conv2D_4_suboff_6_dma_init_in_0_3 = {
@@ -284,14 +273,14 @@ static void LL_ATON_Start_EpochBlock_3(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(5, &Conv2D_4_suboff_6_dma_init_in_0_3, 1);
+  LL_Streng_TensorInit(1, &Conv2D_4_suboff_6_dma_init_in_0_3, 1);
 
 
   /* Dma input bandwidth from memory pools: */
   /* npuRAM5 -> 784 */
 
   /* Dma output units from cycle: */
-  /* Unit= 1 [STREAM_ENG_V2 1] */
+  /* Unit= 6 [STREAM_ENG_V2 6] */
   /* Emit conf for STREAM_ENG_V2 node=Conv2D_4_suboff_6 output ports=0 range=1[5408,6192] */
 
   static const LL_Streng_TensorInitTypeDef Conv2D_4_suboff_6_dma_init_out_0_3 = {
@@ -320,25 +309,25 @@ static void LL_ATON_Start_EpochBlock_3(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(1, &Conv2D_4_suboff_6_dma_init_out_0_3, 1);
+  LL_Streng_TensorInit(6, &Conv2D_4_suboff_6_dma_init_out_0_3, 1);
 
 
   /* Dma output bandwidth to memory pools: */
   /* npuRAM5 <- 784 */
 
   static const LL_Switch_InitTypeDef switch_init_in_3[] = {
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 5, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_suboff_6 IN: in unit=ARITH_ACC_V2 0 in port=0 out unit=STREAM_ENG_V2 5 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_suboff_6 OUT: in unit=STREAM_ENG_V2 1 in port=0 out unit=ARITH_ACC_V2 0 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_suboff_6 IN: in unit=ARITH_ACC_V2 0 in port=0 out unit=STREAM_ENG_V2 1 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 6, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_suboff_6 OUT: in unit=STREAM_ENG_V2 6 in port=0 out unit=ARITH_ACC_V2 0 out port=0 */
   };
 
 
   /* epoch=3 */
   LL_Switch_Init(switch_init_in_3, 2);
 
-  static LL_ATON_EnableUnits_InitTypeDef Enable_epoch_3_all_units[] = {
-    { {STRENG, 1} }, /* STREAM_ENG_V2 */
+  static const LL_ATON_EnableUnits_InitTypeDef Enable_epoch_3_all_units[] = {
+    { {STRENG, 6} }, /* STREAM_ENG_V2 */
     { {ARITH, 0} }, /* ARITH_ACC_V2 */
-    { {STRENG, 5} }, /* STREAM_ENG_V2 */
+    { {STRENG, 1} }, /* STREAM_ENG_V2 */
   };
 
 
@@ -351,18 +340,18 @@ static void LL_ATON_End_EpochBlock_3(const void *epoch_block)
   LL_ATON_LIB_UNUSED(epoch_block);
 
   static const LL_Switch_DeinitTypeDef switch_deinit_in_3[] = {
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 5, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_suboff_6 IN: in unit=ARITH_ACC_V2 0 in port=0 out unit=STREAM_ENG_V2 5 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_suboff_6 OUT: in unit=STREAM_ENG_V2 1 in port=0 out unit=ARITH_ACC_V2 0 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_suboff_6 IN: in unit=ARITH_ACC_V2 0 in port=0 out unit=STREAM_ENG_V2 1 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 6, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_suboff_6 OUT: in unit=STREAM_ENG_V2 6 in port=0 out unit=ARITH_ACC_V2 0 out port=0 */
   };
 
 
   /* epoch=3 */
   LL_Switch_Deinit(switch_deinit_in_3, 2);
 
-  static LL_ATON_DisableUnits_InitTypeDef Disable_epoch_3_all_units[] = {
-    { {STRENG, 1} }, /* STREAM_ENG_V2 */
+  static const LL_ATON_DisableUnits_InitTypeDef Disable_epoch_3_all_units[] = {
+    { {STRENG, 6} }, /* STREAM_ENG_V2 */
     { {ARITH, 0} }, /* ARITH_ACC_V2 */
-    { {STRENG, 5} }, /* STREAM_ENG_V2 */
+    { {STRENG, 1} }, /* STREAM_ENG_V2 */
   };
 
 
@@ -371,7 +360,7 @@ static void LL_ATON_End_EpochBlock_3(const void *epoch_block)
 }
 
 
-/* scheduling epoch=4    nodes=6   ------------------------------------------------------------------- */
+/* scheduling epoch=4    nodes=5   ------------------------------------------------------------------- */
 
 static void LL_ATON_Start_EpochBlock_4(const void *epoch_block)
 {
@@ -425,8 +414,8 @@ static void LL_ATON_Start_EpochBlock_4(const void *epoch_block)
 
 
   /* Unit= 19 [ARITH_ACC_V2 1] */
-  /* kind=Mul node=Conv2D_4_mul_scale_9 */
-  static const LL_Arithacc_InitTypeDef Conv2D_4_mul_scale_9_init4 = {
+  /* kind=Mul node=Conv2D_4_mul_scale_10 */
+  static const LL_Arithacc_InitTypeDef Conv2D_4_mul_scale_10_init4 = {
     .rounding_x = 0,
     .saturation_x = 0,
     .round_mode_x = 0,
@@ -463,14 +452,14 @@ static void LL_ATON_Start_EpochBlock_4(const void *epoch_block)
     .A_scalar = 1,
     .B_scalar = 0,
     .C_scalar = 0,
-    .A_vector = {(unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x70000000UL + 35264) /* Equivalent hex address = 0x700089c0UL */},
+    .A_vector = {((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x71000000UL + 35264))) /* Equivalent hex address = 0x710089c0UL */},
     .B_vector = {0},
     .C_vector = {0},
     .vec_precision = {16, 16, 16},
   };
 
   /* Unit=ARITH_ACC_V2 */
-  LL_Arithacc_Init(1, &Conv2D_4_mul_scale_9_init4);
+  LL_Arithacc_Init(1, &Conv2D_4_mul_scale_10_init4);
 
 
   /* Unit= 20 [ARITH_ACC_V2 2] */
@@ -514,38 +503,12 @@ static void LL_ATON_Start_EpochBlock_4(const void *epoch_block)
     .C_scalar = (short)0,
     .A_vector = {0},
     .B_vector = {0},
-    .C_vector = {(unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x70000000UL + 35008) /* Equivalent hex address = 0x700088c0UL */},
+    .C_vector = {((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x71000000UL + 35008))) /* Equivalent hex address = 0x710088c0UL */},
     .vec_precision = {16, 16, 32},
   };
 
   /* Unit=ARITH_ACC_V2 */
   LL_Arithacc_Init(2, &Conv2D_4_off_bias_12_init4);
-
-
-  /* Unit= 16 [ACTIV_ACC_V2 0] */
-  /* kind=Relu node=Relu_7 */
-  static const LL_Activacc_InitTypeDef Relu_7_init4 = {
-    .rounding_f = 0,
-    .saturation_f = 0,
-    .round_mode_f = 0,
-    .inbytes_f = 1,
-    .outbytes_f = 1,
-    .rounding_o = 1,
-    .saturation_o = 1,
-    .round_mode_o = 1,
-    .relu_mode_o = 0,
-    .outbytes_o = 1,
-    .signedop = 1,
-    .shift_f = 0,
-    .shift_o = 0,
-    .parameter = 65408,
-    .parameter_2 = 65408,
-    .fsub = 0,
-    .operation = ACTIV_TRELU,
-  };
-
-  /* Unit=ACTIV_ACC_V2 */
-  LL_Activacc_Init(0, &Relu_7_init4);
 
 
   /* Unit= 22 [POOL_ACC_V2 0] */
@@ -642,7 +605,7 @@ static void LL_ATON_Start_EpochBlock_4(const void *epoch_block)
 
 
   /* Dma inputs units to cycle: */
-  /* Unit= 7 [STREAM_ENG_V2 7] */
+  /* Unit= 0 [STREAM_ENG_V2 0] */
   /* Emit conf for STREAM_ENG_V2 node=Conv2D_4 input ports=0 range=1[5408,6192] */
 
   static const LL_Streng_TensorInitTypeDef Conv2D_4_dma_init_in_0_4 = {
@@ -671,9 +634,9 @@ static void LL_ATON_Start_EpochBlock_4(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(7, &Conv2D_4_dma_init_in_0_4, 1);
+  LL_Streng_TensorInit(0, &Conv2D_4_dma_init_in_0_4, 1);
 
-  /* Unit= 9 [STREAM_ENG_V2 9] */
+  /* Unit= 2 [STREAM_ENG_V2 2] */
   /* Emit conf for STREAM_ENG_V2 node=Conv2D_4 input ports=1 range=8[34464,34752] */
 
   static const LL_Streng_TensorInitTypeDef Conv2D_4_dma_init_in_1_4 = {
@@ -686,7 +649,7 @@ static void LL_ATON_Start_EpochBlock_4(const void *epoch_block)
     .nbits_unsigned = 0,
     .cacheable = 1,
     .cache_allocate = 0,
-    .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */}, /* Conv2D_4_weights */
+    .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */}, /* Conv2D_4_weights */
     .offset_start = 34464,
     .offset_end = 34752,
     .offset_limit = 34816,
@@ -705,7 +668,7 @@ static void LL_ATON_Start_EpochBlock_4(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(9, &Conv2D_4_dma_init_in_1_4, 1);
+  LL_Streng_TensorInit(2, &Conv2D_4_dma_init_in_1_4, 1);
 
 
   /* Dma input bandwidth from memory pools: */
@@ -713,7 +676,7 @@ static void LL_ATON_Start_EpochBlock_4(const void *epoch_block)
   /* octoFlash -> 288 */
 
   /* Dma output units from cycle: */
-  /* Unit= 3 [STREAM_ENG_V2 3] */
+  /* Unit= 7 [STREAM_ENG_V2 7] */
   /* Emit conf for STREAM_ENG_V2 node=Conv2D_9_suboff_15 output ports=0 range=1[0,5408] */
 
   static const LL_Streng_TensorInitTypeDef Conv2D_9_suboff_15_dma_init_out_0_4 = {
@@ -742,41 +705,39 @@ static void LL_ATON_Start_EpochBlock_4(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(3, &Conv2D_9_suboff_15_dma_init_out_0_4, 1);
+  LL_Streng_TensorInit(7, &Conv2D_9_suboff_15_dma_init_out_0_4, 1);
 
 
   /* Dma output bandwidth to memory pools: */
   /* npuRAM5 <- 5408 */
 
   static const LL_Switch_InitTypeDef switch_init_in_4[] = {
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 7, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4 IN: in unit=CONV_ACC_V2 0 in port=0 out unit=STREAM_ENG_V2 7 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 0, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 9, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4 IN: in unit=CONV_ACC_V2 0 in port=1 out unit=STREAM_ENG_V2 9 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_mul_scale_9 IN: in unit=ARITH_ACC_V2 1 in port=0 out unit=CONV_ACC_V2 0 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4 IN: in unit=CONV_ACC_V2 0 in port=0 out unit=STREAM_ENG_V2 0 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 0, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4 IN: in unit=CONV_ACC_V2 0 in port=1 out unit=STREAM_ENG_V2 2 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_mul_scale_10 IN: in unit=ARITH_ACC_V2 1 in port=0 out unit=CONV_ACC_V2 0 out port=0 */
     { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_off_bias_12 IN: in unit=ARITH_ACC_V2 2 in port=0 out unit=ARITH_ACC_V2 1 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ACTIV, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Relu_7 IN: in unit=ACTIV_ACC_V2 0 in port=0 out unit=ARITH_ACC_V2 2 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, POOL, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ACTIV, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* MaxPool_8 IN: in unit=POOL_ACC_V2 0 in port=0 out unit=ACTIV_ACC_V2 0 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, POOL, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* MaxPool_8 IN: in unit=POOL_ACC_V2 0 in port=0 out unit=ARITH_ACC_V2 2 out port=0 */
     { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, POOL, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_suboff_15 IN: in unit=ARITH_ACC_V2 3 in port=0 out unit=POOL_ACC_V2 0 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 3, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_suboff_15 OUT: in unit=STREAM_ENG_V2 3 in port=0 out unit=ARITH_ACC_V2 3 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 7, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 3, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_suboff_15 OUT: in unit=STREAM_ENG_V2 7 in port=0 out unit=ARITH_ACC_V2 3 out port=0 */
   };
 
 
   /* epoch=4 */
-  LL_Switch_Init(switch_init_in_4, 8);
+  LL_Switch_Init(switch_init_in_4, 7);
 
-  static LL_ATON_EnableUnits_InitTypeDef Enable_epoch_4_all_units[] = {
-    { {STRENG, 3} }, /* STREAM_ENG_V2 */
+  static const LL_ATON_EnableUnits_InitTypeDef Enable_epoch_4_all_units[] = {
+    { {STRENG, 7} }, /* STREAM_ENG_V2 */
     { {CONVACC, 0} }, /* CONV_ACC_V2 */
-    { {ACTIV, 0} }, /* ACTIV_ACC_V2 */
     { {ARITH, 1} }, /* ARITH_ACC_V2 */
     { {ARITH, 2} }, /* ARITH_ACC_V2 */
     { {ARITH, 3} }, /* ARITH_ACC_V2 */
     { {POOL, 0} }, /* POOL_ACC_V2 */
-    { {STRENG, 7} }, /* STREAM_ENG_V2 */
-    { {STRENG, 9} }, /* STREAM_ENG_V2 */
+    { {STRENG, 0} }, /* STREAM_ENG_V2 */
+    { {STRENG, 2} }, /* STREAM_ENG_V2 */
   };
 
 
-  LL_ATON_EnableUnits_Init(Enable_epoch_4_all_units, 9);
+  LL_ATON_EnableUnits_Init(Enable_epoch_4_all_units, 8);
 
 }
 
@@ -785,39 +746,37 @@ static void LL_ATON_End_EpochBlock_4(const void *epoch_block)
   LL_ATON_LIB_UNUSED(epoch_block);
 
   static const LL_Switch_DeinitTypeDef switch_deinit_in_4[] = {
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 7, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4 IN: in unit=CONV_ACC_V2 0 in port=0 out unit=STREAM_ENG_V2 7 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 0, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 9, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4 IN: in unit=CONV_ACC_V2 0 in port=1 out unit=STREAM_ENG_V2 9 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_mul_scale_9 IN: in unit=ARITH_ACC_V2 1 in port=0 out unit=CONV_ACC_V2 0 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4 IN: in unit=CONV_ACC_V2 0 in port=0 out unit=STREAM_ENG_V2 0 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 0, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4 IN: in unit=CONV_ACC_V2 0 in port=1 out unit=STREAM_ENG_V2 2 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_mul_scale_10 IN: in unit=ARITH_ACC_V2 1 in port=0 out unit=CONV_ACC_V2 0 out port=0 */
     { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_4_off_bias_12 IN: in unit=ARITH_ACC_V2 2 in port=0 out unit=ARITH_ACC_V2 1 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ACTIV, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Relu_7 IN: in unit=ACTIV_ACC_V2 0 in port=0 out unit=ARITH_ACC_V2 2 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, POOL, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ACTIV, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* MaxPool_8 IN: in unit=POOL_ACC_V2 0 in port=0 out unit=ACTIV_ACC_V2 0 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, POOL, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* MaxPool_8 IN: in unit=POOL_ACC_V2 0 in port=0 out unit=ARITH_ACC_V2 2 out port=0 */
     { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, POOL, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_suboff_15 IN: in unit=ARITH_ACC_V2 3 in port=0 out unit=POOL_ACC_V2 0 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 3, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_suboff_15 OUT: in unit=STREAM_ENG_V2 3 in port=0 out unit=ARITH_ACC_V2 3 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 7, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 3, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_suboff_15 OUT: in unit=STREAM_ENG_V2 7 in port=0 out unit=ARITH_ACC_V2 3 out port=0 */
   };
 
 
   /* epoch=4 */
-  LL_Switch_Deinit(switch_deinit_in_4, 8);
+  LL_Switch_Deinit(switch_deinit_in_4, 7);
 
-  static LL_ATON_DisableUnits_InitTypeDef Disable_epoch_4_all_units[] = {
-    { {STRENG, 3} }, /* STREAM_ENG_V2 */
+  static const LL_ATON_DisableUnits_InitTypeDef Disable_epoch_4_all_units[] = {
+    { {STRENG, 7} }, /* STREAM_ENG_V2 */
     { {CONVACC, 0} }, /* CONV_ACC_V2 */
-    { {ACTIV, 0} }, /* ACTIV_ACC_V2 */
     { {ARITH, 1} }, /* ARITH_ACC_V2 */
     { {ARITH, 2} }, /* ARITH_ACC_V2 */
     { {ARITH, 3} }, /* ARITH_ACC_V2 */
     { {POOL, 0} }, /* POOL_ACC_V2 */
-    { {STRENG, 7} }, /* STREAM_ENG_V2 */
-    { {STRENG, 9} }, /* STREAM_ENG_V2 */
+    { {STRENG, 0} }, /* STREAM_ENG_V2 */
+    { {STRENG, 2} }, /* STREAM_ENG_V2 */
   };
 
 
-  LL_ATON_DisableUnits_Init(Disable_epoch_4_all_units, 9);
+  LL_ATON_DisableUnits_Init(Disable_epoch_4_all_units, 8);
 
 }
 
 
-/* scheduling epoch=5    nodes=8   ------------------------------------------------------------------- */
+/* scheduling epoch=5    nodes=7   ------------------------------------------------------------------- */
 
 static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
 {
@@ -929,8 +888,8 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
 
 
   /* Unit= 18 [ARITH_ACC_V2 0] */
-  /* kind=Mul node=Conv2D_9_mul_scale_18 */
-  static const LL_Arithacc_InitTypeDef Conv2D_9_mul_scale_18_init5 = {
+  /* kind=Mul node=Conv2D_9_mul_scale_19 */
+  static const LL_Arithacc_InitTypeDef Conv2D_9_mul_scale_19_init5 = {
     .rounding_x = 0,
     .saturation_x = 0,
     .round_mode_x = 0,
@@ -967,14 +926,14 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
     .A_scalar = 1,
     .B_scalar = 0,
     .C_scalar = 0,
-    .A_vector = {(unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x70000000UL + 35136) /* Equivalent hex address = 0x70008940UL */},
+    .A_vector = {((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x71000000UL + 35136))) /* Equivalent hex address = 0x71008940UL */},
     .B_vector = {0},
     .C_vector = {0},
     .vec_precision = {16, 16, 16},
   };
 
   /* Unit=ARITH_ACC_V2 */
-  LL_Arithacc_Init(0, &Conv2D_9_mul_scale_18_init5);
+  LL_Arithacc_Init(0, &Conv2D_9_mul_scale_19_init5);
 
 
   /* Unit= 19 [ARITH_ACC_V2 1] */
@@ -1018,38 +977,12 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
     .C_scalar = (short)0,
     .A_vector = {0},
     .B_vector = {0},
-    .C_vector = {(unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x70000000UL + 34752) /* Equivalent hex address = 0x700087c0UL */},
+    .C_vector = {((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x71000000UL + 34752))) /* Equivalent hex address = 0x710087c0UL */},
     .vec_precision = {16, 16, 32},
   };
 
   /* Unit=ARITH_ACC_V2 */
   LL_Arithacc_Init(1, &Conv2D_9_off_bias_21_init5);
-
-
-  /* Unit= 17 [ACTIV_ACC_V2 1] */
-  /* kind=Relu node=Relu_12 */
-  static const LL_Activacc_InitTypeDef Relu_12_init5 = {
-    .rounding_f = 0,
-    .saturation_f = 0,
-    .round_mode_f = 0,
-    .inbytes_f = 1,
-    .outbytes_f = 1,
-    .rounding_o = 1,
-    .saturation_o = 1,
-    .round_mode_o = 1,
-    .relu_mode_o = 0,
-    .outbytes_o = 1,
-    .signedop = 1,
-    .shift_f = 0,
-    .shift_o = 0,
-    .parameter = 65408,
-    .parameter_2 = 65408,
-    .fsub = 0,
-    .operation = ACTIV_TRELU,
-  };
-
-  /* Unit=ACTIV_ACC_V2 */
-  LL_Activacc_Init(1, &Relu_12_init5);
 
 
   /* Unit= 23 [POOL_ACC_V2 1] */
@@ -1097,7 +1030,7 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
 
 
   /* Dma inputs units to cycle: */
-  /* Unit= 2 [STREAM_ENG_V2 2] */
+  /* Unit= 8 [STREAM_ENG_V2 8] */
   /* Emit conf for STREAM_ENG_V2 node=Conv2D_9 input ports=0 range=1[0,5408] */
 
   static const LL_Streng_TensorInitTypeDef Conv2D_9_dma_init_in_0_5 = {
@@ -1126,9 +1059,9 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(2, &Conv2D_9_dma_init_in_0_5, 1);
+  LL_Streng_TensorInit(8, &Conv2D_9_dma_init_in_0_5, 1);
 
-  /* Unit= 0 [STREAM_ENG_V2 0] */
+  /* Unit= 9 [STREAM_ENG_V2 9] */
   /* Emit conf for STREAM_ENG_V2 node=Conv2D_9 input ports=1 range=8[0,18432] */
 
   static const LL_Streng_TensorInitTypeDef Conv2D_9_dma_init_in_1_5 = {
@@ -1141,28 +1074,28 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
     .nbits_unsigned = 0,
     .cacheable = 1,
     .cache_allocate = 0,
-    .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */}, /* Conv2D_9_weights */
+    .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */}, /* Conv2D_9_weights */
     .offset_start = 0,
-    .offset_end = 576,
+    .offset_end = 18432,
     .offset_limit = 18496,
     .frame_count = 0,
     .fwidth = 0,
     .fheight = 0,
     .batch_depth = 0,
     .batch_offset = 0,
-    .frame_offset = 576,
+    .frame_offset = 0,
     .line_offset = 0,
     .loop_offset = 0,
     .frame_loop_cnt = 0,
-    .frame_tot_cnt = 32,
+    .frame_tot_cnt = 1,
     .nbits_in = 8,
     .nbits_out = 8,
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(0, &Conv2D_9_dma_init_in_1_5, 1);
+  LL_Streng_TensorInit(9, &Conv2D_9_dma_init_in_1_5, 1);
 
-  /* Unit= 9 [STREAM_ENG_V2 9] */
+  /* Unit= 2 [STREAM_ENG_V2 2] */
   /* Emit conf for STREAM_ENG_V2 node=Conv2D_9 input ports=2 range=1[5408,7344] */
 
   static const LL_Streng_TensorInitTypeDef Conv2D_9_dma_init_in_2_5 = {
@@ -1173,7 +1106,7 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
     .align_right = 1,
     .sync_with_other = 1,
     .nbits_unsigned = 0,
-    .sync_dma = 4,
+    .sync_dma = 6,
     .addr_base = {(unsigned char *)(0x342e0000UL) /* Equivalent hex address = 0x342e0000UL */}, /* ATONN_ACCUMULATOR_PORT */
     .offset_start = 5408,
     .offset_end = 7344,
@@ -1193,9 +1126,9 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(9, &Conv2D_9_dma_init_in_2_5, 1);
+  LL_Streng_TensorInit(2, &Conv2D_9_dma_init_in_2_5, 1);
 
-  /* Unit= 1 [STREAM_ENG_V2 1] */
+  /* Unit= 7 [STREAM_ENG_V2 7] */
   /* Emit conf for STREAM_ENG_V2 node=Conv2D_9_ca_pipe_1 input ports=0 range=1[0,5408] */
 
   static const LL_Streng_TensorInitTypeDef Conv2D_9_ca_pipe_1_dma_init_in_0_5 = {
@@ -1205,7 +1138,7 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
     .noblk = 0,
     .align_right = 0,
     .nbits_unsigned = 1,
-    .addr_base = {(unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL) /* Equivalent hex address = 0x342e0000UL */}, /* Conv2D_9_zero_off_out_16_copy_in_1 ca pipe offset=1 */
+    .addr_base = {(unsigned char *)ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL) /* Equivalent hex address = 0x342e0000UL */}, /* Conv2D_9_zero_off_out_16_copy_in_3 ca pipe offset=1 */
     .offset_start = 1352,
     .offset_end = 2704,
     .offset_limit = 5472,
@@ -1224,7 +1157,7 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(1, &Conv2D_9_ca_pipe_1_dma_init_in_0_5, 1);
+  LL_Streng_TensorInit(7, &Conv2D_9_ca_pipe_1_dma_init_in_0_5, 1);
 
 
   /* Dma input bandwidth from memory pools: */
@@ -1232,7 +1165,7 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
   /* octoFlash -> 18432 */
 
   /* Dma output units from cycle: */
-  /* Unit= 4 [STREAM_ENG_V2 4] */
+  /* Unit= 6 [STREAM_ENG_V2 6] */
   /* Emit conf for STREAM_ENG_V2 node=Conv2D_9_ca_pipe_1 output ports=0 range=1[5408,7344] */
 
   static const LL_Streng_TensorInitTypeDef Conv2D_9_ca_pipe_1_dma_init_out_0_5 = {
@@ -1242,7 +1175,7 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
     .noblk = 0,
     .align_right = 0,
     .nbits_unsigned = 0,
-    .addr_base = {(unsigned char *)(0x342e0000UL) /* Equivalent hex address = 0x342e0000UL */}, /* Conv2D_9_out_0_cp_in_1 */
+    .addr_base = {(unsigned char *)(0x342e0000UL) /* Equivalent hex address = 0x342e0000UL */}, /* Conv2D_9_out_0_cp_in_3 */
     .offset_start = 5408,
     .offset_end = 7344,
     .offset_limit = 7408,
@@ -1261,9 +1194,9 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(4, &Conv2D_9_ca_pipe_1_dma_init_out_0_5, 1);
+  LL_Streng_TensorInit(6, &Conv2D_9_ca_pipe_1_dma_init_out_0_5, 1);
 
-  /* Unit= 3 [STREAM_ENG_V2 3] */
+  /* Unit= 5 [STREAM_ENG_V2 5] */
   /* Emit conf for STREAM_ENG_V2 node=MaxPool_13 output ports=0 range=1[7344,8944] */
 
   static const LL_Streng_TensorInitTypeDef MaxPool_13_dma_init_out_0_5 = {
@@ -1290,48 +1223,46 @@ static void LL_ATON_Start_EpochBlock_5(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(3, &MaxPool_13_dma_init_out_0_5, 1);
+  LL_Streng_TensorInit(5, &MaxPool_13_dma_init_out_0_5, 1);
 
 
   /* Dma output bandwidth to memory pools: */
   /* npuRAM5 <- 40320 */
 
   static const LL_Switch_InitTypeDef switch_init_in_5[] = {
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9 IN: in unit=CONV_ACC_V2 1 in port=0 out unit=STREAM_ENG_V2 2 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 1, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9 IN: in unit=CONV_ACC_V2 1 in port=1 out unit=STREAM_ENG_V2 0 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 1, 2), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 9, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9 IN: in unit=CONV_ACC_V2 1 in port=2 out unit=STREAM_ENG_V2 9 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 IN: in unit=CONV_ACC_V2 2 in port=0 out unit=STREAM_ENG_V2 1 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 2, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 IN: in unit=CONV_ACC_V2 2 in port=1 out unit=STREAM_ENG_V2 0 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 8, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9 IN: in unit=CONV_ACC_V2 1 in port=0 out unit=STREAM_ENG_V2 8 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 1, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 9, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9 IN: in unit=CONV_ACC_V2 1 in port=1 out unit=STREAM_ENG_V2 9 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 1, 2), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9 IN: in unit=CONV_ACC_V2 1 in port=2 out unit=STREAM_ENG_V2 2 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 7, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 IN: in unit=CONV_ACC_V2 2 in port=0 out unit=STREAM_ENG_V2 7 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 2, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 9, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 IN: in unit=CONV_ACC_V2 2 in port=1 out unit=STREAM_ENG_V2 9 out port=0 */
     { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 2, 2), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 IN: in unit=CONV_ACC_V2 2 in port=2 out unit=CONV_ACC_V2 1 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 4, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 OUT: in unit=STREAM_ENG_V2 4 in port=0 out unit=CONV_ACC_V2 2 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Context(0) = 0, LL_Switch_Init_Frames(0) = 1, LL_Switch_Init_Source(1) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Context(1) = 1, LL_Switch_Init_Frames(1) = 1, }, /* Conv2D_9_mul_scale_18 IN: in unit=ARITH_ACC_V2 0 in port=0 out unit=CONV_ACC_V2 2 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 6, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 OUT: in unit=STREAM_ENG_V2 6 in port=0 out unit=CONV_ACC_V2 2 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Context(0) = 0, LL_Switch_Init_Frames(0) = 1, LL_Switch_Init_Source(1) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Context(1) = 1, LL_Switch_Init_Frames(1) = 1, }, /* Conv2D_9_mul_scale_19 IN: in unit=ARITH_ACC_V2 0 in port=0 out unit=CONV_ACC_V2 2 out port=0 */
     { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_off_bias_21 IN: in unit=ARITH_ACC_V2 1 in port=0 out unit=ARITH_ACC_V2 0 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ACTIV, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Relu_12 IN: in unit=ACTIV_ACC_V2 1 in port=0 out unit=ARITH_ACC_V2 1 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, POOL, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ACTIV, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* MaxPool_13 IN: in unit=POOL_ACC_V2 1 in port=0 out unit=ACTIV_ACC_V2 1 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, POOL, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* MaxPool_13 OUT: in unit=STREAM_ENG_V2 3 in port=0 out unit=POOL_ACC_V2 1 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, POOL, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* MaxPool_13 IN: in unit=POOL_ACC_V2 1 in port=0 out unit=ARITH_ACC_V2 1 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 5, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, POOL, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* MaxPool_13 OUT: in unit=STREAM_ENG_V2 5 in port=0 out unit=POOL_ACC_V2 1 out port=0 */
   };
 
 
   /* epoch=5 */
-  LL_Switch_Init(switch_init_in_5, 12);
+  LL_Switch_Init(switch_init_in_5, 11);
 
-  static LL_ATON_EnableUnits_InitTypeDef Enable_epoch_5_all_units[] = {
-    { {STRENG, 3} }, /* STREAM_ENG_V2 */
-    { {STRENG, 4} }, /* STREAM_ENG_V2 */
+  static const LL_ATON_EnableUnits_InitTypeDef Enable_epoch_5_all_units[] = {
+    { {STRENG, 5} }, /* STREAM_ENG_V2 */
+    { {STRENG, 6} }, /* STREAM_ENG_V2 */
     { {CONVACC, 1} }, /* CONV_ACC_V2 */
     { {CONVACC, 2} }, /* CONV_ACC_V2 */
-    { {ACTIV, 1} }, /* ACTIV_ACC_V2 */
     { {ARITH, 0} }, /* ARITH_ACC_V2 */
     { {ARITH, 1} }, /* ARITH_ACC_V2 */
     { {POOL, 1} }, /* POOL_ACC_V2 */
-    { {STRENG, 0} }, /* STREAM_ENG_V2 */
-    { {STRENG, 1} }, /* STREAM_ENG_V2 */
     { {STRENG, 2} }, /* STREAM_ENG_V2 */
+    { {STRENG, 7} }, /* STREAM_ENG_V2 */
+    { {STRENG, 8} }, /* STREAM_ENG_V2 */
     { {STRENG, 9} }, /* STREAM_ENG_V2 */
   };
 
 
-  LL_ATON_EnableUnits_Init(Enable_epoch_5_all_units, 12);
+  LL_ATON_EnableUnits_Init(Enable_epoch_5_all_units, 11);
 
 }
 
@@ -1340,41 +1271,39 @@ static void LL_ATON_End_EpochBlock_5(const void *epoch_block)
   LL_ATON_LIB_UNUSED(epoch_block);
 
   static const LL_Switch_DeinitTypeDef switch_deinit_in_5[] = {
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9 IN: in unit=CONV_ACC_V2 1 in port=0 out unit=STREAM_ENG_V2 2 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 1, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9 IN: in unit=CONV_ACC_V2 1 in port=1 out unit=STREAM_ENG_V2 0 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 1, 2), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 9, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9 IN: in unit=CONV_ACC_V2 1 in port=2 out unit=STREAM_ENG_V2 9 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 IN: in unit=CONV_ACC_V2 2 in port=0 out unit=STREAM_ENG_V2 1 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 2, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 IN: in unit=CONV_ACC_V2 2 in port=1 out unit=STREAM_ENG_V2 0 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 8, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9 IN: in unit=CONV_ACC_V2 1 in port=0 out unit=STREAM_ENG_V2 8 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 1, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 9, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9 IN: in unit=CONV_ACC_V2 1 in port=1 out unit=STREAM_ENG_V2 9 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 1, 2), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9 IN: in unit=CONV_ACC_V2 1 in port=2 out unit=STREAM_ENG_V2 2 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 7, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 IN: in unit=CONV_ACC_V2 2 in port=0 out unit=STREAM_ENG_V2 7 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 2, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 9, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 IN: in unit=CONV_ACC_V2 2 in port=1 out unit=STREAM_ENG_V2 9 out port=0 */
     { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 2, 2), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 IN: in unit=CONV_ACC_V2 2 in port=2 out unit=CONV_ACC_V2 1 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 4, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 OUT: in unit=STREAM_ENG_V2 4 in port=0 out unit=CONV_ACC_V2 2 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Context(0) = 0, LL_Switch_Init_Frames(0) = 1, LL_Switch_Init_Source(1) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Context(1) = 1, LL_Switch_Init_Frames(1) = 1, }, /* Conv2D_9_mul_scale_18 IN: in unit=ARITH_ACC_V2 0 in port=0 out unit=CONV_ACC_V2 2 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 6, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_ca_pipe_1 OUT: in unit=STREAM_ENG_V2 6 in port=0 out unit=CONV_ACC_V2 2 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Context(0) = 0, LL_Switch_Init_Frames(0) = 1, LL_Switch_Init_Source(1) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 2, 0), LL_Switch_Init_Context(1) = 1, LL_Switch_Init_Frames(1) = 1, }, /* Conv2D_9_mul_scale_19 IN: in unit=ARITH_ACC_V2 0 in port=0 out unit=CONV_ACC_V2 2 out port=0 */
     { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Conv2D_9_off_bias_21 IN: in unit=ARITH_ACC_V2 1 in port=0 out unit=ARITH_ACC_V2 0 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ACTIV, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Relu_12 IN: in unit=ACTIV_ACC_V2 1 in port=0 out unit=ARITH_ACC_V2 1 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, POOL, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ACTIV, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* MaxPool_13 IN: in unit=POOL_ACC_V2 1 in port=0 out unit=ACTIV_ACC_V2 1 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, POOL, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* MaxPool_13 OUT: in unit=STREAM_ENG_V2 3 in port=0 out unit=POOL_ACC_V2 1 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, POOL, 1, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* MaxPool_13 IN: in unit=POOL_ACC_V2 1 in port=0 out unit=ARITH_ACC_V2 1 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 5, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, POOL, 1, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* MaxPool_13 OUT: in unit=STREAM_ENG_V2 5 in port=0 out unit=POOL_ACC_V2 1 out port=0 */
   };
 
 
   /* epoch=5 */
-  LL_Switch_Deinit(switch_deinit_in_5, 12);
+  LL_Switch_Deinit(switch_deinit_in_5, 11);
 
-  static LL_ATON_DisableUnits_InitTypeDef Disable_epoch_5_all_units[] = {
-    { {STRENG, 3} }, /* STREAM_ENG_V2 */
-    { {STRENG, 4} }, /* STREAM_ENG_V2 */
+  static const LL_ATON_DisableUnits_InitTypeDef Disable_epoch_5_all_units[] = {
+    { {STRENG, 5} }, /* STREAM_ENG_V2 */
+    { {STRENG, 6} }, /* STREAM_ENG_V2 */
     { {CONVACC, 1} }, /* CONV_ACC_V2 */
     { {CONVACC, 2} }, /* CONV_ACC_V2 */
-    { {ACTIV, 1} }, /* ACTIV_ACC_V2 */
     { {ARITH, 0} }, /* ARITH_ACC_V2 */
     { {ARITH, 1} }, /* ARITH_ACC_V2 */
     { {POOL, 1} }, /* POOL_ACC_V2 */
-    { {STRENG, 0} }, /* STREAM_ENG_V2 */
-    { {STRENG, 1} }, /* STREAM_ENG_V2 */
     { {STRENG, 2} }, /* STREAM_ENG_V2 */
+    { {STRENG, 7} }, /* STREAM_ENG_V2 */
+    { {STRENG, 8} }, /* STREAM_ENG_V2 */
     { {STRENG, 9} }, /* STREAM_ENG_V2 */
   };
 
 
-  LL_ATON_DisableUnits_Init(Disable_epoch_5_all_units, 12);
+  LL_ATON_DisableUnits_Init(Disable_epoch_5_all_units, 11);
 
 }
 
@@ -1435,7 +1364,7 @@ static void LL_ATON_Start_EpochBlock_6(const void *epoch_block)
 
 
   /* Dma inputs units to cycle: */
-  /* Unit= 8 [STREAM_ENG_V2 8] */
+  /* Unit= 4 [STREAM_ENG_V2 4] */
   /* Emit conf for STREAM_ENG_V2 node=Gemm_16_conv_4_suboff_24 input ports=0 range=1[7344,8944] */
 
   static const LL_Streng_TensorInitTypeDef Gemm_16_conv_4_suboff_24_dma_init_in_0_6 = {
@@ -1464,14 +1393,14 @@ static void LL_ATON_Start_EpochBlock_6(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(8, &Gemm_16_conv_4_suboff_24_dma_init_in_0_6, 1);
+  LL_Streng_TensorInit(4, &Gemm_16_conv_4_suboff_24_dma_init_in_0_6, 1);
 
 
   /* Dma input bandwidth from memory pools: */
   /* npuRAM5 -> 1600 */
 
   /* Dma output units from cycle: */
-  /* Unit= 2 [STREAM_ENG_V2 2] */
+  /* Unit= 7 [STREAM_ENG_V2 7] */
   /* Emit conf for STREAM_ENG_V2 node=Gemm_16_conv_4_suboff_24 output ports=0 range=1[0,1600] */
 
   static const LL_Streng_TensorInitTypeDef Gemm_16_conv_4_suboff_24_dma_init_out_0_6 = {
@@ -1500,25 +1429,25 @@ static void LL_ATON_Start_EpochBlock_6(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(2, &Gemm_16_conv_4_suboff_24_dma_init_out_0_6, 1);
+  LL_Streng_TensorInit(7, &Gemm_16_conv_4_suboff_24_dma_init_out_0_6, 1);
 
 
   /* Dma output bandwidth to memory pools: */
   /* npuRAM5 <- 1600 */
 
   static const LL_Switch_InitTypeDef switch_init_in_6[] = {
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 8, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_suboff_24 IN: in unit=ARITH_ACC_V2 2 in port=0 out unit=STREAM_ENG_V2 8 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 2, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_suboff_24 OUT: in unit=STREAM_ENG_V2 2 in port=0 out unit=ARITH_ACC_V2 2 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 4, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_suboff_24 IN: in unit=ARITH_ACC_V2 2 in port=0 out unit=STREAM_ENG_V2 4 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 7, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_suboff_24 OUT: in unit=STREAM_ENG_V2 7 in port=0 out unit=ARITH_ACC_V2 2 out port=0 */
   };
 
 
   /* epoch=6 */
   LL_Switch_Init(switch_init_in_6, 2);
 
-  static LL_ATON_EnableUnits_InitTypeDef Enable_epoch_6_all_units[] = {
-    { {STRENG, 2} }, /* STREAM_ENG_V2 */
+  static const LL_ATON_EnableUnits_InitTypeDef Enable_epoch_6_all_units[] = {
+    { {STRENG, 7} }, /* STREAM_ENG_V2 */
     { {ARITH, 2} }, /* ARITH_ACC_V2 */
-    { {STRENG, 8} }, /* STREAM_ENG_V2 */
+    { {STRENG, 4} }, /* STREAM_ENG_V2 */
   };
 
 
@@ -1531,18 +1460,18 @@ static void LL_ATON_End_EpochBlock_6(const void *epoch_block)
   LL_ATON_LIB_UNUSED(epoch_block);
 
   static const LL_Switch_DeinitTypeDef switch_deinit_in_6[] = {
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 8, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_suboff_24 IN: in unit=ARITH_ACC_V2 2 in port=0 out unit=STREAM_ENG_V2 8 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 2, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_suboff_24 OUT: in unit=STREAM_ENG_V2 2 in port=0 out unit=ARITH_ACC_V2 2 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 4, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_suboff_24 IN: in unit=ARITH_ACC_V2 2 in port=0 out unit=STREAM_ENG_V2 4 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 7, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_suboff_24 OUT: in unit=STREAM_ENG_V2 7 in port=0 out unit=ARITH_ACC_V2 2 out port=0 */
   };
 
 
   /* epoch=6 */
   LL_Switch_Deinit(switch_deinit_in_6, 2);
 
-  static LL_ATON_DisableUnits_InitTypeDef Disable_epoch_6_all_units[] = {
-    { {STRENG, 2} }, /* STREAM_ENG_V2 */
+  static const LL_ATON_DisableUnits_InitTypeDef Disable_epoch_6_all_units[] = {
+    { {STRENG, 7} }, /* STREAM_ENG_V2 */
     { {ARITH, 2} }, /* ARITH_ACC_V2 */
-    { {STRENG, 8} }, /* STREAM_ENG_V2 */
+    { {STRENG, 4} }, /* STREAM_ENG_V2 */
   };
 
 
@@ -1611,8 +1540,8 @@ static void LL_ATON_Start_EpochBlock_7(const void *epoch_block)
 
 
   /* Unit= 21 [ARITH_ACC_V2 3] */
-  /* kind=Mul node=Gemm_16_conv_4_mul_scale_27 */
-  static const LL_Arithacc_InitTypeDef Gemm_16_conv_4_mul_scale_27_init7 = {
+  /* kind=Mul node=Gemm_16_conv_4_mul_scale_28 */
+  static const LL_Arithacc_InitTypeDef Gemm_16_conv_4_mul_scale_28_init7 = {
     .rounding_x = 0,
     .saturation_x = 0,
     .round_mode_x = 0,
@@ -1656,7 +1585,7 @@ static void LL_ATON_Start_EpochBlock_7(const void *epoch_block)
   };
 
   /* Unit=ARITH_ACC_V2 */
-  LL_Arithacc_Init(3, &Gemm_16_conv_4_mul_scale_27_init7);
+  LL_Arithacc_Init(3, &Gemm_16_conv_4_mul_scale_28_init7);
 
 
   /* Unit= 18 [ARITH_ACC_V2 0] */
@@ -1700,7 +1629,7 @@ static void LL_ATON_Start_EpochBlock_7(const void *epoch_block)
     .C_scalar = (short)0,
     .A_vector = {0},
     .B_vector = {0},
-    .C_vector = {(unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x70000000UL + 35328) /* Equivalent hex address = 0x70008a00UL */},
+    .C_vector = {((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x71000000UL + 35328))) /* Equivalent hex address = 0x71008a00UL */},
     .vec_precision = {16, 16, 32},
   };
 
@@ -1709,7 +1638,7 @@ static void LL_ATON_Start_EpochBlock_7(const void *epoch_block)
 
 
   /* Dma inputs units to cycle: */
-  /* Unit= 2 [STREAM_ENG_V2 2] */
+  /* Unit= 8 [STREAM_ENG_V2 8] */
   /* Emit conf for STREAM_ENG_V2 node=Gemm_16_conv_4 input ports=0 range=1[0,1600] */
 
   static const LL_Streng_TensorInitTypeDef Gemm_16_conv_4_dma_init_in_0_7 = {
@@ -1736,9 +1665,9 @@ static void LL_ATON_Start_EpochBlock_7(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(2, &Gemm_16_conv_4_dma_init_in_0_7, 1);
+  LL_Streng_TensorInit(8, &Gemm_16_conv_4_dma_init_in_0_7, 1);
 
-  /* Unit= 9 [STREAM_ENG_V2 9] */
+  /* Unit= 3 [STREAM_ENG_V2 3] */
   /* Emit conf for STREAM_ENG_V2 node=Gemm_16_conv_4 input ports=1 range=8[18432,34464] */
 
   static const LL_Streng_TensorInitTypeDef Gemm_16_conv_4_dma_init_in_1_7 = {
@@ -1751,7 +1680,7 @@ static void LL_ATON_Start_EpochBlock_7(const void *epoch_block)
     .nbits_unsigned = 0,
     .cacheable = 1,
     .cache_allocate = 0,
-    .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */}, /* Gemm_16_weights_transposed_3 */
+    .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */}, /* Gemm_16_weights_transposed_3 */
     .offset_start = 18432,
     .offset_end = 34464,
     .offset_limit = 34528,
@@ -1770,7 +1699,7 @@ static void LL_ATON_Start_EpochBlock_7(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(9, &Gemm_16_conv_4_dma_init_in_1_7, 1);
+  LL_Streng_TensorInit(3, &Gemm_16_conv_4_dma_init_in_1_7, 1);
 
 
   /* Dma input bandwidth from memory pools: */
@@ -1778,7 +1707,7 @@ static void LL_ATON_Start_EpochBlock_7(const void *epoch_block)
   /* octoFlash -> 16000 */
 
   /* Dma output units from cycle: */
-  /* Unit= 6 [STREAM_ENG_V2 6] */
+  /* Unit= 0 [STREAM_ENG_V2 0] */
   /* Emit conf for STREAM_ENG_V2 node=Gemm_16_conv_4_off_bias_30 output ports=0 range=1[1600,1610] */
 
   static const LL_Streng_TensorInitTypeDef Gemm_16_conv_4_off_bias_30_dma_init_out_0_7 = {
@@ -1807,46 +1736,38 @@ static void LL_ATON_Start_EpochBlock_7(const void *epoch_block)
   };
 
   /* Unit=STREAM_ENG_V2 */
-  LL_Streng_TensorInit(6, &Gemm_16_conv_4_off_bias_30_dma_init_out_0_7, 1);
+  LL_Streng_TensorInit(0, &Gemm_16_conv_4_off_bias_30_dma_init_out_0_7, 1);
 
 
   /* Dma output bandwidth to memory pools: */
   /* npuRAM5 <- 10 */
 
   static const LL_Switch_InitTypeDef switch_init_in_7[] = {
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4 IN: in unit=CONV_ACC_V2 3 in port=0 out unit=STREAM_ENG_V2 2 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 3, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 9, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4 IN: in unit=CONV_ACC_V2 3 in port=1 out unit=STREAM_ENG_V2 9 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 8, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4 IN: in unit=CONV_ACC_V2 3 in port=0 out unit=STREAM_ENG_V2 8 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 3, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 3, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4 IN: in unit=CONV_ACC_V2 3 in port=1 out unit=STREAM_ENG_V2 3 out port=0 */
     { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 3, 2), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4 IN: in unit=CONV_ACC_V2 3 in port=2 out unit=CONV_ACC_V2 3 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Context(0) = 0, LL_Switch_Init_Frames(0) = 15, LL_Switch_Init_Source(1) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Context(1) = 1, LL_Switch_Init_Frames(1) = 1, }, /* Gemm_16_conv_4_mul_scale_27 IN: in unit=ARITH_ACC_V2 3 in port=0 out unit=CONV_ACC_V2 3 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Context(0) = 0, LL_Switch_Init_Frames(0) = 15, LL_Switch_Init_Source(1) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Context(1) = 1, LL_Switch_Init_Frames(1) = 1, }, /* Gemm_16_conv_4_mul_scale_28 IN: in unit=ARITH_ACC_V2 3 in port=0 out unit=CONV_ACC_V2 3 out port=0 */
     { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 3, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_off_bias_30 IN: in unit=ARITH_ACC_V2 0 in port=0 out unit=ARITH_ACC_V2 3 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 6, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_off_bias_30 OUT: in unit=STREAM_ENG_V2 6 in port=0 out unit=ARITH_ACC_V2 0 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_off_bias_30 OUT: in unit=STREAM_ENG_V2 0 in port=0 out unit=ARITH_ACC_V2 0 out port=0 */
   };
 
 
   /* epoch=7 */
   LL_Switch_Init(switch_init_in_7, 6);
 
-  // Lock MCU cache
-  LL_ATON_LOCK_MCU_CACHE();
-
-#if (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
   /* *** MCU cache invalidate (only) operation (HW, whole range) *** */
   /*     memory pool: 1 */
-  /*     start: (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1600) */
-  /*     end:   (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1632) */
-  mcu_cache_invalidate_range((uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1600) /* Equivalent hex address = 0x342e0640UL */, (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1632) /* Equivalent hex address = 0x342e0660UL */);
-#endif // (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
+  /*     start: ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1600))) */
+  /*     end:   ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1632))) */
+  LL_ATON_Cache_MCU_Invalidate_Range(((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1600))) /* Equivalent hex address = 0x342e0640UL */, 32);
 
-  // Un-lock MCU cache
-  LL_ATON_UNLOCK_MCU_CACHE();
-
-  static LL_ATON_EnableUnits_InitTypeDef Enable_epoch_7_all_units[] = {
-    { {STRENG, 6} }, /* STREAM_ENG_V2 */
+  static const LL_ATON_EnableUnits_InitTypeDef Enable_epoch_7_all_units[] = {
+    { {STRENG, 0} }, /* STREAM_ENG_V2 */
     { {CONVACC, 3} }, /* CONV_ACC_V2 */
     { {ARITH, 0} }, /* ARITH_ACC_V2 */
     { {ARITH, 3} }, /* ARITH_ACC_V2 */
-    { {STRENG, 2} }, /* STREAM_ENG_V2 */
-    { {STRENG, 9} }, /* STREAM_ENG_V2 */
+    { {STRENG, 3} }, /* STREAM_ENG_V2 */
+    { {STRENG, 8} }, /* STREAM_ENG_V2 */
   };
 
 
@@ -1859,25 +1780,25 @@ static void LL_ATON_End_EpochBlock_7(const void *epoch_block)
   LL_ATON_LIB_UNUSED(epoch_block);
 
   static const LL_Switch_DeinitTypeDef switch_deinit_in_7[] = {
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 2, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4 IN: in unit=CONV_ACC_V2 3 in port=0 out unit=STREAM_ENG_V2 2 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 3, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 9, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4 IN: in unit=CONV_ACC_V2 3 in port=1 out unit=STREAM_ENG_V2 9 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 8, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4 IN: in unit=CONV_ACC_V2 3 in port=0 out unit=STREAM_ENG_V2 8 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 3, 1), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, STRENG, 3, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4 IN: in unit=CONV_ACC_V2 3 in port=1 out unit=STREAM_ENG_V2 3 out port=0 */
     { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, CONVACC, 3, 2), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4 IN: in unit=CONV_ACC_V2 3 in port=2 out unit=CONV_ACC_V2 3 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Context(0) = 0, LL_Switch_Init_Frames(0) = 15, LL_Switch_Init_Source(1) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Context(1) = 1, LL_Switch_Init_Frames(1) = 1, }, /* Gemm_16_conv_4_mul_scale_27 IN: in unit=ARITH_ACC_V2 3 in port=0 out unit=CONV_ACC_V2 3 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 3, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Context(0) = 0, LL_Switch_Init_Frames(0) = 15, LL_Switch_Init_Source(1) = ATONN_SRCPORT(STRSWITCH, 0, CONVACC, 3, 0), LL_Switch_Init_Context(1) = 1, LL_Switch_Init_Frames(1) = 1, }, /* Gemm_16_conv_4_mul_scale_28 IN: in unit=ARITH_ACC_V2 3 in port=0 out unit=CONV_ACC_V2 3 out port=0 */
     { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 3, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_off_bias_30 IN: in unit=ARITH_ACC_V2 0 in port=0 out unit=ARITH_ACC_V2 3 out port=0 */
-    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 6, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_off_bias_30 OUT: in unit=STREAM_ENG_V2 6 in port=0 out unit=ARITH_ACC_V2 0 out port=0 */
+    { LL_Switch_Init_Dest() = ATONN_DSTPORT(STRSWITCH, 0, STRENG, 0, 0), LL_Switch_Init_Source(0) = ATONN_SRCPORT(STRSWITCH, 0, ARITH, 0, 0), LL_Switch_Init_Context(0) = 1, LL_Switch_Init_Frames(0) = 0, }, /* Gemm_16_conv_4_off_bias_30 OUT: in unit=STREAM_ENG_V2 0 in port=0 out unit=ARITH_ACC_V2 0 out port=0 */
   };
 
 
   /* epoch=7 */
   LL_Switch_Deinit(switch_deinit_in_7, 6);
 
-  static LL_ATON_DisableUnits_InitTypeDef Disable_epoch_7_all_units[] = {
-    { {STRENG, 6} }, /* STREAM_ENG_V2 */
+  static const LL_ATON_DisableUnits_InitTypeDef Disable_epoch_7_all_units[] = {
+    { {STRENG, 0} }, /* STREAM_ENG_V2 */
     { {CONVACC, 3} }, /* CONV_ACC_V2 */
     { {ARITH, 0} }, /* ARITH_ACC_V2 */
     { {ARITH, 3} }, /* ARITH_ACC_V2 */
-    { {STRENG, 2} }, /* STREAM_ENG_V2 */
-    { {STRENG, 9} }, /* STREAM_ENG_V2 */
+    { {STRENG, 3} }, /* STREAM_ENG_V2 */
+    { {STRENG, 8} }, /* STREAM_ENG_V2 */
   };
 
 
@@ -1890,33 +1811,23 @@ static void LL_ATON_End_EpochBlock_7(const void *epoch_block)
 
 static void LL_ATON_End_EpochBlock_8(const void *epoch_block)
 {
-  // Lock MCU cache
-  LL_ATON_LOCK_MCU_CACHE();
+  LL_ATON_LIB_UNUSED(epoch_block);
 
-#if (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
   /* *** MCU cache invalidate (only) operation for unaligned buffer end address (last line) *** */
   /*     memory pool: 1 */
-  /*     start: (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1024) */
-  /*     end:   (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1056) */
-  mcu_cache_invalidate_range((uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1024) /* Equivalent hex address = 0x342e0400UL */, (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1056) /* Equivalent hex address = 0x342e0420UL */);
-#endif // (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
+  /*     start: ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1024))) */
+  /*     end:   ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1056))) */
+  LL_ATON_Cache_MCU_Invalidate_Range(((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1024))) /* Equivalent hex address = 0x342e0400UL */, 32);
 
-#if (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
   /* *** MCU cache invalidate (only) operation for unaligned buffer start or end address (only line) *** */
   /*     memory pool: 1 */
-  /*     start: (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088) */
-  /*     end:   (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1120) */
-  mcu_cache_invalidate_range((uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088) /* Equivalent hex address = 0x342e0440UL */, (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1120) /* Equivalent hex address = 0x342e0460UL */);
-#endif // (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
-
-  // Un-lock MCU cache
-  LL_ATON_UNLOCK_MCU_CACHE();
-
-  LL_ATON_LIB_UNUSED(epoch_block);
+  /*     start: ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088))) */
+  /*     end:   ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1120))) */
+  LL_ATON_Cache_MCU_Invalidate_Range(((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088))) /* Equivalent hex address = 0x342e0440UL */, 32);
 
 
 /* Unit= 27 [PROCESSOR 0] */
-/* kind=Softmax node=Softmax_19 */
+/* kind=Softmax node=Softmax_17 */
   Softmax_integer_sw_info softmax_integer2_sw_info = {
     /* "general.input" tensor-related info: */
     .general.input.dim.tensor_b = 1,
@@ -1928,22 +1839,22 @@ static void LL_ATON_End_EpochBlock_8(const void *epoch_block)
     .general.input.stride.h = 10,
     .general.input.stride.w = 1,
     .general.input.stride.c = 1,
-    .general.input.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1600) /* Equivalent hex address = 0x342e0640UL */,
+    .general.input.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1600))) /* Equivalent hex address = 0x342e0640UL */,
     .general.input.format.is_signed = 1,
     /* "is" tensor-related info: */
-    .is.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x70000000UL + 35376) /* Equivalent hex address = 0x70008a30UL */,
+    .is.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x71000000UL + 35376))) /* Equivalent hex address = 0x71008a30UL */,
     .is.format.is_signed = 0,
     .is.dim.num_elem = 1,
     /* "izp" tensor-related info: */
-    .izp.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x70000000UL + 35504) /* Equivalent hex address = 0x70008ab0UL */,
+    .izp.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x71000000UL + 35504))) /* Equivalent hex address = 0x71008ab0UL */,
     .izp.format.is_signed = 1,
     .izp.dim.num_elem = 1,
     /* "os" tensor-related info: */
-    .os.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x70000000UL + 35392) /* Equivalent hex address = 0x70008a40UL */,
+    .os.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x71000000UL + 35392))) /* Equivalent hex address = 0x71008a40UL */,
     .os.format.is_signed = 0,
     .os.dim.num_elem = 1,
     /* "ozp" tensor-related info: */
-    .ozp.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x70000000UL + 35520) /* Equivalent hex address = 0x70008ac0UL */,
+    .ozp.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x71000000UL + 35520))) /* Equivalent hex address = 0x71008ac0UL */,
     .ozp.format.is_signed = 1,
     .ozp.dim.num_elem = 1,
     /* "scratch" tensor-related info: */
@@ -1956,7 +1867,7 @@ static void LL_ATON_End_EpochBlock_8(const void *epoch_block)
     .scratch.stride.h = 1028,
     .scratch.stride.w = 4,
     .scratch.stride.c = 4,
-    .scratch.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 0) /* Equivalent hex address = 0x342e0000UL */,
+    .scratch.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 0))) /* Equivalent hex address = 0x342e0000UL */,
     .scratch.format.is_signed = 1,
     /* "general.output" tensor-related info: */
     .general.output.dim.tensor_b = 1,
@@ -1968,7 +1879,7 @@ static void LL_ATON_End_EpochBlock_8(const void *epoch_block)
     .general.output.stride.h = 10,
     .general.output.stride.w = 1,
     .general.output.stride.c = 1,
-    .general.output.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088) /* Equivalent hex address = 0x342e0440UL */,
+    .general.output.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088))) /* Equivalent hex address = 0x342e0440UL */,
     .general.output.format.is_signed = 1,
     /* Node-specific Hyper-parameters: */
     .quantized_multiplier = 1456098560,
@@ -1979,29 +1890,19 @@ static void LL_ATON_End_EpochBlock_8(const void *epoch_block)
   };
 
   /* Low Level SW Layer function invocation. This will exploit EmbedNets libs) */
-  /* Node Softmax_19 mapped on EmbedNets (INTEGER) as Softmax | Category: Computational */
+  /* Node Softmax_17 mapped on EmbedNets (INTEGER) as Softmax | Category: Computational */
   ll_sw_forward_softmax_integer(&softmax_integer2_sw_info);
-  // Lock MCU cache
-  LL_ATON_LOCK_MCU_CACHE();
-
-#if (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
   /* *** MCU cache clean (only) operation (SW, whole range) *** */
   /*     memory pool: 1 */
-  /*     start: (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 0) */
-  /*     end:   (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1056) */
-  mcu_cache_clean_range((uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 0) /* Equivalent hex address = 0x342e0000UL */, (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1056) /* Equivalent hex address = 0x342e0420UL */);
-#endif // (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
+  /*     start: ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 0))) */
+  /*     end:   ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1056))) */
+  LL_ATON_Cache_MCU_Clean_Range(((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 0))) /* Equivalent hex address = 0x342e0000UL */, 1056);
 
-#if (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
   /* *** MCU cache clean (only) operation (SW, whole range) *** */
   /*     memory pool: 1 */
-  /*     start: (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088) */
-  /*     end:   (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1120) */
-  mcu_cache_clean_range((uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088) /* Equivalent hex address = 0x342e0440UL */, (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1120) /* Equivalent hex address = 0x342e0460UL */);
-#endif // (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
-
-  // Un-lock MCU cache
-  LL_ATON_UNLOCK_MCU_CACHE();
+  /*     start: ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088))) */
+  /*     end:   ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1120))) */
+  LL_ATON_Cache_MCU_Clean_Range(((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088))) /* Equivalent hex address = 0x342e0440UL */, 32);
 
 }
 
@@ -2010,25 +1911,17 @@ static void LL_ATON_End_EpochBlock_8(const void *epoch_block)
 
 static void LL_ATON_End_EpochBlock_9(const void *epoch_block)
 {
-  // Lock MCU cache
-  LL_ATON_LOCK_MCU_CACHE();
+  LL_ATON_LIB_UNUSED(epoch_block);
 
-#if (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
   /* *** MCU cache invalidate (only) operation for unaligned buffer start or end address (only line) *** */
   /*     memory pool: 1 */
-  /*     start: (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1024) */
-  /*     end:   (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088) */
-  mcu_cache_invalidate_range((uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1024) /* Equivalent hex address = 0x342e0400UL */, (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088) /* Equivalent hex address = 0x342e0440UL */);
-#endif // (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
-
-  // Un-lock MCU cache
-  LL_ATON_UNLOCK_MCU_CACHE();
-
-  LL_ATON_LIB_UNUSED(epoch_block);
+  /*     start: ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1024))) */
+  /*     end:   ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088))) */
+  LL_ATON_Cache_MCU_Invalidate_Range(((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1024))) /* Equivalent hex address = 0x342e0400UL */, 64);
 
 
 /* Unit= 27 [PROCESSOR 0] */
-/* kind=DequantizeLinear node=Dequantize_21 */
+/* kind=DequantizeLinear node=Dequantize_19 */
   Dequantizelinear_sw_info dequantizelinear3_sw_info = {
     /* "general.input" tensor-related info: */
     .general.input.dim.tensor_b = 1,
@@ -2040,14 +1933,14 @@ static void LL_ATON_End_EpochBlock_9(const void *epoch_block)
     .general.input.stride.h = 10,
     .general.input.stride.w = 1,
     .general.input.stride.c = 1,
-    .general.input.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088) /* Equivalent hex address = 0x342e0440UL */,
+    .general.input.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088))) /* Equivalent hex address = 0x342e0440UL */,
     .general.input.format.is_signed = 1,
     /* "is" tensor-related info: */
-    .is.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x70000000UL + 35424) /* Equivalent hex address = 0x70008a60UL */,
+    .is.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x71000000UL + 35424))) /* Equivalent hex address = 0x71008a60UL */,
     .is.format.is_signed = 1,
     .is.dim.num_elem = 1,
     /* "izp" tensor-related info: */
-    .izp.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x70000000UL + 35552) /* Equivalent hex address = 0x70008ae0UL */,
+    .izp.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x71000000UL + 35552))) /* Equivalent hex address = 0x71008ae0UL */,
     .izp.format.is_signed = 1,
     .izp.dim.num_elem = 1,
     /* "general.output" tensor-related info: */
@@ -2060,27 +1953,19 @@ static void LL_ATON_End_EpochBlock_9(const void *epoch_block)
     .general.output.stride.h = 40,
     .general.output.stride.w = 4,
     .general.output.stride.c = 4,
-    .general.output.mem.start_offset = (unsigned char *)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1040) /* Equivalent hex address = 0x342e0410UL */,
+    .general.output.mem.start_offset = ((unsigned char *)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1040))) /* Equivalent hex address = 0x342e0410UL */,
     .general.output.format.is_signed = 1,
     .general.type = LL_SW_DEQUANTIZELINEAR,
   };
 
   /* Low Level SW Layer function invocation. This will exploit EmbedNets libs) */
-  /* Node Dequantize_21 mapped on EmbedNets (INTEGER) as DequantizeLinear | Category: Format-Converter */
+  /* Node Dequantize_19 mapped on EmbedNets (INTEGER) as DequantizeLinear | Category: Format-Converter */
   ll_sw_forward_dequantizelinear(&dequantizelinear3_sw_info);
-  // Lock MCU cache
-  LL_ATON_LOCK_MCU_CACHE();
-
-#if (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
   /* *** MCU cache clean (only) operation (SW, whole range) *** */
   /*     memory pool: 1 */
-  /*     start: (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1024) */
-  /*     end:   (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088) */
-  mcu_cache_clean_range((uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1024) /* Equivalent hex address = 0x342e0400UL */, (uintptr_t)__LL_ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088) /* Equivalent hex address = 0x342e0440UL */);
-#endif // (LL_ATON_PLATFORM == LL_ATON_PLAT_STM32N6)
-
-  // Un-lock MCU cache
-  LL_ATON_UNLOCK_MCU_CACHE();
+  /*     start: ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1024))) */
+  /*     end:   ((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1088))) */
+  LL_ATON_Cache_MCU_Clean_Range(((uintptr_t)(ATON_LIB_PHYSICAL_TO_VIRTUAL_ADDR(0x342e0000UL + 1024))) /* Equivalent hex address = 0x342e0400UL */, 64);
 
 }
 
@@ -2109,13 +1994,13 @@ const EpochBlock_ItemTypeDef *LL_ATON_EpochBlockItems_Default(void) {
     {
       .start_epoch_block = LL_ATON_Start_EpochBlock_3,
       .end_epoch_block = LL_ATON_End_EpochBlock_3,
-      .wait_mask = 0x00000002,
+      .wait_mask = 0x00000040,
       .flags = EpochBlock_Flags_epoch_start | EpochBlock_Flags_epoch_end | EpochBlock_Flags_pure_hw,
 #ifdef LL_ATON_EB_DBG_INFO
       .epoch_num = 3,
       .last_epoch_num = 3,
-      .in_streng_mask = 0x00000020,
-      .out_streng_mask = 0x00000002,
+      .in_streng_mask = 0x00000002,
+      .out_streng_mask = 0x00000040,
       .estimated_npu_cycles = 0,
       .estimated_tot_cycles = 0,
 #endif // LL_ATON_EB_DBG_INFO
@@ -2123,13 +2008,13 @@ const EpochBlock_ItemTypeDef *LL_ATON_EpochBlockItems_Default(void) {
     {
       .start_epoch_block = LL_ATON_Start_EpochBlock_4,
       .end_epoch_block = LL_ATON_End_EpochBlock_4,
-      .wait_mask = 0x00000008,
+      .wait_mask = 0x00000080,
       .flags = EpochBlock_Flags_epoch_start | EpochBlock_Flags_epoch_end | EpochBlock_Flags_pure_hw,
 #ifdef LL_ATON_EB_DBG_INFO
       .epoch_num = 4,
       .last_epoch_num = 4,
-      .in_streng_mask = 0x00000280,
-      .out_streng_mask = 0x00000008,
+      .in_streng_mask = 0x00000005,
+      .out_streng_mask = 0x00000080,
       .estimated_npu_cycles = 0,
       .estimated_tot_cycles = 0,
 #endif // LL_ATON_EB_DBG_INFO
@@ -2137,13 +2022,13 @@ const EpochBlock_ItemTypeDef *LL_ATON_EpochBlockItems_Default(void) {
     {
       .start_epoch_block = LL_ATON_Start_EpochBlock_5,
       .end_epoch_block = LL_ATON_End_EpochBlock_5,
-      .wait_mask = 0x00000018,
+      .wait_mask = 0x00000060,
       .flags = EpochBlock_Flags_epoch_start | EpochBlock_Flags_epoch_end | EpochBlock_Flags_pure_hw,
 #ifdef LL_ATON_EB_DBG_INFO
       .epoch_num = 5,
       .last_epoch_num = 5,
-      .in_streng_mask = 0x00000207,
-      .out_streng_mask = 0x00000018,
+      .in_streng_mask = 0x00000384,
+      .out_streng_mask = 0x00000060,
       .estimated_npu_cycles = 0,
       .estimated_tot_cycles = 0,
 #endif // LL_ATON_EB_DBG_INFO
@@ -2151,13 +2036,13 @@ const EpochBlock_ItemTypeDef *LL_ATON_EpochBlockItems_Default(void) {
     {
       .start_epoch_block = LL_ATON_Start_EpochBlock_6,
       .end_epoch_block = LL_ATON_End_EpochBlock_6,
-      .wait_mask = 0x00000004,
+      .wait_mask = 0x00000080,
       .flags = EpochBlock_Flags_epoch_start | EpochBlock_Flags_epoch_end | EpochBlock_Flags_pure_hw,
 #ifdef LL_ATON_EB_DBG_INFO
       .epoch_num = 6,
       .last_epoch_num = 6,
-      .in_streng_mask = 0x00000100,
-      .out_streng_mask = 0x00000004,
+      .in_streng_mask = 0x00000010,
+      .out_streng_mask = 0x00000080,
       .estimated_npu_cycles = 0,
       .estimated_tot_cycles = 0,
 #endif // LL_ATON_EB_DBG_INFO
@@ -2165,13 +2050,13 @@ const EpochBlock_ItemTypeDef *LL_ATON_EpochBlockItems_Default(void) {
     {
       .start_epoch_block = LL_ATON_Start_EpochBlock_7,
       .end_epoch_block = LL_ATON_End_EpochBlock_7,
-      .wait_mask = 0x00000040,
+      .wait_mask = 0x00000001,
       .flags = EpochBlock_Flags_epoch_start | EpochBlock_Flags_epoch_end | EpochBlock_Flags_pure_hw,
 #ifdef LL_ATON_EB_DBG_INFO
       .epoch_num = 7,
       .last_epoch_num = 7,
-      .in_streng_mask = 0x00000204,
-      .out_streng_mask = 0x00000040,
+      .in_streng_mask = 0x00000108,
+      .out_streng_mask = 0x00000001,
       .estimated_npu_cycles = 0,
       .estimated_tot_cycles = 0,
 #endif // LL_ATON_EB_DBG_INFO
@@ -2225,21 +2110,21 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
   static const float buff_info_Conv2D_4_weights_quant_scale[] = { 0.00267642340622842, 0.00181806448381394, 0.00121719588059932, 0.00282761477865279, 0.00275024562142789, 0.00334464525803924, 0.00163148785941303, 0.00459948973730206, 0.00463655078783631, 0.00286577758379281, 0.00366602861322463, 0.00371739012189209, 0.00375620694831014, 0.00265849777497351, 0.00206609209999442, 0.00290912203490734, 0.00419770507141948, 0.00130483240354806, 0.00404097279533744, 0.00243924232199788, 0.00312226801179349, 0.0049872575327754, 0.00384841836057603, 0.00206517428159714, 0.00357253034599125, 0.00172396830748767, 0.00431048823520541, 0.00150281435344368, 0.00119507778435946, 0.00273206969723105, 0.00631537055596709, 0.00418333103880286 };
   static const int16_t buff_info_Conv2D_4_weights_quant_offset[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
   static const uint32_t buff_info__shape_64_32_3_3[] = { 64, 3, 3, 32 };
-  static const uint32_t buff_info__mem_shape_M_64_32_3_3[] = { 64, 4, 3, 3, 8 };
+  static const uint32_t buff_info__mem_shape_M8_64_32_3_3[] = { 64, 4, 3, 3, 8 };
   static const float buff_info_Conv2D_9_weights_quant_scale[] = { 0.00331419496797025, 0.00318869622424245, 0.00473996857181191, 0.00330861774273217, 0.00304001802578568, 0.00387984211556613, 0.00286824489012361, 0.00360673270188272, 0.00291375396773219, 0.00306823034770787, 0.00362852704711258, 0.0043601980432868, 0.0033504031598568, 0.0046827644109726, 0.00272849877364933, 0.00322194094769657, 0.00409588357433677, 0.00250305491499603, 0.00331862247548997, 0.00357071426697075, 0.00224990141578019, 0.00270409765653312, 0.00382073502987623, 0.00553121976554394, 0.00375573104247451, 0.00273054162971675, 0.00423923367634416, 0.00309480703435838, 0.0042661689221859, 0.00326470495201647, 0.00360021297819912, 0.00314902095124125, 0.00417166668921709, 0.00250447425059974, 0.00259738718159497, 0.00325494725257158, 0.00353032886050642, 0.0026598300319165, 0.00334614887833595, 0.0036098575219512, 0.00408108858391643, 0.00472664553672075, 0.00281389756128192, 0.00314220762811601, 0.00389251438900828, 0.00332661322318017, 0.00364431855268776, 0.00293425749987364, 0.00346357701346278, 0.00299853109754622, 0.00289229862391949, 0.00314577925018966, 0.00214779749512672, 0.00379879679530859, 0.00422056252136827, 0.00381881999783218, 0.00342871644534171, 0.00340701430104673, 0.00572515372186899, 0.00343123101629317, 0.00234668655321002, 0.00349552347324789, 0.00302451802417636, 0.00348124327138066 };
   static const int16_t buff_info_Conv2D_9_weights_quant_offset[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
   static const uint32_t buff_info__shape_10_1600_1_1[] = { 10, 1, 1, 1600 };
-  static const uint32_t buff_info__mem_shape_M_10_1600_1_1[] = { 10, 16, 1, 1, 100 };
+  static const uint32_t buff_info__mem_shape_M100_10_1600_1_1[] = { 10, 16, 1, 1, 100 };
   static const float buff_info_Gemm_16_weights_transposed_3_quant_scale[] = { 0.0050014303997159 };
   static const int16_t buff_info_Gemm_16_weights_transposed_3_quant_offset[] = { 0 };
   static const float buff_info_Conv2D_4_zero_off_8_quant_scale[] = { 0.00392146315425634 };
   static const int16_t buff_info_Conv2D_4_zero_off_8_quant_offset[] = { 0 };
   static const uint32_t buff_info__shape_32_1_1[] = { 1, 1, 1, 32 };
-  static const uint32_t buff_info__mem_shape_M_32_1_1[] = { 4, 1, 1, 8 };
+  static const uint32_t buff_info__mem_shape_M8_32_1_1[] = { 4, 1, 1, 8 };
   static const float buff_info_Conv2D_9_zero_off_17_quant_scale[] = { 0.00426597474142909 };
   static const int16_t buff_info_Conv2D_9_zero_off_17_quant_offset[] = { 0 };
   static const uint32_t buff_info__shape_64_1_1[] = { 1, 1, 1, 64 };
-  static const uint32_t buff_info__mem_shape_M_64_1_1[] = { 8, 1, 1, 8 };
+  static const uint32_t buff_info__mem_shape_M8_64_1_1[] = { 8, 1, 1, 8 };
   static const float buff_info_Gemm_16_conv_4_zero_off_26_quant_scale[] = { 0.00616298196837306 };
   static const int16_t buff_info_Gemm_16_conv_4_zero_off_26_quant_offset[] = { 0 };
   static const uint32_t buff_info__shape_10_1_1[] = { 1, 1, 1, 10 };
@@ -2270,7 +2155,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
 #if LL_ATON_DBG_BUFFER_INFO_EXCLUDED == 0
     {
       .name = "Quantize_2_y_scale",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35408,
       .offset_end = 35412,
       .offset_limit = 35480,
@@ -2291,7 +2176,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
     },
     {
       .name = "Quantize_2_y_zero_point",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35536,
       .offset_end = 35537,
       .offset_limit = 35608,
@@ -2312,7 +2197,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
     },
     {
       .name = "Conv2D_4_weights",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 34464,
       .offset_end = 34752,
       .offset_limit = 34816,
@@ -2336,7 +2221,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
     },
     {
       .name = "Conv2D_9_weights",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 0,
       .offset_end = 18432,
       .offset_limit = 18496,
@@ -2344,7 +2229,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .is_param = 1,
       .epoch = 0,
       .batch = 8,
-      .mem_shape = buff_info__mem_shape_M_64_32_3_3,
+      .mem_shape = buff_info__mem_shape_M8_64_32_3_3,
       .mem_ndims = 5,
       .chpos = CHPos_Mixed,
       .Qm = 7,
@@ -2359,8 +2244,8 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .offset = buff_info_Conv2D_9_weights_quant_offset,
     },
     {
-      .name = "Dequantize_21_x_scale",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .name = "Dequantize_19_x_scale",
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35424,
       .offset_end = 35428,
       .offset_limit = 35496,
@@ -2380,8 +2265,8 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .shape = buff_info__shape_1,
     },
     {
-      .name = "Dequantize_21_x_zero_point",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .name = "Dequantize_19_x_zero_point",
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35552,
       .offset_end = 35553,
       .offset_limit = 35624,
@@ -2402,7 +2287,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
     },
     {
       .name = "Gemm_16_weights_transposed_3",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 18432,
       .offset_end = 34464,
       .offset_limit = 34528,
@@ -2410,7 +2295,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .is_param = 1,
       .epoch = 0,
       .batch = 100,
-      .mem_shape = buff_info__mem_shape_M_10_1600_1_1,
+      .mem_shape = buff_info__mem_shape_M100_10_1600_1_1,
       .mem_ndims = 5,
       .chpos = CHPos_Mixed,
       .Qm = 7,
@@ -2426,7 +2311,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
     },
     {
       .name = "Conv2D_4_zero_off_8",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35488,
       .offset_end = 35489,
       .offset_limit = 35560,
@@ -2449,8 +2334,8 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .offset = buff_info_Conv2D_4_zero_off_8_quant_offset,
     },
     {
-      .name = "Conv2D_4_mul_scale_11",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .name = "Conv2D_4_mul_scale_9",
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35264,
       .offset_end = 35328,
       .offset_limit = 35392,
@@ -2458,7 +2343,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .is_param = 1,
       .epoch = 0,
       .batch = 8,
-      .mem_shape = buff_info__mem_shape_M_32_1_1,
+      .mem_shape = buff_info__mem_shape_M8_32_1_1,
       .mem_ndims = 4,
       .chpos = CHPos_Mixed,
       .Qm = -15,
@@ -2471,7 +2356,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
     },
     {
       .name = "Conv2D_4_off_bias_14",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35008,
       .offset_end = 35136,
       .offset_limit = 35200,
@@ -2479,7 +2364,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .is_param = 1,
       .epoch = 0,
       .batch = 8,
-      .mem_shape = buff_info__mem_shape_M_32_1_1,
+      .mem_shape = buff_info__mem_shape_M8_32_1_1,
       .mem_ndims = 4,
       .chpos = CHPos_Mixed,
       .Qm = 11,
@@ -2492,7 +2377,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
     },
     {
       .name = "Conv2D_9_zero_off_17",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35456,
       .offset_end = 35457,
       .offset_limit = 35528,
@@ -2515,8 +2400,8 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .offset = buff_info_Conv2D_9_zero_off_17_quant_offset,
     },
     {
-      .name = "Conv2D_9_mul_scale_20",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .name = "Conv2D_9_mul_scale_18",
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35136,
       .offset_end = 35264,
       .offset_limit = 35328,
@@ -2524,7 +2409,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .is_param = 1,
       .epoch = 0,
       .batch = 8,
-      .mem_shape = buff_info__mem_shape_M_64_1_1,
+      .mem_shape = buff_info__mem_shape_M8_64_1_1,
       .mem_ndims = 4,
       .chpos = CHPos_Mixed,
       .Qm = -15,
@@ -2537,7 +2422,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
     },
     {
       .name = "Conv2D_9_off_bias_23",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 34752,
       .offset_end = 35008,
       .offset_limit = 35072,
@@ -2545,7 +2430,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .is_param = 1,
       .epoch = 0,
       .batch = 8,
-      .mem_shape = buff_info__mem_shape_M_64_1_1,
+      .mem_shape = buff_info__mem_shape_M8_64_1_1,
       .mem_ndims = 4,
       .chpos = CHPos_Mixed,
       .Qm = 11,
@@ -2558,7 +2443,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
     },
     {
       .name = "Gemm_16_conv_4_zero_off_26",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35472,
       .offset_end = 35473,
       .offset_limit = 35544,
@@ -2581,8 +2466,8 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .offset = buff_info_Gemm_16_conv_4_zero_off_26_quant_offset,
     },
     {
-      .name = "Gemm_16_conv_4_mul_scale_29",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .name = "Gemm_16_conv_4_mul_scale_27",
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35440,
       .offset_end = 35442,
       .offset_limit = 35512,
@@ -2603,7 +2488,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
     },
     {
       .name = "Gemm_16_conv_4_off_bias_32",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35328,
       .offset_end = 35368,
       .offset_limit = 35432,
@@ -2623,8 +2508,8 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .shape = buff_info__shape_10_1_1,
     },
     {
-      .name = "Gemm_16_squeeze_y_5_72_atonn_internal_scale",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .name = "Gemm_16_squeeze_y_5_66_atonn_internal_scale",
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35376,
       .offset_end = 35380,
       .offset_limit = 35448,
@@ -2644,8 +2529,8 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .shape = buff_info__shape_1,
     },
     {
-      .name = "Gemm_16_squeeze_y_5_72_atonn_internal_offset",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .name = "Gemm_16_squeeze_y_5_66_atonn_internal_offset",
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35504,
       .offset_end = 35505,
       .offset_limit = 35576,
@@ -2665,8 +2550,8 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .shape = buff_info__shape_1,
     },
     {
-      .name = "Softmax_19_74_atonn_internal_scale",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .name = "Softmax_17_68_atonn_internal_scale",
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35392,
       .offset_end = 35396,
       .offset_limit = 35464,
@@ -2686,8 +2571,8 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Input_Buffers_Info_Default(void)
       .shape = buff_info__shape_1,
     },
     {
-      .name = "Softmax_19_74_atonn_internal_offset",
-      .addr_base = {(unsigned char *)(0x70000000UL) /* Equivalent hex address = 0x70000000UL */},
+      .name = "Softmax_17_68_atonn_internal_offset",
+      .addr_base = {(unsigned char *)(0x71000000UL) /* Equivalent hex address = 0x71000000UL */},
       .offset_start = 35520,
       .offset_end = 35521,
       .offset_limit = 35592,
@@ -2721,7 +2606,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Output_Buffers_Info_Default(void)
   static const uint32_t buff_info__mem_shape_U_1_10[] = { 1, 10 };
   static const LL_Buffer_InfoTypeDef buff_info[] = {
     {
-      .name = "Dequantize_21_out_0",
+      .name = "Dequantize_19_out_0",
       .addr_base = {(unsigned char *)(0x342e0000UL) /* Equivalent hex address = 0x342e0000UL */},
       .offset_start = 1040,
       .offset_end = 1080,
@@ -2758,11 +2643,11 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Internal_Buffers_Info_Default(void)
   static const float buff_info_Conv2D_4_zero_off_out_7_quant_scale[] = { 0.00392146315425634 };
   static const int16_t buff_info_Conv2D_4_zero_off_out_7_quant_offset[] = { 0 };
   static const uint32_t buff_info__shape_1_32_13_13[] = { 1, 13, 13, 32 };
-  static const uint32_t buff_info__mem_shape_M_1_32_13_13[] = { 1, 4, 13, 13, 8 };
+  static const uint32_t buff_info__mem_shape_M8_1_32_13_13[] = { 1, 4, 13, 13, 8 };
   static const float buff_info_Conv2D_9_zero_off_out_16_quant_scale[] = { 0.00426597474142909 };
   static const int16_t buff_info_Conv2D_9_zero_off_out_16_quant_offset[] = { 0 };
   static const uint32_t buff_info__shape_1_64_11_11[] = { 1, 11, 11, 64 };
-  static const uint32_t buff_info__mem_shape_M_1_64_11_11[] = { 1, 8, 11, 11, 8 };
+  static const uint32_t buff_info__mem_shape_M8_1_64_11_11[] = { 1, 8, 11, 11, 8 };
   static const uint32_t buff_info__shape_1_64_5_5[] = { 1, 5, 5, 64 };
   static const uint32_t buff_info__mem_shape_L_1_64_5_5[] = { 1, 5, 5, 64 };
   static const float buff_info_MaxPool_13_out_0_quant_scale[] = { 0.00616298196837306 };
@@ -2785,8 +2670,8 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Internal_Buffers_Info_Default(void)
   static const uint32_t buff_info__mem_shape_U_1_10[] = { 1, 10 };
   static const float buff_info_Gemm_16_out_0_quant_scale[] = { 0.0423780456185341 };
   static const int16_t buff_info_Gemm_16_out_0_quant_offset[] = { 38 };
-  static const float buff_info_Softmax_19_out_0_quant_scale[] = { 0.00390625 };
-  static const int16_t buff_info_Softmax_19_out_0_quant_offset[] = { -128 };
+  static const float buff_info_Softmax_17_out_0_quant_scale[] = { 0.00390625 };
+  static const int16_t buff_info_Softmax_17_out_0_quant_offset[] = { -128 };
   static const uint32_t buff_info__shape_1_1_1_257[] = { 1, 1, 257, 1 };
   static const uint32_t buff_info__mem_shape_F_1_1_1_257[] = { 1, 1, 1, 257 };
   static const LL_Buffer_InfoTypeDef buff_info[] = {
@@ -2869,7 +2754,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Internal_Buffers_Info_Default(void)
       .is_param = 0,
       .epoch = 4,
       .batch = 8,
-      .mem_shape = buff_info__mem_shape_M_1_32_13_13,
+      .mem_shape = buff_info__mem_shape_M8_1_32_13_13,
       .mem_ndims = 5,
       .chpos = CHPos_Mixed,
       .Qm = 8,
@@ -2884,7 +2769,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Internal_Buffers_Info_Default(void)
       .offset = buff_info_Conv2D_9_zero_off_out_16_quant_offset,
     },
     {
-      .name = "Conv2D_9_out_0_cp_in_1",
+      .name = "Conv2D_9_out_0_cp_in_3",
       .addr_base = {(unsigned char *)(0x342e0000UL) /* Equivalent hex address = 0x342e0000UL */},
       .offset_start = 5408,
       .offset_end = 7344,
@@ -2893,7 +2778,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Internal_Buffers_Info_Default(void)
       .is_param = 0,
       .epoch = 5,
       .batch = 8,
-      .mem_shape = buff_info__mem_shape_M_1_64_11_11,
+      .mem_shape = buff_info__mem_shape_M8_1_64_11_11,
       .mem_ndims = 5,
       .chpos = CHPos_Mixed,
       .Qm = 21,
@@ -3049,7 +2934,7 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Internal_Buffers_Info_Default(void)
       .offset = buff_info_Gemm_16_out_0_quant_offset,
     },
     {
-      .name = "Softmax_19_out_0",
+      .name = "Softmax_17_out_0",
       .addr_base = {(unsigned char *)(0x342e0000UL) /* Equivalent hex address = 0x342e0000UL */},
       .offset_start = 1088,
       .offset_end = 1098,
@@ -3069,11 +2954,11 @@ const LL_Buffer_InfoTypeDef *LL_ATON_Internal_Buffers_Info_Default(void)
       .ndims = 4,
       .shape = buff_info__shape_1_10,
       .per_channel = 0,
-      .scale = buff_info_Softmax_19_out_0_quant_scale,
-      .offset = buff_info_Softmax_19_out_0_quant_offset,
+      .scale = buff_info_Softmax_17_out_0_quant_scale,
+      .offset = buff_info_Softmax_17_out_0_quant_offset,
     },
     {
-      .name = "SCRATCH_Softmax_19_PORT_OUT",
+      .name = "SCRATCH_Softmax_17_PORT_OUT",
       .addr_base = {(unsigned char *)(0x342e0000UL) /* Equivalent hex address = 0x342e0000UL */},
       .offset_start = 0,
       .offset_end = 1028,

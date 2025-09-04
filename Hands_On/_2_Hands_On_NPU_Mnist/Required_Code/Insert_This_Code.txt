@@ -3,6 +3,9 @@
 #include "app_fuseprogramming.h"
 #include "ll_aton_runtime.h"
 
+#include "stm32n6xx_nucleo.h"
+#include "stm32n6xx_nucleo_xspi.h"
+
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN PD */

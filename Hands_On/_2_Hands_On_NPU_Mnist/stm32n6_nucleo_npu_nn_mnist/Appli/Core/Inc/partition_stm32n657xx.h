@@ -38,6 +38,7 @@
 /*
 //-------- <<< Use Configuration Wizard in Context Menu >>> -----------------
 */
+/* USER CODE BEGIN 0 */
 /*
 // <e>Initialize Security Attribution Unit (SAU) CTRL register
 */
@@ -280,7 +281,6 @@
 /*
 // </h>
 */
-/* USER CODE BEGIN 0 */
 /*
 // <e>Setup behaviour of Sleep and Exception Handling
 */

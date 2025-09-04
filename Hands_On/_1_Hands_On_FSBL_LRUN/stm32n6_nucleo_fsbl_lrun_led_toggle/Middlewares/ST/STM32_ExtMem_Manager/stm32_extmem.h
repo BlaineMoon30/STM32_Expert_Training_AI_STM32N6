@@ -40,7 +40,7 @@ extern "C" {
 /**
   * @brief Middleware version number
   */
-#define EXTMEM_VERSION 0x00010100 /* version v1.1.0 */
+#define EXTMEM_VERSION 0x00010400 /* version v1.4.0 */
 
 /**
   * @brief Types of supported memories
@@ -173,19 +173,19 @@ EXTMEM_StatusTypeDef EXTMEM_Read(uint32_t MemId, uint32_t Address, uint8_t* Data
 EXTMEM_StatusTypeDef EXTMEM_Write(uint32_t MemId, uint32_t Address, const uint8_t* Data, uint32_t Size);
 
 /**
- * @brief This function writes data in memory mapped mode 
+ * @brief This function writes data in memory mapped mode
  *
  * @param MemId memory id
  * @param Address location of the data memory
  * @param Data data pointer aligned 32 bits (this assumption is really important for the writing process)
  * @param Size data size in bytes
  * @return @ref EXTMEM_StatusTypeDef
- * 
- * @note this function perform write in mapped mode need to perform a specific processing due to the management of 
- *       the write enable which can be manage when the memory is mapped. The operation consists to cut the write 
+ *
+ * @note this function perform write in mapped mode need to perform a specific processing due to the management of
+ *       the write enable which can be manage when the memory is mapped. The operation consists to cut the write
  *       in packet of page size and for each packet perform a write before enter mapped mode.
- * 
- * @note to avoid any issue on the execution of this processing, its mandatory to have targeted memory area 
+ *
+ * @note to avoid any issue on the execution of this processing, its mandatory to have targeted memory area
  *       this the following characteristic: the write region must be not bufferable, not shareable and not cacheable.
  **/
 EXTMEM_StatusTypeDef EXTMEM_WriteInMappedMode(uint32_t MemId, uint32_t Address, const uint8_t* const Data, uint32_t Size);
@@ -218,7 +218,7 @@ EXTMEM_StatusTypeDef EXTMEM_EraseAll(uint32_t MemId);
 EXTMEM_StatusTypeDef EXTMEM_GetInfo(uint32_t MemId, void *Info);
 
 /**
- * @brief This function enables/disables the memory mapped mode 
+ * @brief This function enables/disables the memory mapped mode
  *
  * @param MemId memory id
  * @param State @ref EXTMEM_StateTypeDef
@@ -227,7 +227,7 @@ EXTMEM_StatusTypeDef EXTMEM_GetInfo(uint32_t MemId, void *Info);
 EXTMEM_StatusTypeDef EXTMEM_MemoryMappedMode(uint32_t MemId, EXTMEM_StateTypeDef State);
 
 /**
- * @brief This function gets the memory mapped address 
+ * @brief This function gets the memory mapped address
  *
  * @param MemId memory id
  * @param BaseAddress memory map address

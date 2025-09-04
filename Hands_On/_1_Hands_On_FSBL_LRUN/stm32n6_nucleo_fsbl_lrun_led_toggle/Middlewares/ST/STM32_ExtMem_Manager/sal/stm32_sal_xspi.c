@@ -41,6 +41,7 @@
 #define DEBUG_PARAM_BEGIN()
 #define DEBUG_PARAM_DATA(_STR_)
 #define DEBUG_PARAM_INT(_INT_ )
+#define DEBUG_PARAM_INTD(_INT_ )
 #define DEBUG_PARAM_END()
 #define DEBUG_AUTOPOLLING(_DR_,_MVAL_,_MMASK_)
 #define STR_PHY_LINK(_PHY_)
@@ -61,7 +62,7 @@ const uint8_t phylink_string[][17] = {"PHY_LINK_1S1S1S",
                                       "PHY_LINK_8S8D8D",
                                       "PHY_LINK_8D8D8D",
                                       "PHY_LINK_RAM8"
-#if defined(HAL_XSPI_DATA_16_LINES)									  
+#if defined(HAL_XSPI_DATA_16_LINES)
                                       ,"PHY_LINK_RAM16"
 #endif /* defined(HAL_XSPI_DATA_16_LINES) */
 									  };
@@ -76,10 +77,15 @@ const uint8_t phylink_string[][17] = {"PHY_LINK_1S1S1S",
 /**
   * @brief trace data integer macro
   */
-#define DEBUG_PARAM_INT(_INT_ ) {                                                 \
-                                  char str[10];                                   \
-                                  (void)snprintf(str, sizeof(str), "0x%x", _INT_);\
-                                  EXTMEM_MACRO_DEBUG(str);                        \
+#define DEBUG_PARAM_INT(_INT_) {                                                 \
+                                 char str[10];                                   \
+                                 (void)snprintf(str, sizeof(str), "0x%x", _INT_);\
+                                 EXTMEM_MACRO_DEBUG(str);                        \
+                               }
+#define DEBUG_PARAM_INTD(_INT_) {                                                \
+                                  char str[15];                                  \
+                                  (void)snprintf(str, sizeof(str), "%zu", _INT_);\
+                                  EXTMEM_MACRO_DEBUG(str);                       \
                                 }
 /**
   * @brief trace close macro
@@ -87,13 +93,13 @@ const uint8_t phylink_string[][17] = {"PHY_LINK_1S1S1S",
 #define DEBUG_PARAM_END()       EXTMEM_MACRO_DEBUG("\n");
 
 #if EXTMEM_SAL_XSPI_DEBUG_LEVEL == 2
-#define DEBUG_AUTOPOLLING(_DR_,_MVAL_,_MMASK_)                                               \
-  {                                                                                          \
-    char str[50];                                                                            \
-    (void)snprintf(str, sizeof(str),"DR:0x%x::Ma:0x%x::MM:0x%x\n\r", _DR_, _MVAL_, _MMASK_); \
-    DEBUG_PARAM_BEGIN()                                                                      \
-    DEBUG_PARAM_DATA(str)                                                                    \
-    DEBUG_PARAM_END()                                                                        \
+#define DEBUG_AUTOPOLLING(_DR_,_MVAL_,_MMASK_)                                                    \
+  {                                                                                               \
+    char str[50];                                                                                 \
+    (void)snprintf(str, sizeof(str),"DR:0x%x::MVal:0x%x::MMask:0x%x\n\r", _DR_, _MVAL_, _MMASK_); \
+    DEBUG_PARAM_BEGIN()                                                                           \
+    DEBUG_PARAM_DATA(str)                                                                         \
+    DEBUG_PARAM_END()                                                                             \
   }
 #else
 #define DEBUG_AUTOPOLLING(_DR_,_MVAL_,_MMASK_)
@@ -104,7 +110,7 @@ const uint8_t phylink_string[][17] = {"PHY_LINK_1S1S1S",
   * @brief default SAL timeout (100 ms)
   */
 
-#define SAL_XSPI_TIMEOUT_DEFAULT_VALUE (100U) 
+#define SAL_XSPI_TIMEOUT_DEFAULT_VALUE (100U)
 
 /**
   * @}
@@ -176,22 +182,11 @@ HAL_StatusTypeDef SAL_XSPI_SetClock(SAL_XSPI_ObjectTypeDef *SalXspi, uint32_t Cl
       }
     }
 
-#if 0  /* Only used for debug purpose */
-    divider=+5;
-    divider++;
-    divider++;
-    divider++;
-    divider++;
-    divider++;
-    divider++;
-    divider++;
-    divider++;
-#endif
-
     /* real clock calculation */
     *ClockReal = ClockIn / (divider + 1u);
 
-    DEBUG_PARAM_BEGIN(); DEBUG_PARAM_DATA("::CLOCK::"); DEBUG_PARAM_INT(divider); DEBUG_PARAM_END();
+    DEBUG_PARAM_BEGIN(); DEBUG_PARAM_DATA("::CLOCKDIV::"); DEBUG_PARAM_INT(divider+1); DEBUG_PARAM_END();
+    DEBUG_PARAM_BEGIN(); DEBUG_PARAM_DATA("::CLKFREQ::"); DEBUG_PARAM_INTD(*ClockReal); DEBUG_PARAM_END();
     MODIFY_REG(SalXspi->hxspi->Instance->DCR2, XSPI_DCR2_PRESCALER, (uint32_t)divider << XSPI_DCR2_PRESCALER_Pos);
   }
 
@@ -208,7 +203,7 @@ HAL_StatusTypeDef SAL_XSPI_Init(SAL_XSPI_ObjectTypeDef *SalXspi, void *HALHandle
       .OperationType = HAL_XSPI_OPTYPE_COMMON_CFG,
       .IOSelect = HAL_XSPI_SELECT_IO_7_0,
       .InstructionMode = HAL_XSPI_INSTRUCTION_1_LINE,
-      .Instruction = 0x5A,
+      .Instruction = EXTMEM_READ_SFDP_COMMAND,
       .InstructionWidth = HAL_XSPI_INSTRUCTION_8_BITS,
       .InstructionDTRMode = HAL_XSPI_INSTRUCTION_DTR_DISABLE,
       .AlternateBytesMode = HAL_XSPI_ALT_BYTES_NONE,
@@ -219,7 +214,7 @@ HAL_StatusTypeDef SAL_XSPI_Init(SAL_XSPI_ObjectTypeDef *SalXspi, void *HALHandle
       .DataMode = HAL_XSPI_DATA_1_LINE,
       .DataLength = 0x0,
       .DataDTRMode = HAL_XSPI_DATA_DTR_DISABLE,
-      .DummyCycles = 8,
+      .DummyCycles = EXTMEM_READ_SFDP_NB_DUMMY_CYCLES_DEFAULT,
       .DQSMode = HAL_XSPI_DQS_DISABLE,
 #if defined(XSPI_CCR_SIOO)
       .SIOOMode = HAL_XSPI_SIOO_INST_EVERY_CMD,
@@ -374,8 +369,8 @@ HAL_StatusTypeDef SAL_XSPI_MemoryConfig(SAL_XSPI_ObjectTypeDef *SalXspi, SAL_XSP
     DEBUG_PARAM_END();
     break;
   }
-  case PARAM_ADDRESS_4BITS: {
-    DEBUG_PARAM_BEGIN(); DEBUG_PARAM_DATA("::PARAM_ADDRESS_4BITS"); DEBUG_PARAM_END();
+  case PARAM_ADDRESS_4BYTES: {
+    DEBUG_PARAM_BEGIN(); DEBUG_PARAM_DATA("::PARAM_ADDRESS_4BYTES"); DEBUG_PARAM_END();
     s_commandbase.AddressWidth = HAL_XSPI_ADDRESS_32_BITS;
     break;
   }
@@ -406,11 +401,14 @@ HAL_StatusTypeDef SAL_XSPI_GetSFDP(SAL_XSPI_ObjectTypeDef *SalXspi, uint32_t Add
   XSPI_RegularCmdTypeDef s_command = SalXspi->Commandbase;
 
   /* Initialize the read ID command */
-  s_command.Instruction = XSPI_FormatCommand(SalXspi->CommandExtension, s_command.InstructionWidth, 0x5A);
+  s_command.Instruction = XSPI_FormatCommand(SalXspi->CommandExtension, s_command.InstructionWidth,
+                                             EXTMEM_READ_SFDP_COMMAND);
 
   s_command.Address     = Address;
   s_command.DataLength  = DataSize;
-  s_command.DummyCycles = SalXspi->SFDPDummyCycle;
+  /* Nb of Dummy cycles for READ SFDP command does not correspond to SFDPDummyCycle field of SAL structure,
+     as initialised after SFDP Header analysis */
+  s_command.DummyCycles = EXTMEM_READ_SFDP_NB_DUMMY_CYCLES_DEFAULT;
 
   if (s_command.AddressMode == HAL_XSPI_ADDRESS_1_LINE)
   {
@@ -450,21 +448,50 @@ HAL_StatusTypeDef SAL_XSPI_GetId(SAL_XSPI_ObjectTypeDef *SalXspi, uint8_t *Data,
   HAL_StatusTypeDef retr;
   XSPI_RegularCmdTypeDef s_command = SalXspi->Commandbase;
 
-  /* Initialize the read ID command */
-  s_command.Instruction = XSPI_FormatCommand(SalXspi->CommandExtension, s_command.InstructionWidth, 0x9F);
+  /* Initialize the Read ID command */
+  s_command.Instruction = XSPI_FormatCommand(SalXspi->CommandExtension, s_command.InstructionWidth,
+                                             EXTMEM_READ_JEDEC_ID_SPI_COMMAND);
 
   s_command.DataLength  = DataSize;
-  s_command.AddressMode = HAL_XSPI_ADDRESS_NONE;
 
   if  (s_command.InstructionMode == HAL_XSPI_INSTRUCTION_1_LINE)
   {
+    s_command.AddressMode       = HAL_XSPI_ADDRESS_NONE;
     s_command.DummyCycles       = 0;
     /* this behavior is linked with micron memory to read ID in 1S8S8S */
     s_command.DataMode = HAL_XSPI_DATA_1_LINE;
   }
+  else if  (s_command.InstructionMode == HAL_XSPI_INSTRUCTION_4_LINES)
+  {
+    s_command.AddressMode       = HAL_XSPI_ADDRESS_NONE;
+    s_command.DummyCycles       = 0;
+    /* this behavior is linked with ISSI memory to read ID in 4S4S4S */
+    s_command.DataMode          = HAL_XSPI_DATA_4_LINES;
+  }
+  else if  (s_command.InstructionMode == HAL_XSPI_INSTRUCTION_8_LINES)
+  {
+    s_command.Address = 0;
+
+    /* Specific case for Macronix memories : RDID is not Data DTR  */
+    if ((Data[0] == 0xC2) && (s_command.DataDTRMode == HAL_XSPI_DATA_DTR_ENABLE))
+    {
+      s_command.DummyCycles       = 4;
+      s_command.DataDTRMode       = HAL_XSPI_DATA_DTR_DISABLE;
+    }
+    /* Specific case for GigaDevice memories : RDID has no address even in Octal mode  */
+    else if ((Data[0] == 0xC8) && (s_command.DataDTRMode == HAL_XSPI_DATA_DTR_ENABLE))
+    {
+      s_command.DummyCycles       = 8;
+      s_command.AddressMode       = HAL_XSPI_ADDRESS_NONE;
+    }
+    else
+    {
+      s_command.DummyCycles = 8;
+    }
+    /* Required behavior to be confirmed on the other memories */
+  }
   else
   {
-    /* this behavior is valid for macromix and must be confirmed on the other memories */
     s_command.Address = 0;
     s_command.DummyCycles = 8;
   }
@@ -505,16 +532,16 @@ HAL_StatusTypeDef SAL_XSPI_Read(SAL_XSPI_ObjectTypeDef *SalXspi, uint8_t Command
    case PHY_LINK_4S4D4D :{
      s_command.AddressDTRMode = HAL_XSPI_ADDRESS_DTR_ENABLE;
      s_command.DataDTRMode    = HAL_XSPI_DATA_DTR_ENABLE;
-     s_command.DummyCycles = SalXspi->DTRDummyCycle;
+     s_command.DummyCycles    = SalXspi->DTRDummyCycle;
    break;
    }
    case PHY_LINK_1S2S2S :{
-     s_command.AddressMode = HAL_XSPI_ADDRESS_2_LINES;
-     s_command.DataMode = HAL_XSPI_DATA_2_LINES;
+     s_command.AddressMode    = HAL_XSPI_ADDRESS_2_LINES;
+     s_command.DataMode       = HAL_XSPI_DATA_2_LINES;
    break;
    }
    case PHY_LINK_1S1S2S :{
-     s_command.DataMode = HAL_XSPI_DATA_2_LINES;
+     s_command.DataMode       = HAL_XSPI_DATA_2_LINES;
    break;
    }
    default :{
@@ -525,7 +552,7 @@ HAL_StatusTypeDef SAL_XSPI_Read(SAL_XSPI_ObjectTypeDef *SalXspi, uint8_t Command
 
   /* Configure the command */
   retr = HAL_XSPI_Command(SalXspi->hxspi, &s_command, SAL_XSPI_TIMEOUT_DEFAULT_VALUE);
-  if ( retr  != HAL_OK)
+  if (retr  != HAL_OK)
   {
     goto error;
   }
@@ -644,7 +671,7 @@ HAL_StatusTypeDef SAL_XSPI_SendReadCommand(SAL_XSPI_ObjectTypeDef *SalXspi, uint
   XSPI_RegularCmdTypeDef   s_command = SalXspi->Commandbase;
   HAL_StatusTypeDef retr;
 
-  /* Initialize the writing of status register */
+  /* Initialize the reading of status register */
   s_command.Instruction = XSPI_FormatCommand(SalXspi->CommandExtension, s_command.InstructionWidth, Command);
 
   s_command.AddressMode        = HAL_XSPI_ADDRESS_NONE;
@@ -675,18 +702,33 @@ HAL_StatusTypeDef SAL_XSPI_SendReadCommand(SAL_XSPI_ObjectTypeDef *SalXspi, uint
 }
 
 HAL_StatusTypeDef SAL_XSPI_CommandSendReadAddress(SAL_XSPI_ObjectTypeDef *SalXspi, uint8_t Command,
-                                                  uint32_t Address, uint8_t *Data, uint16_t DataSize)
+                                                  uint32_t Address, uint8_t *Data, uint16_t DataSize,
+                                                  uint8_t ManuId)
 {
   XSPI_RegularCmdTypeDef   s_command = SalXspi->Commandbase;
   HAL_StatusTypeDef retr;
 
-  /* Initialize the writing of status register */
+  /* Initialize the reading of status register */
   s_command.Instruction = XSPI_FormatCommand(SalXspi->CommandExtension, s_command.InstructionWidth, Command);
 
   s_command.Address            = Address;
   s_command.DummyCycles        = SalXspi->SFDPDummyCycle;
   s_command.DataLength         = DataSize;
-  s_command.DQSMode            = HAL_XSPI_DQS_DISABLE;
+  /* Specific case for Macronix memories : RDID and RDCR are not Data DTR  */
+  if ((ManuId == EXTMEM_MANFACTURER_MACRONIX) && (s_command.DataDTRMode == HAL_XSPI_DATA_DTR_ENABLE))
+  {
+    s_command.DataDTRMode      = HAL_XSPI_DATA_DTR_DISABLE;
+  }
+  /* Specific case for GigaDevice memories : Read Configuration Register are not Data DTR  */
+  else if ((ManuId == 0xC8) && (s_command.DataDTRMode == HAL_XSPI_DATA_DTR_ENABLE))
+  {
+    s_command.DataDTRMode      = HAL_XSPI_DATA_DTR_DISABLE;
+    s_command.DQSMode          = HAL_XSPI_DQS_DISABLE;
+  }
+  else
+  {
+    s_command.DQSMode          = HAL_XSPI_DQS_DISABLE;
+  }
 
   /* Send the command */
   retr = HAL_XSPI_Command(SalXspi->hxspi, &s_command, SAL_XSPI_TIMEOUT_DEFAULT_VALUE);
@@ -705,7 +747,9 @@ HAL_StatusTypeDef SAL_XSPI_CommandSendReadAddress(SAL_XSPI_ObjectTypeDef *SalXsp
   return retr;
 }
 
-HAL_StatusTypeDef SAL_XSPI_CheckStatusRegister(SAL_XSPI_ObjectTypeDef *SalXspi, uint8_t Command, uint32_t Address, uint8_t MatchValue, uint8_t MatchMask, uint32_t Timeout)
+HAL_StatusTypeDef SAL_XSPI_CheckStatusRegister(SAL_XSPI_ObjectTypeDef *SalXspi, uint8_t Command, uint32_t Address,
+                                               uint8_t MatchValue, uint8_t MatchMask, uint8_t ManuId,
+                                               uint32_t Timeout)
 {
   XSPI_RegularCmdTypeDef s_command = SalXspi->Commandbase;
   XSPI_AutoPollingTypeDef  s_config = {
@@ -717,7 +761,7 @@ HAL_StatusTypeDef SAL_XSPI_CheckStatusRegister(SAL_XSPI_ObjectTypeDef *SalXspi, 
                                       };
   HAL_StatusTypeDef retr;
 
-  /* Initialize the writing of status register */
+  /* Initialize the reading of status register */
   s_command.Instruction = XSPI_FormatCommand(SalXspi->CommandExtension, s_command.InstructionWidth, Command);
 
   s_command.DataLength     = 1u;
@@ -725,7 +769,7 @@ HAL_StatusTypeDef SAL_XSPI_CheckStatusRegister(SAL_XSPI_ObjectTypeDef *SalXspi, 
 
   if (s_command.InstructionMode == HAL_XSPI_INSTRUCTION_1_LINE)
   {
-    // patch cypress to force 1 line on status read
+    /* patch cypress to force 1 line on status read */
     s_command.DataMode    = HAL_XSPI_DATA_1_LINE;
     s_command.AddressMode = HAL_XSPI_DATA_NONE;
     s_command.DummyCycles = 0u;
@@ -734,6 +778,12 @@ HAL_StatusTypeDef SAL_XSPI_CheckStatusRegister(SAL_XSPI_ObjectTypeDef *SalXspi, 
   /* @ is used only in 8 LINES format */
   if (s_command.DataMode == HAL_XSPI_DATA_8_LINES)
   {
+    /* Specific case for Macronix memories : RDID and RDCR are not Data DTR  */
+    if ((ManuId == EXTMEM_MANFACTURER_MACRONIX) && (s_command.DataDTRMode == HAL_XSPI_DATA_DTR_ENABLE))
+    {
+      s_command.DQSMode        = HAL_XSPI_DQS_ENABLE;
+      s_command.DataDTRMode    = HAL_XSPI_DATA_DTR_DISABLE;
+    }
     s_command.AddressMode    = HAL_XSPI_ADDRESS_8_LINES;
     s_command.AddressWidth   = HAL_XSPI_ADDRESS_32_BITS;
     s_command.Address        = Address;
@@ -888,7 +938,7 @@ uint16_t XSPI_FormatCommand(uint8_t CommandExtension, uint32_t InstructionWidth,
   {
     /* 0b00 The Command Extension is the same as the Command. (The Command / Command Extension has the same value for the whole clock period.)*/
     /* 0b01 The Command Extension is the inverse of the Command. The Command Extension acts as a confirmation of the Command */
-    /* 0b11 Command and Command Extension forms a 16 bit command word :: Not yes handled */
+    /* 0b11 Command and Command Extension forms a 16 bit command word :: Not yet handled */
     retr = ((uint16_t)Command << 8u);
     if (CommandExtension == 1u)
     {

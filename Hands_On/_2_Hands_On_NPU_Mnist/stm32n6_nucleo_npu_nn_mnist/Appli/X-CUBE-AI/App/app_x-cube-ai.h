@@ -33,4 +33,4 @@ void MX_X_CUBE_AI_Process(void);
 #ifdef __cplusplus
 }
 #endif
-#endif /*__STMicroelectronics_X-CUBE-AI_10_0_0_H */
+#endif /*__STMicroelectronics_X-CUBE-AI_10_2_0_H */

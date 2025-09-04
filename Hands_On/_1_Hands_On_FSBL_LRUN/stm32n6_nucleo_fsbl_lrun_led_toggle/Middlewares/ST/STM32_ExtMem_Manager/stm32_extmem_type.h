@@ -47,7 +47,7 @@ extern "C" {
 
 #if EXTMEM_DRIVER_SDCARD == 1
 #include "sdcard/stm32_sdcard_driver_type.h"
-#endif /* DRIVER_PSRAM_ENABLED */
+#endif /* DRIVER_SDCARD_ENABLED */
 
 #if EXTMEM_DRIVER_PSRAM == 1
 #include "psram/stm32_psram_driver_type.h"
@@ -56,47 +56,78 @@ extern "C" {
 #if EXTMEM_DRIVER_USER == 1
 #include "user/stm32_user_driver_type.h"
 #endif /* DRIVER_USER_ENABLED */
-    
+
 /* Exported macros -----------------------------------------------------------*/
-/** @defgroup EXTMEM_Exported_Macros External Memory Exported MMacros
+/** @defgroup EXTMEM_Exported_Macros External Memory Exported Macros
   * @{
   */
 /**
-  * @brief Macro to get the minimum value 
+  * @brief Macro to get the minimum value
   */
-
 #define EXTMEM_MIN(_A_,_B_)    ((_A_)>(_B_))?(_B_):(_A_);
 /**
   * @}
   */
 
-/* Exported types ------------------------------------------------------------*/    
+/* Exported constants --------------------------------------------------------*/
+
+/** @defgroup EXTMEM_Exported_Constants External Memory Exported Constants
+  * @{
+  */
+
+/** @defgroup EXTMEM_Manufacturer_IDs EXTMEM JEDEC Manufacturer IDs
+  * @{
+  */
+#define EXTMEM_MANFACTURER_MACRONIX              (0xC2U)   /*!< Macronix          */
+#define EXTMEM_MANFACTURER_GIGADEVICE            (0xC8U)   /*!< GigaDevices       */
+#define EXTMEM_MANFACTURER_ISSI                  (0x9DU)   /*!< ISSI              */
+/**
+  * @}
+  */
+
+/** @defgroup EXTMEM_Common_JEDEC_Commands EXTMEM Common JEDEC commands identifiers
+  * @{
+  */
+#define EXTMEM_READ_JEDEC_ID_SPI_COMMAND                0x9FU
+#define EXTMEM_READ_JEDEC_ID_SIZE                       0x04U
+
+#define EXTMEM_READ_SFDP_COMMAND                        0x5AU
+#define EXTMEM_READ_SFDP_NB_DUMMY_CYCLES_DEFAULT        0x08U
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */
+
+/* Exported types ------------------------------------------------------------*/
 /** @defgroup EXTMEM_Exported_Typedef External Memory Exported Type definition
   * @{
   */
 
 /**
-  * @brief Definition of the memory 
+  * @brief Definition of the memory
   */
 typedef struct
 {
-  EXTMEM_TypeTypeDef MemType;               /*!< memory driver type */
+  EXTMEM_TypeTypeDef MemType;               /*!< Memory driver type */
   void *Handle;                             /*!< HAL handle */
-  EXTMEM_LinkConfig_TypeDef ConfigType;     /*!< physical link config */
+  EXTMEM_LinkConfig_TypeDef ConfigType;     /*!< Physical link config */
   union
   {
 #if EXTMEM_DRIVER_NOR_SFDP == 1
     EXTMEM_DRIVER_NOR_SFDP_ObjectTypeDef  NorSfdpObject;  /*!< NorSfdp object */
 #endif /* EXTMEM_DRIVER_NOR_SFDP == 1 */
 #if EXTMEM_DRIVER_SDCARD == 1
-    EXTMEM_DRIVER_SDCARD_ObjectTypeDef   SdCardObject;    /*!< SdCard object */
-#endif /* EXTMEM_DRIVER_PSRAM == 1 */
+    EXTMEM_DRIVER_SDCARD_ObjectTypeDef    SdCardObject;   /*!< SdCard object */
+#endif /* EXTMEM_DRIVER_SDCARD == 1 */
 #if EXTMEM_DRIVER_PSRAM == 1
-    EXTMEM_DRIVER_PSRAM_ObjectTypeDef    PsramObject;    /*!< Psram object */
+    EXTMEM_DRIVER_PSRAM_ObjectTypeDef     PsramObject;    /*!< Psram object */
 #endif /* EXTMEM_DRIVER_PSRAM == 1 */
 #if EXTMEM_DRIVER_USER == 1
-    EXTMEM_DRIVER_USER_ObjectTypeDef     UserObject;     /*!< User object */
-#endif /* EXTMEM_DRIVER_CUSTOM == 1 */
+    EXTMEM_DRIVER_USER_ObjectTypeDef      UserObject;     /*!< User object */
+#endif /* EXTMEM_DRIVER_USER == 1 */
   };
 } EXTMEM_DefinitionTypeDef;
 

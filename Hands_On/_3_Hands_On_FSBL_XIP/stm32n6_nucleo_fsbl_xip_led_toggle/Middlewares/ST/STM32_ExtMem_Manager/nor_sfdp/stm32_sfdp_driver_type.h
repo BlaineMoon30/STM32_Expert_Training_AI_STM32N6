@@ -32,6 +32,21 @@
   */
 
 /* Exported constants --------------------------------------------------------*/
+/**
+ * @brief Instruction ID for common JEDEC commands
+ */
+#define SFDP_DRIVER_READ_COMMAND                             0x03U
+
+#define SFDP_DRIVER_PAGE_PROGRAM_COMMAND                     0x02U
+
+#define SFDP_DRIVER_READ_STATUS_REGISTER_COMMAND             0x05U
+
+#define SFDP_DRIVER_WRITE_ENABLE_50H_COMMAND                 0x50U
+#define SFDP_DRIVER_WRITE_ENABLE_06H_COMMAND                 0x06U
+
+#define SFDP_DRIVER_ERASE_CHIP_COMMAND                       0x60U
+
+
 /* Exported types ------------------------------------------------------------*/
 
 /** @defgroup DRIVER_SFDP_Exported_Types DRIVER SFDP Memory Exported Types
@@ -107,7 +122,7 @@ typedef struct {
   uint32_t                  Reset_info;            /*!< this bit is a copy of JEDEC Basic 16 Reset/Rescue info */
   uint8_t                   Sfdp_param_number;     /*!< Number of param from the SFDP header table */
   uint8_t                   Sfdp_AccessProtocol;   /*!< Access protocol from the SFDP header table */
-  } sfpd_private;
+  } sfdp_private;
 } EXTMEM_DRIVER_NOR_SFDP_ObjectTypeDef;
 
 /**

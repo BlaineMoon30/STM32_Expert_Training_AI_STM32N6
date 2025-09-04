@@ -40,9 +40,6 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
-#include "stm32n6xx_nucleo.h"
-#include "stm32n6xx_nucleo_xspi.h"
-
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

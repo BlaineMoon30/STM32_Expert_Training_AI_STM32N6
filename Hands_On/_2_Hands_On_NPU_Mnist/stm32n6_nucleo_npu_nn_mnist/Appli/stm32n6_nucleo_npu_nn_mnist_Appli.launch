@@ -11,6 +11,7 @@
     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.enable_live_expr" value="true"/>
     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.enable_swv" value="false"/>
     <intAttribute key="com.st.stm32cube.ide.mcu.debug.launch.formatVersion" value="2"/>
+    <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.incremental_flashing" value="false"/>
     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.ip_address_local" value="localhost"/>
     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.limit_swo_clock.enabled" value="false"/>
     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.limit_swo_clock.value" value=""/>
@@ -34,7 +35,7 @@
     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.enable_shared_stlink" value="false"/>
     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.frequency" value="0"/>
     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.halt_all_on_reset" value="false"/>
-    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.log_file" value="D:\____N6M\STM32_Expert_Training_AI_STM32N6\Hands_On\_2_Hands_On_NPU_Mnist\stm32n6_nucleo_npu_nn_mnist\Appli\Debug\st-link_gdbserver_log.txt"/>
+    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.log_file" value="C:\_B_Project\AI_Training\Training_202509\STM32_Expert_Training_AI_STM32N6\Hands_On\_2_Hands_On_NPU_Mnist\stm32n6_nucleo_npu_nn_mnist\Appli\Debug\st-link_gdbserver_log.txt"/>
     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.low_power_debug" value="enable"/>
     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.max_halt_delay" value="2"/>
     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.reset_strategy" value="connect_under_reset"/>
@@ -72,7 +73,7 @@
     <stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Debug/stm32n6_nucleo_npu_nn_mnist_Appli.elf"/>
     <stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="stm32n6_nucleo_npu_nn_mnist_Appli"/>
     <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="true"/>
-    <stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.272823422"/>
+    <stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.761672384"/>
     <booleanAttribute key="org.eclipse.debug.core.ATTR_FORCE_SYSTEM_CONSOLE_ENCODING" value="false"/>
     <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
         <listEntry value="/stm32n6_nucleo_npu_nn_mnist_Appli"/>

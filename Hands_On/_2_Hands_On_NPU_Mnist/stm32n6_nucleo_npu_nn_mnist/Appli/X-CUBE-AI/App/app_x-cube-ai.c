@@ -59,7 +59,9 @@ void set_clk_sleep_mode(void)
 {
   /* Leave clocks enabled in Low Power modes */
   // Low-power clock enable misc
+#if defined (CPU_IN_SECURE_STATE)
   __HAL_RCC_DBG_CLK_SLEEP_ENABLE();
+#endif
   __HAL_RCC_XSPIPHYCOMP_CLK_SLEEP_ENABLE();
 
   // Low-power clock enable for memories
@@ -74,9 +76,11 @@ void set_clk_sleep_mode(void)
   // LP clock AHB1: None
   // LP clock AHB2: None
   // LP clock AHB3
+#if defined (CPU_IN_SECURE_STATE)
   __HAL_RCC_RIFSC_CLK_SLEEP_ENABLE();
   __HAL_RCC_RISAF_CLK_SLEEP_ENABLE();
   __HAL_RCC_IAC_CLK_SLEEP_ENABLE();
+#endif
   // LP clock AHB4: None
   // LP clocks AHB5
   __HAL_RCC_XSPI1_CLK_SLEEP_ENABLE();
@@ -92,6 +96,16 @@ void set_clk_sleep_mode(void)
 
 void MX_X_CUBE_AI_Init(void)
 {
+    __HAL_RCC_AXISRAM2_MEM_CLK_ENABLE();
+    __HAL_RCC_AXISRAM3_MEM_CLK_ENABLE();
+    __HAL_RCC_AXISRAM4_MEM_CLK_ENABLE();
+    __HAL_RCC_AXISRAM5_MEM_CLK_ENABLE();
+    __HAL_RCC_AXISRAM6_MEM_CLK_ENABLE();
+    RAMCFG_SRAM2_AXI->CR &= ~RAMCFG_CR_SRAMSD;
+    RAMCFG_SRAM3_AXI->CR &= ~RAMCFG_CR_SRAMSD;
+    RAMCFG_SRAM4_AXI->CR &= ~RAMCFG_CR_SRAMSD;
+    RAMCFG_SRAM5_AXI->CR &= ~RAMCFG_CR_SRAMSD;
+    RAMCFG_SRAM6_AXI->CR &= ~RAMCFG_CR_SRAMSD;
     set_clk_sleep_mode();
     __HAL_RCC_NPU_CLK_ENABLE();
     __HAL_RCC_NPU_FORCE_RESET();

@@ -84,7 +84,7 @@ typedef struct {
 typedef enum {
   PARAM_PHY_LINK,                /*!< physical link parameter */
   PARAM_DUMMY_CYCLES,            /*!< dummy cycle parameter */
-  PARAM_ADDRESS_4BITS,           /*!< @4BITS parameter */
+  PARAM_ADDRESS_4BYTES,          /*!< Adddress size parameter */
   PARAM_DATA_STROBE,             /*!< data strobe parameter */
   PARAM_FLASHSIZE,               /*!< set the flash size on the IP */
 } SAL_XSPI_MemParamTypeTypeDef;

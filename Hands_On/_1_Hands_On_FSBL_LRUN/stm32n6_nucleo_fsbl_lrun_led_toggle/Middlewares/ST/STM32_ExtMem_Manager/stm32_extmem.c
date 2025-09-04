@@ -24,21 +24,21 @@
 #include "stm32_extmem.h"
 #include "stm32_extmem_conf.h"
 
-#if EXTMEM_DRIVER_NOR_SFDP == 1   
-#include "nor_sfdp/stm32_sfdp_driver_api.h"   
+#if EXTMEM_DRIVER_NOR_SFDP == 1
+#include "nor_sfdp/stm32_sfdp_driver_api.h"
 #endif /* EXTMEM_DRIVER_NOR_SFDP */
-   
-#if EXTMEM_DRIVER_PSRAM == 1   
-#include "psram/stm32_psram_driver_api.h"   
+
+#if EXTMEM_DRIVER_PSRAM == 1
+#include "psram/stm32_psram_driver_api.h"
 #endif /* EXTMEM_DRIVER_PSRAM */
 
-#if EXTMEM_DRIVER_SDCARD == 1   
-#include "sdcard/stm32_sdcard_driver_api.h"   
+#if EXTMEM_DRIVER_SDCARD == 1
+#include "sdcard/stm32_sdcard_driver_api.h"
 #endif /* EXTMEM_DRIVER_SDCARD */
 
-#if EXTMEM_DRIVER_USER == 1   
-#include "user/stm32_user_driver_api.h"   
-#endif /* EXTMEM_DRIVER_SDCARD */
+#if EXTMEM_DRIVER_USER == 1
+#include "user/stm32_user_driver_api.h"
+#endif /* EXTMEM_DRIVER_USER */
 
 /**
   * @defgroup EXTMEM_DRIVER
@@ -154,7 +154,7 @@ EXTMEM_StatusTypeDef EXTMEM_Init(uint32_t MemId, uint32_t ClockInput)
     }
 #endif /* EXTMEM_DRIVER_SDCARD == 1 */
 #if EXTMEM_DRIVER_PSRAM == 1
-	  case EXTMEM_PSRAM : {
+    case EXTMEM_PSRAM : {
         /* Initialize the SFDP memory */
         if (EXTMEM_DRIVER_PSRAM_OK != EXTMEM_DRIVER_PSRAM_Init(extmem_list_config[MemId].Handle,
                                                                extmem_list_config[MemId].ConfigType,
@@ -229,7 +229,7 @@ EXTMEM_StatusTypeDef EXTMEM_DeInit(uint32_t MemId)
     }
 #endif /* EXTMEM_DRIVER_SDCARD == 1 */
 #if EXTMEM_DRIVER_PSRAM == 1
-	  case EXTMEM_PSRAM : {
+    case EXTMEM_PSRAM : {
         /* UnInitialize the PSRAM memory, the return is always OK no need to test the returned value */
         (void)EXTMEM_DRIVER_PSRAM_DeInit(&extmem_list_config[MemId].PsramObject);
         break;
@@ -277,7 +277,7 @@ EXTMEM_StatusTypeDef EXTMEM_Read(uint32_t MemId, uint32_t Address, uint8_t* Data
 #if EXTMEM_DRIVER_NOR_SFDP == 1
     case EXTMEM_NOR_SFDP:{
       if (EXTMEM_DRIVER_NOR_SFDP_OK != EXTMEM_DRIVER_NOR_SFDP_Read(&extmem_list_config[MemId].NorSfdpObject,
-                                                           Address, Data, Size))
+                                                                   Address, Data, Size))
       {
         retr = EXTMEM_ERROR_DRIVER;
       }
@@ -287,7 +287,7 @@ EXTMEM_StatusTypeDef EXTMEM_Read(uint32_t MemId, uint32_t Address, uint8_t* Data
 #if EXTMEM_DRIVER_SDCARD == 1
     case EXTMEM_SDCARD:{
       if (EXTMEM_DRIVER_SDCARD_OK != EXTMEM_DRIVER_SDCARD_Read(&extmem_list_config[MemId].SdCardObject,
-                                                          Address, Data, Size))
+                                                               Address, Data, Size))
       {
         retr = EXTMEM_ERROR_DRIVER;
       }
@@ -343,7 +343,7 @@ EXTMEM_StatusTypeDef EXTMEM_Write(uint32_t MemId, uint32_t Address, const uint8_
 #if EXTMEM_DRIVER_NOR_SFDP == 1
       case EXTMEM_NOR_SFDP:{
         if (EXTMEM_DRIVER_NOR_SFDP_OK != EXTMEM_DRIVER_NOR_SFDP_Write(&extmem_list_config[MemId].NorSfdpObject,
-                                                              Address, Data, Size))
+                                                                      Address, Data, Size))
         {
           retr = EXTMEM_ERROR_DRIVER;
         }
@@ -354,7 +354,7 @@ EXTMEM_StatusTypeDef EXTMEM_Write(uint32_t MemId, uint32_t Address, const uint8_
     case EXTMEM_SDCARD:{
       /* Initialize the SFDP memory */
       if (EXTMEM_DRIVER_SDCARD_OK != EXTMEM_DRIVER_SDCARD_Write(&extmem_list_config[MemId].SdCardObject,
-                                                              Address, Data, Size))
+                                                                Address, Data, Size))
       {
         retr = EXTMEM_ERROR_DRIVER;
       }
@@ -371,7 +371,7 @@ EXTMEM_StatusTypeDef EXTMEM_Write(uint32_t MemId, uint32_t Address, const uint8_
     case EXTMEM_USER :{
       /* Initialize the SFDP memory */
       EXTMEM_DRIVER_USER_StatusTypeDef status = EXTMEM_DRIVER_USER_Write(&extmem_list_config[MemId].UserObject,
-                                                                        Address, Data, Size);
+                                                                         Address, Data, Size);
       switch(status){
       case EXTMEM_DRIVER_USER_NOTSUPPORTED:
         retr = EXTMEM_ERROR_NOTSUPPORTED;
@@ -409,7 +409,7 @@ EXTMEM_StatusTypeDef EXTMEM_WriteInMappedMode(uint32_t MemId, uint32_t Address, 
 #if EXTMEM_DRIVER_NOR_SFDP == 1
       case EXTMEM_NOR_SFDP:{
         if (EXTMEM_DRIVER_NOR_SFDP_OK != EXTMEM_DRIVER_NOR_SFDP_WriteInMappedMode(&extmem_list_config[MemId].NorSfdpObject,
-                                                                          Address, Data, Size))
+                                                                                  Address, Data, Size))
         {
           retr = EXTMEM_ERROR_DRIVER;
         }
@@ -417,7 +417,7 @@ EXTMEM_StatusTypeDef EXTMEM_WriteInMappedMode(uint32_t MemId, uint32_t Address, 
       }
 #endif /* EXTMEM_DRIVER_NOR_SFDP == 1 */
       case EXTMEM_SDCARD :
-      case EXTMEM_PSRAM : 
+      case EXTMEM_PSRAM :
       case EXTMEM_USER :
           retr = EXTMEM_ERROR_NOTSUPPORTED;
         break;
@@ -448,38 +448,39 @@ EXTMEM_StatusTypeDef EXTMEM_EraseSector(uint32_t MemId, uint32_t Address, uint32
       EXTMEM_DRIVER_NOR_SFDP_SectorTypeTypeDef sector_type = EXTMEM_DRIVER_NOR_SFDP_SECTOR_TYPE1;
       uint32_t local_address = Address;
       uint32_t local_size = Size;
-      uint32_t sector_size = (uint32_t)1u << object->sfpd_private.DriverInfo.EraseType4Size;
-      
-      while (local_size != 0u) {
+      uint32_t sector_size = (uint32_t)1u << object->sfdp_private.DriverInfo.EraseType4Size;
+
+      while (local_size != 0u)
+      {
         /* if address is a modulo a sector size if sector  */
-        if ((object->sfpd_private.DriverInfo.EraseType4Size != 0u) 
-            && (local_size >= sector_size) 
+        if ((object->sfdp_private.DriverInfo.EraseType4Size != 0u)
+            && (local_size >= sector_size)
               && ((local_address % sector_size) == 0u))
         {
           sector_type = EXTMEM_DRIVER_NOR_SFDP_SECTOR_TYPE4;
         }
         else
         {
-          sector_size = (uint32_t)1u << object->sfpd_private.DriverInfo.EraseType3Size;
-          if ((object->sfpd_private.DriverInfo.EraseType3Size != 0u) 
-              && (local_size >= sector_size) 
+          sector_size = (uint32_t)1u << object->sfdp_private.DriverInfo.EraseType3Size;
+          if ((object->sfdp_private.DriverInfo.EraseType3Size != 0u)
+              && (local_size >= sector_size)
                 && ((local_address % sector_size) == 0u))
           {
             sector_type = EXTMEM_DRIVER_NOR_SFDP_SECTOR_TYPE3;
           }
           else
           {
-            sector_size = (uint32_t)1u << object->sfpd_private.DriverInfo.EraseType2Size;
-            if ((object->sfpd_private.DriverInfo.EraseType2Size != 0u) 
-                && (local_size >= sector_size) 
+            sector_size = (uint32_t)1u << object->sfdp_private.DriverInfo.EraseType2Size;
+            if ((object->sfdp_private.DriverInfo.EraseType2Size != 0u)
+                && (local_size >= sector_size)
                   && ((local_address % sector_size) == 0u))
             {
               sector_type = EXTMEM_DRIVER_NOR_SFDP_SECTOR_TYPE2;
             }
             else
             {
-              sector_size = (uint32_t)1u << object->sfpd_private.DriverInfo.EraseType1Size;
-              if ((object->sfpd_private.DriverInfo.EraseType1Size != 0u) 
+              sector_size = (uint32_t)1u << object->sfdp_private.DriverInfo.EraseType1Size;
+              if ((object->sfdp_private.DriverInfo.EraseType1Size != 0u)
                   && ((local_address % sector_size) == 0u))
               {
                 sector_type = EXTMEM_DRIVER_NOR_SFDP_SECTOR_TYPE1;
@@ -491,7 +492,7 @@ EXTMEM_StatusTypeDef EXTMEM_EraseSector(uint32_t MemId, uint32_t Address, uint32
             }
           }
         }
-        
+
         if (retr == EXTMEM_OK)
         {
           if (EXTMEM_DRIVER_NOR_SFDP_OK != EXTMEM_DRIVER_NOR_SFDP_SectorErase(&extmem_list_config[MemId].NorSfdpObject,
@@ -500,7 +501,7 @@ EXTMEM_StatusTypeDef EXTMEM_EraseSector(uint32_t MemId, uint32_t Address, uint32
             retr = EXTMEM_ERROR_DRIVER;
           }
         }
-        
+
         if (retr != EXTMEM_OK)
         {
           local_size = 0u;
@@ -657,7 +658,7 @@ EXTMEM_StatusTypeDef EXTMEM_GetInfo(uint32_t MemId, void *Info)
         break;
       }
 #endif /* EXTMEM_DRIVER_USER == 1 */
-      case EXTMEM_PSRAM : 
+      case EXTMEM_PSRAM :
         retr = EXTMEM_ERROR_NOTSUPPORTED;
         break;
       default:{
@@ -777,7 +778,7 @@ EXTMEM_StatusTypeDef EXTMEM_GetMapAddress(uint32_t MemId, uint32_t *BaseAddress)
 #if EXTMEM_DRIVER_NOR_SFDP == 1 || EXTMEM_DRIVER_PSRAM == 1
       case EXTMEM_PSRAM:
       case EXTMEM_NOR_SFDP:{
-#if defined(XSPI1)       
+#if defined(XSPI1)
        if (((XSPI_HandleTypeDef *)extmem_list_config[MemId].Handle)->Instance == XSPI1)
         {
           *BaseAddress = XSPI1_BASE;
@@ -801,7 +802,7 @@ EXTMEM_StatusTypeDef EXTMEM_GetMapAddress(uint32_t MemId, uint32_t *BaseAddress)
        }
 #endif  /* XSPI1 */
        else
-       { 
+       {
           retr = EXTMEM_ERROR_DRIVER;
        }
 
@@ -829,7 +830,7 @@ EXTMEM_StatusTypeDef EXTMEM_GetMapAddress(uint32_t MemId, uint32_t *BaseAddress)
         }
       break;
       }
-#endif /* EXTMEM_DRIVER_USER == 1 */      
+#endif /* EXTMEM_DRIVER_USER == 1 */
       default :
       {
         retr = EXTMEM_ERROR_UNKNOWNMEMORY;

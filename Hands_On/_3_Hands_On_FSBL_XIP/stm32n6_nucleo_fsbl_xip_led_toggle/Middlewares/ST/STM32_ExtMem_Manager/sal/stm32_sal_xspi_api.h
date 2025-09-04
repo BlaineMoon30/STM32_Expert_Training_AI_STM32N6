@@ -60,7 +60,7 @@ HAL_StatusTypeDef SAL_XSPI_Init(SAL_XSPI_ObjectTypeDef* SalXspi, void* HALHandle
  * @param DataSize size of the data to read
  * @return @ref HAL_StatusTypeDef
  **/
-HAL_StatusTypeDef SAL_XSPI_GetSFDP(SAL_XSPI_ObjectTypeDef* SalXspi, uint32_t Address, 
+HAL_StatusTypeDef SAL_XSPI_GetSFDP(SAL_XSPI_ObjectTypeDef* SalXspi, uint32_t Address,
                                    uint8_t* Data, uint32_t DataSize);
 
 /**
@@ -112,11 +112,13 @@ HAL_StatusTypeDef SAL_XSPI_SendReadCommand(SAL_XSPI_ObjectTypeDef *SalXspi, uint
  * @param Command command to execute
  * @param Address Address value
  * @param Data Data pointer
- * @param DataSize size of the data to read
+ * @param DataSize Size of the data to read
+ * @param ManuId Manufacturer Identifier
  * @return @ref HAL_StatusTypeDef
  **/
 HAL_StatusTypeDef SAL_XSPI_CommandSendReadAddress(SAL_XSPI_ObjectTypeDef *SalXspi, uint8_t Command,
-                                           uint32_t Address, uint8_t *Data, uint16_t DataSize);
+                                                  uint32_t Address, uint8_t *Data, uint16_t DataSize,
+                                                  uint8_t ManuId);
 
 /**
  * @brief This function controls the status register
@@ -125,11 +127,13 @@ HAL_StatusTypeDef SAL_XSPI_CommandSendReadAddress(SAL_XSPI_ObjectTypeDef *SalXsp
  * @param Address specify the address
  * @param MatchValue  expected value
  * @param MatchMask   mask used to control the expected value
+ * @param ManuId Manufacturer Identifier
  * @param Timeout timeout parameter
  * @return @ref HAL_StatusTypeDef
  **/
-HAL_StatusTypeDef SAL_XSPI_CheckStatusRegister(SAL_XSPI_ObjectTypeDef* SalXspi, 
-                                               uint8_t Command, uint32_t Address, uint8_t MatchValue, uint8_t MatchMask, uint32_t Timeout);
+HAL_StatusTypeDef SAL_XSPI_CheckStatusRegister(SAL_XSPI_ObjectTypeDef* SalXspi,
+                                               uint8_t Command, uint32_t Address, uint8_t MatchValue, uint8_t MatchMask,
+                                               uint8_t ManuId, uint32_t Timeout);
 
 /**
  * @brief This function writes data at an Address
@@ -199,7 +203,7 @@ HAL_StatusTypeDef SAL_XSPI_EnableMapMode(SAL_XSPI_ObjectTypeDef *SalXspi, uint8_
 HAL_StatusTypeDef SAL_XSPI_DisableMapMode(SAL_XSPI_ObjectTypeDef *SalXspi);
 
 /**
- * @brief This function updates the memory according the SFPD signature value
+ * @brief This function updates the memory according the SFDP signature value
  * @param SalXspi SAL XSPI handle
  * @param DataOrder
  * @return @ref HAL_StatusTypeDef

@@ -26,6 +26,9 @@
 #include "app_fuseprogramming.h"
 #include "ll_aton_runtime.h"
 
+#include "stm32n6xx_nucleo.h"
+#include "stm32n6xx_nucleo_xspi.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -59,6 +62,7 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
 
 /******************************************************************************/
 /*                              TIME MEASUREMENT                              */
@@ -263,7 +267,16 @@ int main(void)
 
   /* USER CODE BEGIN Init */
 
+  /* USER CODE END Init */
+
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  /* USER CODE BEGIN 2 */
+
   Fuse_Programming();
   SystemClock_Config_HSI_overdrive();
   init_external_memories();
@@ -307,15 +320,6 @@ int main(void)
   clock_Hz = (float_t) cpuclk;
   init_dwt();
 
-  /* USER CODE END Init */
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
 
@@ -362,6 +366,7 @@ int main(void)
 	  sum += nn_buffer_out[i];
 	}
 	HAL_Delay(100);
+
 
     /* USER CODE END WHILE */
 
@@ -420,8 +425,7 @@ void Error_Handler(void)
   }
   /* USER CODE END Error_Handler_Debug */
 }
-
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.

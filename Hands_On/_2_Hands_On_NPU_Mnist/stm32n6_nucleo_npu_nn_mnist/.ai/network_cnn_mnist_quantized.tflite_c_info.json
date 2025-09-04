@@ -45,7 +45,7 @@
       "id": 2,
       "is_param": false,
       "mpool_id": 2,
-      "name": "Dequantize_21_out_0",
+      "name": "Dequantize_19_out_0",
       "nbits": 32,
       "offset_start": 1040,
       "qmn": {
@@ -225,7 +225,7 @@
       "id": 7,
       "is_param": false,
       "mpool_id": 2,
-      "name": "Conv2D_9_out_0_cp_in_1",
+      "name": "Conv2D_9_out_0_cp_in_3",
       "nbits": 16,
       "offset_start": 5408,
       "qmn": {
@@ -503,7 +503,7 @@
       },
       "is_param": false,
       "mpool_id": 2,
-      "name": "Softmax_19_out_0",
+      "name": "Softmax_17_out_0",
       "nbits": 8,
       "offset_start": 1088,
       "qmn": {
@@ -532,7 +532,7 @@
       "id": 15,
       "is_param": false,
       "mpool_id": 2,
-      "name": "SCRATCH_Softmax_19_PORT_OUT",
+      "name": "SCRATCH_Softmax_17_PORT_OUT",
       "nbits": 32,
       "offset_start": 0,
       "qmn": {
@@ -887,7 +887,7 @@
       "id": 20,
       "is_param": true,
       "mpool_id": 9,
-      "name": "Dequantize_21_x_scale",
+      "name": "Dequantize_19_x_scale",
       "nbits": 32,
       "offset_start": 35424,
       "qmn": {
@@ -915,7 +915,7 @@
       "id": 21,
       "is_param": true,
       "mpool_id": 9,
-      "name": "Dequantize_21_x_zero_point",
+      "name": "Dequantize_19_x_zero_point",
       "nbits": 8,
       "offset_start": 35552,
       "qmn": {
@@ -1020,7 +1020,7 @@
       "id": 24,
       "is_param": true,
       "mpool_id": 9,
-      "name": "Conv2D_4_mul_scale_11",
+      "name": "Conv2D_4_mul_scale_9",
       "nbits": 16,
       "offset_start": 35264,
       "qmn": {
@@ -1117,7 +1117,7 @@
       "id": 27,
       "is_param": true,
       "mpool_id": 9,
-      "name": "Conv2D_9_mul_scale_20",
+      "name": "Conv2D_9_mul_scale_18",
       "nbits": 16,
       "offset_start": 35136,
       "qmn": {
@@ -1214,7 +1214,7 @@
       "id": 30,
       "is_param": true,
       "mpool_id": 9,
-      "name": "Gemm_16_conv_4_mul_scale_29",
+      "name": "Gemm_16_conv_4_mul_scale_27",
       "nbits": 16,
       "offset_start": 35440,
       "qmn": {
@@ -1272,7 +1272,7 @@
       "id": 32,
       "is_param": true,
       "mpool_id": 9,
-      "name": "Gemm_16_squeeze_y_5_72_atonn_internal_scale",
+      "name": "Gemm_16_squeeze_y_5_66_atonn_internal_scale",
       "nbits": 32,
       "offset_start": 35376,
       "qmn": {
@@ -1300,7 +1300,7 @@
       "id": 33,
       "is_param": true,
       "mpool_id": 9,
-      "name": "Gemm_16_squeeze_y_5_72_atonn_internal_offset",
+      "name": "Gemm_16_squeeze_y_5_66_atonn_internal_offset",
       "nbits": 8,
       "offset_start": 35504,
       "qmn": {
@@ -1328,7 +1328,7 @@
       "id": 34,
       "is_param": true,
       "mpool_id": 9,
-      "name": "Softmax_19_74_atonn_internal_scale",
+      "name": "Softmax_17_68_atonn_internal_scale",
       "nbits": 32,
       "offset_start": 35392,
       "qmn": {
@@ -1356,7 +1356,7 @@
       "id": 35,
       "is_param": true,
       "mpool_id": 9,
-      "name": "Softmax_19_74_atonn_internal_offset",
+      "name": "Softmax_17_68_atonn_internal_offset",
       "nbits": 8,
       "offset_start": 35520,
       "qmn": {
@@ -1371,12 +1371,49 @@
       "size_bytes": 1
     }
   ],
+  "ec_blobs_info": [],
   "environment": {
     "generated_model": {
-      "generated_time": "2025-03-02 20:03:22",
+      "generated_time": "2025-09-04T09:58:36.492537200+0000",
       "model_files": [
         {
-          "name": "network",
+          "name": "network.c",
+          "signature": ""
+        },
+        {
+          "name": "atonbuf.AXISRAM6.raw",
+          "signature": ""
+        },
+        {
+          "name": "atonbuf.AXISRAM5.raw",
+          "signature": ""
+        },
+        {
+          "name": "atonbuf.AXISRAM4.raw",
+          "signature": ""
+        },
+        {
+          "name": "atonbuf.AXISRAM3.raw",
+          "signature": ""
+        },
+        {
+          "name": "atonbuf.AXISRAM2.raw",
+          "signature": ""
+        },
+        {
+          "name": "atonbuf.AXISRAM1.raw",
+          "signature": ""
+        },
+        {
+          "name": "atonbuf.AXIFLEXMEM.raw",
+          "signature": ""
+        },
+        {
+          "name": "atonbuf.xSPI1.raw",
+          "signature": ""
+        },
+        {
+          "name": "atonbuf.xSPI2.raw",
           "signature": ""
         }
       ],
@@ -1385,13 +1422,15 @@
       "size": 0,
       "type": ""
     },
-    "network_signature": "",
+    "network_signature": "0xc8c32ded1c38f2aa",
     "target": "",
     "test_name": "",
     "tools": [
       {
-        "arguments": "generate --target stm32n6 --name network -m D:/____N6M/STM32_Expert_Training_AI_STM32N6/Hands_On/_2_Hands_On_NPU_Mnist/Mnist_Model/cnn_mnist_quantized.tflite --st-neural-art n6-allmems-O3@C:/Users/grand/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.0.0/scripts/N6_scripts/user_neuralart.json --workspace C:/Users/grand/AppData/Local/Temp/mxAI_workspace34470584857550007798035824385886647 --output C:/Users/grand/.stm32cubemx/network_output",
-        "environment": [],
+        "arguments": "generate --target stm32n6 --name network -m C:/_B_Project/AI_Training/Training_202509/STM32_Expert_Training_AI_STM32N6/Hands_On/_2_Hands_On_NPU_Mnist/Mnist_Model/cnn_mnist_quantized.tflite --st-neural-art n6-allmems-O3@C:/Users/grand/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.2.0/scripts/N6_scripts/user_neuralart.json --workspace C:/Users/grand/AppData/Local/Temp/mxAI_workspace91642465430011687504193805699592 --output C:/Users/grand/.stm32cubemx/network_output",
+        "environment": [
+          "STATS_TYPE=X-CUBE-AI"
+        ],
         "input_model": {
           "generated_time": "",
           "model_files": [
@@ -1400,23 +1439,23 @@
               "signature": "0x1a4cedbe8d6c8cf1b9e779db858eb666"
             }
           ],
-          "n_params": 0,
+          "n_params": 34826,
           "name": "cnn_mnist_quantized",
-          "size": 0,
-          "type": ""
+          "size": 35144,
+          "type": "tflite"
         },
         "name": "ST.EdgeAI.Core",
-        "version": "2.0.0-20049"
+        "version": "2.2.0-20266 2adc00962"
       },
       {
-        "arguments": " -i C:\\Users\\grand\\.stm32cubemx\\network_output\\cnn_mnist_quantized_OE_3_1_0.onnx --json-quant-file C:\\Users\\grand\\.stm32cubemx\\network_output\\cnn_mnist_quantized_OE_3_1_0_Q.json -g network.c --load-mdesc C:\\Users\\grand\\STM32Cube\\Repository\\Packs\\STMicroelectronics\\X-CUBE-AI\\10.0.0\\Utilities\\configs\\stm32n6.mdesc --load-mpool C:\\Users\\grand\\STM32Cube\\Repository\\Packs\\STMicroelectronics\\X-CUBE-AI\\10.0.0\\scripts\\N6_scripts\\my_mpools\\stm32n6.mpool --save-mpool-file C:\\Users\\grand\\AppData\\Local\\Temp\\mxAI_workspace34470584857550007798035824385886647\\neural_art__network\\stm32n6.mpool --out-dir-prefix C:\\Users\\grand\\AppData\\Local\\Temp\\mxAI_workspace34470584857550007798035824385886647\\neural_art__network/ --optimization 3 --all-buffers-info --mvei --no-hw-sw-parallelism --cache-maintenance --Oalt-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Oshuffle-dma --Ocache-opt --Os --output-info-file c_info.json",
+        "arguments": " -i C:\\Users\\grand\\.stm32cubemx\\network_output\\cnn_mnist_quantized_OE_3_3_0.onnx --json-quant-file C:\\Users\\grand\\.stm32cubemx\\network_output\\cnn_mnist_quantized_OE_3_3_0_Q.json -g network.c --load-mdesc C:\\Users\\grand\\STM32Cube\\Repository\\Packs\\STMicroelectronics\\X-CUBE-AI\\10.2.0\\scripts\\N6_scripts\\my_mdescs\\stm32n6.mdesc --load-mpool C:\\Users\\grand\\STM32Cube\\Repository\\Packs\\STMicroelectronics\\X-CUBE-AI\\10.2.0\\scripts\\N6_scripts\\my_mpools\\stm32n6.mpool --save-mpool-file C:\\Users\\grand\\AppData\\Local\\Temp\\mxAI_workspace91642465430011687504193805699592\\neural_art__network\\stm32n6.mpool --out-dir-prefix C:\\Users\\grand\\AppData\\Local\\Temp\\mxAI_workspace91642465430011687504193805699592\\neural_art__network/ --optimization 3 --all-buffers-info --mvei --cache-maintenance --Oauto-sched --native-float --enable-virtual-mem-pools --Omax-ca-pipe 4 --Ocache-opt --Os --output-info-file c_info.json",
         "environment": [],
         "input_model": {
-          "generated_time": "2025-03-02T20:03:22+0900",
+          "generated_time": "2025-09-04T18:58:36+0900",
           "model_files": [
             {
-              "name": "cnn_mnist_quantized_OE_3_1_0.onnx",
-              "signature": "0xd880a8149718f4474bf4c5f24200068d"
+              "name": "cnn_mnist_quantized_OE_3_3_0.onnx",
+              "signature": "0xaad15b02e56450e07aaed8a88bc58495"
             }
           ],
           "n_params": 0,
@@ -1425,7 +1464,7 @@
           "type": ""
         },
         "name": "ATONN Compiler",
-        "version": "1.0.0-16"
+        "version": "1.1.1-14 Internal Build atonn-v1.1.1-14-ge619e8606 (SHA:e619e8606099384540d70eeaaa8091752b1bebe9 on date 25/06/2025) Based on Version atonn.1.1.1-14"
       }
     ]
   },
@@ -1497,7 +1536,7 @@
           "buffer": 0,
           "edge_kind": "EDGE_FLOW",
           "end": {
-            "node_id": 36,
+            "node_id": 35,
             "port": 0
           },
           "id": 5,
@@ -1512,13 +1551,13 @@
           "buffer": 0,
           "edge_kind": "EDGE_FLOW",
           "end": {
-            "node_id": 45,
+            "node_id": 43,
             "port": 0
           },
           "id": 6,
           "name": "epochdep_5_6",
           "start": {
-            "node_id": 36,
+            "node_id": 35,
             "port": 0
           }
         },
@@ -1527,11 +1566,26 @@
           "buffer": 0,
           "edge_kind": "EDGE_FLOW",
           "end": {
-            "node_id": 47,
+            "node_id": 45,
             "port": 0
           },
           "id": 7,
           "name": "epochdep_6_7",
+          "start": {
+            "node_id": 43,
+            "port": 0
+          }
+        },
+        {
+          "attributes": {},
+          "buffer": 0,
+          "edge_kind": "EDGE_FLOW",
+          "end": {
+            "node_id": 50,
+            "port": 0
+          },
+          "id": 8,
+          "name": "epochdep_7_8",
           "start": {
             "node_id": 45,
             "port": 0
@@ -1545,10 +1599,10 @@
             "node_id": 52,
             "port": 0
           },
-          "id": 8,
-          "name": "epochdep_7_8",
+          "id": 9,
+          "name": "epochdep_8_9",
           "start": {
-            "node_id": 47,
+            "node_id": 50,
             "port": 0
           }
         },
@@ -1558,27 +1612,12 @@
           "edge_kind": "EDGE_FLOW",
           "end": {
             "node_id": 54,
-            "port": 0
-          },
-          "id": 9,
-          "name": "epochdep_8_9",
-          "start": {
-            "node_id": 52,
-            "port": 0
-          }
-        },
-        {
-          "attributes": {},
-          "buffer": 0,
-          "edge_kind": "EDGE_FLOW",
-          "end": {
-            "node_id": 56,
             "port": 0
           },
           "id": 10,
           "name": "epochdep_9_10",
           "start": {
-            "node_id": 54,
+            "node_id": 52,
             "port": 0
           }
         },
@@ -1623,7 +1662,7 @@
           "id": 13,
           "name": "Quantize_2_y_zero_point_INT8___",
           "start": {
-            "node_id": 4,
+            "node_id": 5,
             "port": 0
           }
         },
@@ -1638,7 +1677,7 @@
           "id": 14,
           "name": "Conv2D_4_zero_off_8_FLOAT__1__",
           "start": {
-            "node_id": 2,
+            "node_id": 3,
             "port": 0
           }
         },
@@ -1696,9 +1735,9 @@
             "port": 0
           },
           "id": 18,
-          "name": "Conv2D_4_mul_scale_11_FLOAT__32_1_1__",
+          "name": "Conv2D_4_mul_scale_9_FLOAT__32_1_1__",
           "start": {
-            "node_id": 14,
+            "node_id": 17,
             "port": 0
           }
         },
@@ -1711,7 +1750,7 @@
             "port": 0
           },
           "id": 19,
-          "name": "Conv2D_4_mul_scale_out_10_FLOAT__1_32_26_26__",
+          "name": "Conv2D_4_mul_scale_out_11_FLOAT__1_32_26_26__",
           "start": {
             "node_id": 31,
             "port": 0
@@ -1728,7 +1767,7 @@
           "id": 20,
           "name": "Conv2D_4_off_bias_14_FLOAT__32_1_1__",
           "start": {
-            "node_id": 17,
+            "node_id": 16,
             "port": 0
           }
         },
@@ -1741,24 +1780,9 @@
             "port": 0
           },
           "id": 21,
-          "name": "Relu_7_out_0_FLOAT__1_32_26_26__",
-          "start": {
-            "node_id": 33,
-            "port": 0
-          }
-        },
-        {
-          "attributes": {},
-          "buffer": 0,
-          "edge_kind": "EDGE_INTERNAL",
-          "end": {
-            "node_id": 35,
-            "port": 0
-          },
-          "id": 22,
           "name": "MaxPool_8_out_0_FLOAT__1_32_13_13__",
           "start": {
-            "node_id": 34,
+            "node_id": 33,
             "port": 0
           }
         },
@@ -1767,13 +1791,13 @@
           "buffer": 26,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 35,
+            "node_id": 34,
             "port": 0
           },
-          "id": 23,
+          "id": 22,
           "name": "Conv2D_9_zero_off_17_FLOAT__1__",
           "start": {
-            "node_id": 6,
+            "node_id": 7,
             "port": 0
           }
         },
@@ -1782,13 +1806,13 @@
           "buffer": 6,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 37,
+            "node_id": 36,
             "port": 0
           },
-          "id": 24,
+          "id": 23,
           "name": "Conv2D_9_zero_off_out_16_FLOAT__1_32_13_13__",
           "start": {
-            "node_id": 35,
+            "node_id": 34,
             "port": 0
           }
         },
@@ -1797,10 +1821,10 @@
           "buffer": 19,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 37,
+            "node_id": 36,
             "port": 0
           },
-          "id": 25,
+          "id": 24,
           "name": "Conv2D_9_weights_FLOAT__64_32_3_3__",
           "start": {
             "node_id": 11,
@@ -1812,13 +1836,13 @@
           "buffer": 27,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 39,
+            "node_id": 38,
             "port": 0
           },
-          "id": 26,
-          "name": "Conv2D_9_mul_scale_20_FLOAT__64_1_1__",
+          "id": 25,
+          "name": "Conv2D_9_mul_scale_18_FLOAT__64_1_1__",
           "start": {
-            "node_id": 16,
+            "node_id": 15,
             "port": 0
           }
         },
@@ -1827,13 +1851,13 @@
           "buffer": 0,
           "edge_kind": "EDGE_INTERNAL",
           "end": {
-            "node_id": 40,
+            "node_id": 39,
             "port": 0
           },
-          "id": 27,
-          "name": "Conv2D_9_mul_scale_out_19_FLOAT__1_64_11_11__",
+          "id": 26,
+          "name": "Conv2D_9_mul_scale_out_20_FLOAT__1_64_11_11__",
           "start": {
-            "node_id": 39,
+            "node_id": 38,
             "port": 0
           }
         },
@@ -1842,28 +1866,13 @@
           "buffer": 28,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 40,
+            "node_id": 39,
             "port": 0
           },
-          "id": 28,
+          "id": 27,
           "name": "Conv2D_9_off_bias_23_FLOAT__64_1_1__",
           "start": {
-            "node_id": 7,
-            "port": 0
-          }
-        },
-        {
-          "attributes": {},
-          "buffer": 0,
-          "edge_kind": "EDGE_INTERNAL",
-          "end": {
-            "node_id": 42,
-            "port": 0
-          },
-          "id": 29,
-          "name": "Relu_12_out_0_FLOAT__1_64_11_11__",
-          "start": {
-            "node_id": 41,
+            "node_id": 8,
             "port": 0
           }
         },
@@ -1872,13 +1881,13 @@
           "buffer": 8,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 43,
+            "node_id": 41,
             "port": 0
           },
-          "id": 30,
+          "id": 28,
           "name": "MaxPool_13_out_0_FLOAT__1_64_5_5__",
           "start": {
-            "node_id": 42,
+            "node_id": 40,
             "port": 0
           }
         },
@@ -1887,13 +1896,13 @@
           "buffer": 10,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 46,
+            "node_id": 44,
             "port": 0
           },
-          "id": 31,
+          "id": 29,
           "name": "Gemm_16_reshape_x_2_FLOAT__1_1600_1_1__",
           "start": {
-            "node_id": 44,
+            "node_id": 42,
             "port": 0
           }
         },
@@ -1902,10 +1911,10 @@
           "buffer": 29,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 46,
+            "node_id": 44,
             "port": 0
           },
-          "id": 32,
+          "id": 30,
           "name": "Gemm_16_conv_4_zero_off_26_FLOAT__1__",
           "start": {
             "node_id": 20,
@@ -1917,13 +1926,13 @@
           "buffer": 11,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 48,
+            "node_id": 46,
             "port": 0
           },
-          "id": 33,
+          "id": 31,
           "name": "Gemm_16_conv_4_zero_off_out_25_FLOAT__1_1600_1_1__",
           "start": {
-            "node_id": 46,
+            "node_id": 44,
             "port": 0
           }
         },
@@ -1932,13 +1941,13 @@
           "buffer": 22,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 48,
+            "node_id": 46,
             "port": 0
           },
-          "id": 34,
+          "id": 32,
           "name": "Gemm_16_weights_transposed_3_FLOAT__10_1600_1_1__",
           "start": {
-            "node_id": 5,
+            "node_id": 6,
             "port": 0
           }
         },
@@ -1947,13 +1956,13 @@
           "buffer": 0,
           "edge_kind": "EDGE_INTERNAL",
           "end": {
-            "node_id": 49,
+            "node_id": 47,
             "port": 0
           },
-          "id": 35,
+          "id": 33,
           "name": "Gemm_16_conv_4_FLOAT__1_10_1_1__",
           "start": {
-            "node_id": 48,
+            "node_id": 46,
             "port": 0
           }
         },
@@ -1962,13 +1971,13 @@
           "buffer": 30,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 49,
+            "node_id": 47,
             "port": 0
           },
-          "id": 36,
-          "name": "Gemm_16_conv_4_mul_scale_29_FLOAT__1__",
+          "id": 34,
+          "name": "Gemm_16_conv_4_mul_scale_27_FLOAT__1__",
           "start": {
-            "node_id": 3,
+            "node_id": 4,
             "port": 0
           }
         },
@@ -1977,13 +1986,13 @@
           "buffer": 0,
           "edge_kind": "EDGE_INTERNAL",
           "end": {
-            "node_id": 50,
+            "node_id": 48,
             "port": 0
           },
-          "id": 37,
-          "name": "Gemm_16_conv_4_mul_scale_out_28_FLOAT__1_10_1_1__",
+          "id": 35,
+          "name": "Gemm_16_conv_4_mul_scale_out_29_FLOAT__1_10_1_1__",
           "start": {
-            "node_id": 49,
+            "node_id": 47,
             "port": 0
           }
         },
@@ -1992,10 +2001,10 @@
           "buffer": 31,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 50,
+            "node_id": 48,
             "port": 0
           },
-          "id": 38,
+          "id": 36,
           "name": "Gemm_16_conv_4_off_bias_32_FLOAT__10_1_1__",
           "start": {
             "node_id": 21,
@@ -2007,13 +2016,28 @@
           "buffer": 12,
           "edge_kind": "EDGE_MEMORY",
           "end": {
+            "node_id": 49,
+            "port": 0
+          },
+          "id": 37,
+          "name": "Gemm_16_conv_4_off_bias_out_31_FLOAT__1_10_1_1__",
+          "start": {
+            "node_id": 48,
+            "port": 0
+          }
+        },
+        {
+          "attributes": {},
+          "buffer": 13,
+          "edge_kind": "EDGE_MEMORY",
+          "end": {
             "node_id": 51,
             "port": 0
           },
-          "id": 39,
-          "name": "Gemm_16_conv_4_off_bias_out_31_FLOAT__1_10_1_1__",
+          "id": 38,
+          "name": "Gemm_16_out_0_FLOAT__1_10__",
           "start": {
-            "node_id": 50,
+            "node_id": 49,
             "port": 0
           }
         },
@@ -2022,11 +2046,11 @@
           "buffer": 20,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 55,
+            "node_id": 53,
             "port": 0
           },
-          "id": 40,
-          "name": "Dequantize_21_x_scale_FLOAT___",
+          "id": 39,
+          "name": "Dequantize_19_x_scale_FLOAT___",
           "start": {
             "node_id": 9,
             "port": 0
@@ -2037,13 +2061,13 @@
           "buffer": 21,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 55,
+            "node_id": 53,
             "port": 0
           },
-          "id": 41,
-          "name": "Dequantize_21_x_zero_point_INT8___",
+          "id": 40,
+          "name": "Dequantize_19_x_zero_point_INT8___",
           "start": {
-            "node_id": 10,
+            "node_id": 2,
             "port": 0
           }
         },
@@ -2052,13 +2076,13 @@
           "buffer": 2,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 57,
+            "node_id": 55,
             "port": 0
           },
-          "id": 42,
-          "name": "Dequantize_21_out_0_FLOAT__1_10__",
+          "id": 41,
+          "name": "Dequantize_19_out_0_FLOAT__1_10__",
           "start": {
-            "node_id": 55,
+            "node_id": 53,
             "port": 0
           }
         },
@@ -2067,13 +2091,13 @@
           "buffer": 9,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 44,
+            "node_id": 42,
             "port": 0
           },
-          "id": 43,
+          "id": 42,
           "name": "Transpose_14_out_0_FLOAT__1_5_5_64__",
           "start": {
-            "node_id": 43,
+            "node_id": 41,
             "port": 0
           }
         },
@@ -2085,7 +2109,7 @@
             "node_id": 28,
             "port": 0
           },
-          "id": 44,
+          "id": 43,
           "name": "Dequantize_3_out_0_FLOAT__1_1_28_28__",
           "start": {
             "node_id": 26,
@@ -2100,7 +2124,7 @@
             "node_id": 33,
             "port": 0
           },
-          "id": 45,
+          "id": 44,
           "name": "Dequantize_6_out_0_FLOAT__1_32_26_26__",
           "start": {
             "node_id": 32,
@@ -2112,13 +2136,13 @@
           "buffer": 6,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 38,
+            "node_id": 37,
             "port": 0
           },
-          "id": 46,
+          "id": 45,
           "name": "Conv2D_9_zero_off_out_16_FLOAT__1_32_13_13__",
           "start": {
-            "node_id": 35,
+            "node_id": 34,
             "port": 0
           }
         },
@@ -2127,13 +2151,28 @@
           "buffer": 19,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 38,
+            "node_id": 37,
             "port": 0
           },
-          "id": 47,
+          "id": 46,
           "name": "Conv2D_9_weights_FLOAT__64_32_3_3__",
           "start": {
             "node_id": 11,
+            "port": 0
+          }
+        },
+        {
+          "attributes": {},
+          "buffer": 0,
+          "edge_kind": "EDGE_INTERNAL",
+          "end": {
+            "node_id": 37,
+            "port": 0
+          },
+          "id": 47,
+          "name": "Conv2D_9_out_0_FLOAT__1_64_11_11__",
+          "start": {
+            "node_id": 36,
             "port": 0
           }
         },
@@ -2154,31 +2193,31 @@
         },
         {
           "attributes": {},
-          "buffer": 0,
-          "edge_kind": "EDGE_INTERNAL",
-          "end": {
-            "node_id": 39,
-            "port": 0
-          },
-          "id": 49,
-          "name": "Conv2D_9_out_0_FLOAT__1_64_11_11__",
-          "start": {
-            "node_id": 38,
-            "port": 0
-          }
-        },
-        {
-          "attributes": {},
           "buffer": 7,
           "edge_kind": "EDGE_MEMORY",
           "end": {
+            "node_id": 36,
+            "port": 0
+          },
+          "id": 49,
+          "name": "Acc_input",
+          "start": {
             "node_id": 37,
+            "port": 0
+          }
+        },
+        {
+          "attributes": {},
+          "buffer": 0,
+          "edge_kind": "EDGE_INTERNAL",
+          "end": {
+            "node_id": 40,
             "port": 0
           },
           "id": 50,
-          "name": "Acc_input",
+          "name": "Dequantize_11_out_0_FLOAT__1_64_11_11__",
           "start": {
-            "node_id": 38,
+            "node_id": 39,
             "port": 0
           }
         },
@@ -2187,43 +2226,13 @@
           "buffer": 0,
           "edge_kind": "EDGE_INTERNAL",
           "end": {
-            "node_id": 41,
+            "node_id": 46,
             "port": 0
           },
           "id": 51,
-          "name": "Dequantize_11_out_0_FLOAT__1_64_11_11__",
-          "start": {
-            "node_id": 40,
-            "port": 0
-          }
-        },
-        {
-          "attributes": {},
-          "buffer": 0,
-          "edge_kind": "EDGE_INTERNAL",
-          "end": {
-            "node_id": 48,
-            "port": 0
-          },
-          "id": 52,
           "name": "Acc_input",
           "start": {
-            "node_id": 48,
-            "port": 0
-          }
-        },
-        {
-          "attributes": {},
-          "buffer": 13,
-          "edge_kind": "EDGE_MEMORY",
-          "end": {
-            "node_id": 53,
-            "port": 0
-          },
-          "id": 53,
-          "name": "Dequantize_18_out_0_FLOAT__1_10__",
-          "start": {
-            "node_id": 51,
+            "node_id": 46,
             "port": 0
           }
         },
@@ -2232,13 +2241,13 @@
           "buffer": 14,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 55,
+            "node_id": 53,
             "port": 0
           },
-          "id": 54,
-          "name": "Quantize_20_out_0_INT8__1_10__",
+          "id": 52,
+          "name": "Quantize_18_out_0_INT8__1_10__",
           "start": {
-            "node_id": 53,
+            "node_id": 51,
             "port": 0
           }
         },
@@ -2250,10 +2259,10 @@
             "node_id": 24,
             "port": 0
           },
-          "id": 55,
+          "id": 53,
           "name": "Input_0_out_0_FLOAT__1_28_28_1__",
           "start": {
-            "node_id": 13,
+            "node_id": 14,
             "port": 0
           }
         },
@@ -2262,13 +2271,13 @@
           "buffer": 32,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 53,
+            "node_id": 51,
             "port": 0
           },
-          "id": 56,
-          "name": "Gemm_16_squeeze_y_5_72_atonn_internal_scale",
+          "id": 54,
+          "name": "Gemm_16_squeeze_y_5_66_atonn_internal_scale",
           "start": {
-            "node_id": 15,
+            "node_id": 18,
             "port": 0
           }
         },
@@ -2277,13 +2286,13 @@
           "buffer": 33,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 53,
+            "node_id": 51,
             "port": 0
           },
-          "id": 57,
-          "name": "Gemm_16_squeeze_y_5_72_atonn_internal_offset",
+          "id": 55,
+          "name": "Gemm_16_squeeze_y_5_66_atonn_internal_offset",
           "start": {
-            "node_id": 8,
+            "node_id": 19,
             "port": 0
           }
         },
@@ -2292,13 +2301,13 @@
           "buffer": 34,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 53,
+            "node_id": 51,
             "port": 0
           },
-          "id": 58,
-          "name": "Softmax_19_74_atonn_internal_scale",
+          "id": 56,
+          "name": "Softmax_17_68_atonn_internal_scale",
           "start": {
-            "node_id": 19,
+            "node_id": 10,
             "port": 0
           }
         },
@@ -2307,13 +2316,13 @@
           "buffer": 35,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 53,
+            "node_id": 51,
             "port": 0
           },
-          "id": 59,
-          "name": "Softmax_19_74_atonn_internal_offset",
+          "id": 57,
+          "name": "Softmax_17_68_atonn_internal_offset",
           "start": {
-            "node_id": 18,
+            "node_id": 13,
             "port": 0
           }
         },
@@ -2322,13 +2331,13 @@
           "buffer": 15,
           "edge_kind": "EDGE_MEMORY",
           "end": {
-            "node_id": 53,
+            "node_id": 51,
             "port": 0
           },
-          "id": 60,
+          "id": 58,
           "name": "SCRATCH_TENSOR_EDGE",
           "start": {
-            "node_id": 53,
+            "node_id": 51,
             "port": 1
           }
         }
@@ -2358,7 +2367,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Conv2D_4_zero_off_8",
+              "name": "Dequantize_19_x_zero_point",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2372,7 +2381,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Gemm_16_conv_4_mul_scale_29",
+              "name": "Conv2D_4_zero_off_8",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2386,7 +2395,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Quantize_2_y_zero_point",
+              "name": "Gemm_16_conv_4_mul_scale_27",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2400,7 +2409,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Gemm_16_weights_transposed_3",
+              "name": "Quantize_2_y_zero_point",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2414,7 +2423,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Conv2D_9_zero_off_17",
+              "name": "Gemm_16_weights_transposed_3",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2428,7 +2437,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Conv2D_9_off_bias_23",
+              "name": "Conv2D_9_zero_off_17",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2442,7 +2451,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Gemm_16_squeeze_y_5_72_atonn_internal_offset",
+              "name": "Conv2D_9_off_bias_23",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2456,7 +2465,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Dequantize_21_x_scale",
+              "name": "Dequantize_19_x_scale",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2470,7 +2479,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Dequantize_21_x_zero_point",
+              "name": "Softmax_17_68_atonn_internal_scale",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2512,7 +2521,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Input_0_out_0",
+              "name": "Softmax_17_68_atonn_internal_offset",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2526,7 +2535,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Conv2D_4_mul_scale_11",
+              "name": "Input_0_out_0",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2540,7 +2549,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Gemm_16_squeeze_y_5_72_atonn_internal_scale",
+              "name": "Conv2D_9_mul_scale_18",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2554,7 +2563,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Conv2D_9_mul_scale_20",
+              "name": "Conv2D_4_off_bias_14",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2568,7 +2577,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Conv2D_4_off_bias_14",
+              "name": "Conv2D_4_mul_scale_9",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2582,7 +2591,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Softmax_19_74_atonn_internal_offset",
+              "name": "Gemm_16_squeeze_y_5_66_atonn_internal_scale",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2596,7 +2605,7 @@
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Softmax_19_74_atonn_internal_scale",
+              "name": "Gemm_16_squeeze_y_5_66_atonn_internal_offset",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2803,7 +2812,7 @@
               ],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Conv2D_4_mul_scale_9",
+              "name": "Conv2D_4_mul_scale_10",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2828,22 +2837,8 @@
             },
             {
               "attributes": {},
-              "description": "Node kind=Relu",
-              "id": 33,
-              "inputs": [],
-              "macc": 0,
-              "mapping": "NODE_HW",
-              "name": "Relu_7",
-              "original_nodes": [],
-              "outputs": [],
-              "scratchs": [],
-              "subgraph_nodes": [],
-              "sw_functions": []
-            },
-            {
-              "attributes": {},
               "description": "Node kind=MaxPool",
-              "id": 34,
+              "id": 33,
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
@@ -2857,7 +2852,7 @@
             {
               "attributes": {},
               "description": "Node kind=Sub",
-              "id": 35,
+              "id": 34,
               "inputs": [
                 26
               ],
@@ -2878,7 +2873,7 @@
         {
           "attributes": {},
           "description": "",
-          "id": 36,
+          "id": 35,
           "inputs": [
             6,
             19,
@@ -2900,7 +2895,7 @@
             {
               "attributes": {},
               "description": "Node kind=Conv",
-              "id": 37,
+              "id": 36,
               "inputs": [
                 6,
                 19
@@ -2917,7 +2912,7 @@
             {
               "attributes": {},
               "description": "Node kind=Conv",
-              "id": 38,
+              "id": 37,
               "inputs": [
                 6,
                 19
@@ -2936,13 +2931,13 @@
             {
               "attributes": {},
               "description": "Node kind=Mul",
-              "id": 39,
+              "id": 38,
               "inputs": [
                 27
               ],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Conv2D_9_mul_scale_18",
+              "name": "Conv2D_9_mul_scale_19",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -2952,7 +2947,7 @@
             {
               "attributes": {},
               "description": "Node kind=Add",
-              "id": 40,
+              "id": 39,
               "inputs": [
                 28
               ],
@@ -2967,22 +2962,8 @@
             },
             {
               "attributes": {},
-              "description": "Node kind=Relu",
-              "id": 41,
-              "inputs": [],
-              "macc": 0,
-              "mapping": "NODE_HW",
-              "name": "Relu_12",
-              "original_nodes": [],
-              "outputs": [],
-              "scratchs": [],
-              "subgraph_nodes": [],
-              "sw_functions": []
-            },
-            {
-              "attributes": {},
               "description": "Node kind=MaxPool",
-              "id": 42,
+              "id": 40,
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
@@ -2998,7 +2979,7 @@
             {
               "attributes": {},
               "description": "Node kind=Transpose",
-              "id": 43,
+              "id": 41,
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
@@ -3012,7 +2993,7 @@
             {
               "attributes": {},
               "description": "Node kind=Reshape",
-              "id": 44,
+              "id": 42,
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
@@ -3029,7 +3010,7 @@
         {
           "attributes": {},
           "description": "",
-          "id": 45,
+          "id": 43,
           "inputs": [
             10,
             29
@@ -3046,7 +3027,7 @@
             {
               "attributes": {},
               "description": "Node kind=Sub",
-              "id": 46,
+              "id": 44,
               "inputs": [
                 10,
                 29
@@ -3068,7 +3049,7 @@
         {
           "attributes": {},
           "description": "",
-          "id": 47,
+          "id": 45,
           "inputs": [
             11,
             22,
@@ -3087,7 +3068,7 @@
             {
               "attributes": {},
               "description": "Node kind=Conv",
-              "id": 48,
+              "id": 46,
               "inputs": [
                 11,
                 22
@@ -3104,13 +3085,13 @@
             {
               "attributes": {},
               "description": "Node kind=Mul",
-              "id": 49,
+              "id": 47,
               "inputs": [
                 30
               ],
               "macc": 0,
               "mapping": "NODE_HW",
-              "name": "Gemm_16_conv_4_mul_scale_27",
+              "name": "Gemm_16_conv_4_mul_scale_28",
               "original_nodes": [],
               "outputs": [],
               "scratchs": [],
@@ -3120,7 +3101,7 @@
             {
               "attributes": {},
               "description": "Node kind=Add",
-              "id": 50,
+              "id": 48,
               "inputs": [
                 31
               ],
@@ -3138,7 +3119,7 @@
             {
               "attributes": {},
               "description": "Node kind=Reshape",
-              "id": 51,
+              "id": 49,
               "inputs": [],
               "macc": 0,
               "mapping": "NODE_HW",
@@ -3155,7 +3136,7 @@
         {
           "attributes": {},
           "description": "",
-          "id": 52,
+          "id": 50,
           "inputs": [
             13,
             15,
@@ -3177,7 +3158,7 @@
             {
               "attributes": {},
               "description": "Node kind=Softmax",
-              "id": 53,
+              "id": 51,
               "inputs": [
                 13,
                 15,
@@ -3188,7 +3169,7 @@
               ],
               "macc": 0,
               "mapping": "NODE_SW",
-              "name": "Softmax_19",
+              "name": "Softmax_17",
               "original_nodes": [],
               "outputs": [
                 14,
@@ -3204,7 +3185,7 @@
         {
           "attributes": {},
           "description": "",
-          "id": 54,
+          "id": 52,
           "inputs": [
             14,
             20,
@@ -3222,7 +3203,7 @@
             {
               "attributes": {},
               "description": "Node kind=DequantizeLinear",
-              "id": 55,
+              "id": 53,
               "inputs": [
                 14,
                 20,
@@ -3230,7 +3211,7 @@
               ],
               "macc": 0,
               "mapping": "NODE_SW",
-              "name": "Dequantize_21",
+              "name": "Dequantize_19",
               "original_nodes": [],
               "outputs": [
                 2
@@ -3245,7 +3226,7 @@
         {
           "attributes": {},
           "description": "",
-          "id": 56,
+          "id": 54,
           "inputs": [
             2
           ],
@@ -3259,7 +3240,7 @@
             {
               "attributes": {},
               "description": "Node kind=Return",
-              "id": 57,
+              "id": 55,
               "inputs": [
                 2
               ],
@@ -3276,8 +3257,60 @@
           "sw_functions": []
         }
       ],
-      "original_inputs": {},
-      "original_outputs": {},
+      "original_inputs": [
+        {
+          "c_shape_map": [
+            "BATCH",
+            "H",
+            "W",
+            "CH"
+          ],
+          "data_format": {
+            "quantizer": "NONE",
+            "scale": [],
+            "size": 32,
+            "type": "FLOAT",
+            "zero": []
+          },
+          "name": "serving_default_input_10",
+          "shape": [
+            1,
+            28,
+            28,
+            1
+          ],
+          "shape_map": [
+            "BATCH",
+            "H",
+            "W",
+            "CH"
+          ]
+        }
+      ],
+      "original_outputs": [
+        {
+          "c_shape_map": [
+            "BATCH",
+            "CH"
+          ],
+          "data_format": {
+            "quantizer": "NONE",
+            "scale": [],
+            "size": 32,
+            "type": "FLOAT",
+            "zero": []
+          },
+          "name": "conversion_8",
+          "shape": [
+            1,
+            10
+          ],
+          "shape_map": [
+            "BATCH",
+            "CH"
+          ]
+        }
+      ],
       "outputs": [
         2
       ]
@@ -3647,7 +3680,7 @@
     },
     {
       "mpool_id": 8,
-      "node_id": 36,
+      "node_id": 35,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3655,7 +3688,7 @@
     },
     {
       "mpool_id": 9,
-      "node_id": 36,
+      "node_id": 35,
       "read_cycles": 110592,
       "reads": 18432,
       "write_cycles": 0,
@@ -3663,7 +3696,7 @@
     },
     {
       "mpool_id": 2,
-      "node_id": 36,
+      "node_id": 35,
       "read_cycles": 3264,
       "reads": 36384,
       "write_cycles": 3275,
@@ -3671,7 +3704,7 @@
     },
     {
       "mpool_id": 3,
-      "node_id": 36,
+      "node_id": 35,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3679,7 +3712,7 @@
     },
     {
       "mpool_id": 4,
-      "node_id": 36,
+      "node_id": 35,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3687,7 +3720,7 @@
     },
     {
       "mpool_id": 1,
-      "node_id": 36,
+      "node_id": 35,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3695,7 +3728,7 @@
     },
     {
       "mpool_id": 5,
-      "node_id": 36,
+      "node_id": 35,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3703,7 +3736,7 @@
     },
     {
       "mpool_id": 6,
-      "node_id": 36,
+      "node_id": 35,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3711,7 +3744,7 @@
     },
     {
       "mpool_id": 7,
-      "node_id": 36,
+      "node_id": 35,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3719,7 +3752,7 @@
     },
     {
       "mpool_id": 8,
-      "node_id": 45,
+      "node_id": 43,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3727,7 +3760,7 @@
     },
     {
       "mpool_id": 9,
-      "node_id": 45,
+      "node_id": 43,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3735,7 +3768,7 @@
     },
     {
       "mpool_id": 2,
-      "node_id": 45,
+      "node_id": 43,
       "read_cycles": 250,
       "reads": 1600,
       "write_cycles": 250,
@@ -3743,7 +3776,7 @@
     },
     {
       "mpool_id": 3,
-      "node_id": 45,
+      "node_id": 43,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3751,7 +3784,7 @@
     },
     {
       "mpool_id": 4,
-      "node_id": 45,
+      "node_id": 43,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3759,7 +3792,7 @@
     },
     {
       "mpool_id": 1,
-      "node_id": 45,
+      "node_id": 43,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3767,7 +3800,7 @@
     },
     {
       "mpool_id": 5,
-      "node_id": 45,
+      "node_id": 43,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3775,7 +3808,7 @@
     },
     {
       "mpool_id": 6,
-      "node_id": 45,
+      "node_id": 43,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3783,7 +3816,7 @@
     },
     {
       "mpool_id": 7,
-      "node_id": 45,
+      "node_id": 43,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3791,7 +3824,7 @@
     },
     {
       "mpool_id": 8,
-      "node_id": 47,
+      "node_id": 45,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3799,7 +3832,7 @@
     },
     {
       "mpool_id": 9,
-      "node_id": 47,
+      "node_id": 45,
       "read_cycles": 31998,
       "reads": 16000,
       "write_cycles": 0,
@@ -3807,7 +3840,7 @@
     },
     {
       "mpool_id": 2,
-      "node_id": 47,
+      "node_id": 45,
       "read_cycles": 83,
       "reads": 1600,
       "write_cycles": 1,
@@ -3815,7 +3848,7 @@
     },
     {
       "mpool_id": 3,
-      "node_id": 47,
+      "node_id": 45,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3823,7 +3856,7 @@
     },
     {
       "mpool_id": 4,
-      "node_id": 47,
+      "node_id": 45,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3831,7 +3864,7 @@
     },
     {
       "mpool_id": 1,
-      "node_id": 47,
+      "node_id": 45,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3839,7 +3872,7 @@
     },
     {
       "mpool_id": 5,
-      "node_id": 47,
+      "node_id": 45,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3847,7 +3880,7 @@
     },
     {
       "mpool_id": 6,
-      "node_id": 47,
+      "node_id": 45,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3855,7 +3888,7 @@
     },
     {
       "mpool_id": 7,
-      "node_id": 47,
+      "node_id": 45,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3863,7 +3896,7 @@
     },
     {
       "mpool_id": 8,
-      "node_id": 52,
+      "node_id": 50,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3871,7 +3904,7 @@
     },
     {
       "mpool_id": 9,
-      "node_id": 52,
+      "node_id": 50,
       "read_cycles": 24,
       "reads": 10,
       "write_cycles": 0,
@@ -3879,7 +3912,7 @@
     },
     {
       "mpool_id": 2,
-      "node_id": 52,
+      "node_id": 50,
       "read_cycles": 41,
       "reads": 1038,
       "write_cycles": 81,
@@ -3887,7 +3920,7 @@
     },
     {
       "mpool_id": 3,
-      "node_id": 52,
+      "node_id": 50,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3895,7 +3928,7 @@
     },
     {
       "mpool_id": 4,
-      "node_id": 52,
+      "node_id": 50,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3903,7 +3936,7 @@
     },
     {
       "mpool_id": 1,
-      "node_id": 52,
+      "node_id": 50,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3911,7 +3944,7 @@
     },
     {
       "mpool_id": 5,
-      "node_id": 52,
+      "node_id": 50,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3919,7 +3952,7 @@
     },
     {
       "mpool_id": 6,
-      "node_id": 52,
+      "node_id": 50,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3927,7 +3960,7 @@
     },
     {
       "mpool_id": 7,
-      "node_id": 52,
+      "node_id": 50,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3935,7 +3968,7 @@
     },
     {
       "mpool_id": 8,
-      "node_id": 54,
+      "node_id": 52,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3943,7 +3976,7 @@
     },
     {
       "mpool_id": 9,
-      "node_id": 54,
+      "node_id": 52,
       "read_cycles": 12,
       "reads": 5,
       "write_cycles": 0,
@@ -3951,7 +3984,7 @@
     },
     {
       "mpool_id": 2,
-      "node_id": 54,
+      "node_id": 52,
       "read_cycles": 1,
       "reads": 10,
       "write_cycles": 1,
@@ -3959,7 +3992,7 @@
     },
     {
       "mpool_id": 3,
-      "node_id": 54,
+      "node_id": 52,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3967,7 +4000,7 @@
     },
     {
       "mpool_id": 4,
-      "node_id": 54,
+      "node_id": 52,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3975,7 +4008,7 @@
     },
     {
       "mpool_id": 1,
-      "node_id": 54,
+      "node_id": 52,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3983,7 +4016,7 @@
     },
     {
       "mpool_id": 5,
-      "node_id": 54,
+      "node_id": 52,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3991,7 +4024,7 @@
     },
     {
       "mpool_id": 6,
-      "node_id": 54,
+      "node_id": 52,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -3999,7 +4032,7 @@
     },
     {
       "mpool_id": 7,
-      "node_id": 54,
+      "node_id": 52,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -4007,7 +4040,7 @@
     },
     {
       "mpool_id": 8,
-      "node_id": 56,
+      "node_id": 54,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -4015,7 +4048,7 @@
     },
     {
       "mpool_id": 9,
-      "node_id": 56,
+      "node_id": 54,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -4023,7 +4056,7 @@
     },
     {
       "mpool_id": 2,
-      "node_id": 56,
+      "node_id": 54,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -4031,7 +4064,7 @@
     },
     {
       "mpool_id": 3,
-      "node_id": 56,
+      "node_id": 54,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -4039,7 +4072,7 @@
     },
     {
       "mpool_id": 4,
-      "node_id": 56,
+      "node_id": 54,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -4047,7 +4080,7 @@
     },
     {
       "mpool_id": 1,
-      "node_id": 56,
+      "node_id": 54,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -4055,7 +4088,7 @@
     },
     {
       "mpool_id": 5,
-      "node_id": 56,
+      "node_id": 54,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -4063,7 +4096,7 @@
     },
     {
       "mpool_id": 6,
-      "node_id": 56,
+      "node_id": 54,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -4071,7 +4104,7 @@
     },
     {
       "mpool_id": 7,
-      "node_id": 56,
+      "node_id": 54,
       "read_cycles": 0,
       "reads": 0,
       "write_cycles": 0,
@@ -4081,11 +4114,11 @@
   "memory_footprint": {
     "activations": 8944,
     "io": [
-      3136,
-      40
+      0,
+      0
     ],
-    "kernel_flash": 38033,
-    "kernel_ram": 293,
+    "kernel_flash": 37209,
+    "kernel_ram": 29,
     "series": "stm32n6npu",
     "toolchain": "arm-none-eabi-gcc (GNU Tools for STM32 13.3.rel1.20240926-1715) 13.3.1 20240614",
     "toolchain_flash": 1526,
@@ -4110,13 +4143,14 @@
       },
       "buffers": [],
       "cacheable": "CACHEABLE_UNDEF",
+      "fname": "atonbuf.AXISRAM6.raw",
       "id": 1,
       "name": "npuRAM6",
       "offset_start": 0,
       "persistent": true,
       "pipelined": "PIPELINED_ON",
       "rights": "ACC_WRITE",
-      "size_bytes": 458744,
+      "size_bytes": 458752,
       "subpools": [],
       "used_size_bytes": 0,
       "user_allocated": false
@@ -4154,6 +4188,7 @@
         15
       ],
       "cacheable": "CACHEABLE_UNDEF",
+      "fname": "atonbuf.AXISRAM5.raw",
       "id": 2,
       "name": "npuRAM5",
       "offset_start": 0,
@@ -4182,6 +4217,7 @@
       },
       "buffers": [],
       "cacheable": "CACHEABLE_UNDEF",
+      "fname": "atonbuf.AXISRAM4.raw",
       "id": 3,
       "name": "npuRAM4",
       "offset_start": 0,
@@ -4210,6 +4246,7 @@
       },
       "buffers": [],
       "cacheable": "CACHEABLE_UNDEF",
+      "fname": "atonbuf.AXISRAM3.raw",
       "id": 4,
       "name": "npuRAM3",
       "offset_start": 0,
@@ -4238,6 +4275,7 @@
       },
       "buffers": [],
       "cacheable": "CACHEABLE_UNDEF",
+      "fname": "atonbuf.AXISRAM2.raw",
       "id": 5,
       "name": "cpuRAM2",
       "offset_start": 0,
@@ -4266,6 +4304,7 @@
       },
       "buffers": [],
       "cacheable": "CACHEABLE_UNDEF",
+      "fname": "atonbuf.AXISRAM1.raw",
       "id": 6,
       "name": "cpuRAM1",
       "offset_start": 0,
@@ -4294,6 +4333,7 @@
       },
       "buffers": [],
       "cacheable": "CACHEABLE_UNDEF",
+      "fname": "atonbuf.AXIFLEXMEM.raw",
       "id": 7,
       "name": "flexMEM",
       "offset_start": 0,
@@ -4322,19 +4362,20 @@
       },
       "buffers": [],
       "cacheable": "CACHEABLE_ON",
+      "fname": "atonbuf.xSPI1.raw",
       "id": 8,
       "name": "hyperRAM",
       "offset_start": 0,
       "persistent": true,
       "pipelined": "PIPELINED_ON",
       "rights": "ACC_WRITE",
-      "size_bytes": 33554424,
+      "size_bytes": 33554432,
       "subpools": [],
       "used_size_bytes": 0,
       "user_allocated": false
     },
     {
-      "address": "1879048192",
+      "address": "1895825408",
       "alignment": 8,
       "attributes": {
         "burst_max_length": 4294967295,
@@ -4371,13 +4412,14 @@
         35
       ],
       "cacheable": "CACHEABLE_ON",
+      "fname": "atonbuf.xSPI2.raw",
       "id": 9,
       "name": "octoFlash",
       "offset_start": 0,
       "persistent": true,
       "pipelined": "PIPELINED_ON",
       "rights": "ACC_READ",
-      "size_bytes": 67108856,
+      "size_bytes": 117440512,
       "subpools": [],
       "used_size_bytes": 35553,
       "user_allocated": false
@@ -4399,13 +4441,14 @@
       },
       "buffers": [],
       "cacheable": "CACHEABLE_UNDEF",
+      "fname": "",
       "id": 10,
       "name": "cpuRAM2_npuRAM3_npuRAM4_npuRAM5_npuRAM6",
       "offset_start": 0,
       "persistent": true,
       "pipelined": "PIPELINED_ON",
       "rights": "ACC_WRITE",
-      "size_bytes": 2883576,
+      "size_bytes": 2883584,
       "subpools": [
         5,
         4,
@@ -4451,7 +4494,7 @@
       "ops": 784
     },
     {
-      "average_acc_power_mw": 45,
+      "average_acc_power_mw": 43,
       "average_memory_power_mw": 4,
       "compute_cycles": 21632,
       "max_cycles": 21632,
@@ -4459,11 +4502,11 @@
       "ops": 438048
     },
     {
-      "average_acc_power_mw": 134,
+      "average_acc_power_mw": 133,
       "average_memory_power_mw": 238,
       "compute_cycles": 18432,
       "max_cycles": 110592,
-      "node_id": 36,
+      "node_id": 35,
       "ops": 4476032
     },
     {
@@ -4471,7 +4514,7 @@
       "average_memory_power_mw": 8,
       "compute_cycles": 1600,
       "max_cycles": 1600,
-      "node_id": 45,
+      "node_id": 43,
       "ops": 1600
     },
     {
@@ -4479,7 +4522,7 @@
       "average_memory_power_mw": 661,
       "compute_cycles": 5334,
       "max_cycles": 96000,
-      "node_id": 47,
+      "node_id": 45,
       "ops": 32020
     },
     {
@@ -4487,7 +4530,7 @@
       "average_memory_power_mw": 0,
       "compute_cycles": 538,
       "max_cycles": 538,
-      "node_id": 52,
+      "node_id": 50,
       "ops": 0
     },
     {
@@ -4495,7 +4538,7 @@
       "average_memory_power_mw": 0,
       "compute_cycles": 22,
       "max_cycles": 30,
-      "node_id": 54,
+      "node_id": 52,
       "ops": 0
     },
     {
@@ -4503,7 +4546,7 @@
       "average_memory_power_mw": 0,
       "compute_cycles": 0,
       "max_cycles": 0,
-      "node_id": 56,
+      "node_id": 54,
       "ops": 0
     }
   ]

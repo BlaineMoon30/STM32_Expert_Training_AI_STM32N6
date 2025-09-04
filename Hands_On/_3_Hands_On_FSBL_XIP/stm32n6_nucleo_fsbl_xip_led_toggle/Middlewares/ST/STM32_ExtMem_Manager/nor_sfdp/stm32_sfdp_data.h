@@ -38,6 +38,12 @@
   */
 
 /* Exported constants --------------------------------------------------------*/
+
+/**
+ * @brief Maximum number of SFDP parameter in SFDP table
+ */
+#define SFDP_MAX_NB_OF_PARAM                                10U
+
 /* Exported types ------------------------------------------------------------*/
 
 /** @defgroup NOR_SFDP_DATA_Exported_Types Exported Types
@@ -48,60 +54,63 @@
 /**
  * @brief SFDP parameter table ID
  */
-typedef enum {
-   SFPD_PARAMID_UNKNOWN                                     = 0x00000u,
-   SFPD_PARAMID_VENDOR                                      = 0x00001u,
-   SFPD_PARAMID_FUNCTION_VENDOR                             = 0x00002u,
-   SFPD_PARAMID_FUNCTION_JEDEC                              = 0x00004u,
-   SFPD_PARAMID_BASIC_SPIPROTOCOL                           = 0x00008u,
-   SFPD_PARAMID_SECTORMAP                                   = 0x00010u,
-   SFPD_PARAMID_RPMC                                        = 0x00020u,
-   SFPD_PARAMID_4BYTE_ADDRESS_INSTRUCTION                   = 0x00040u,
-   SFPD_PARAMID_XSPI_V1_0                                   = 0x00080u,
-   SFPD_PARAMID_XSPI_V2_0                                   = 0x00100u,
-   SFPD_PARAMID_STATUS_CONTROL_CONFIG_REGISTER_MAP          = 0x00200u,
-   SFPD_PARAMID_STATUS_CONTROL_CONFIG_REGISTER_MAP_MULTICHIP= 0x00400u,
-   SFPD_PARAMID_STATUS_CONTROL_CONFIG_XSPI_V2_0             = 0x00800u,
-   SFPD_PARAMID_OCTAL_DDR                                   = 0x01000u,
-   SFPD_PARAMID_MSPT                                        = 0x02000u,
-   SFPD_PARAMID_X4QUAD_DS                                   = 0x04000u,
-   SFPD_PARAMID_QUAD_DDR                                    = 0x08000u,
-   SFPD_PARAMID_SECURE_PACKET_READ_WRITE                    = 0x10000u,
-   SFPD_PARAMID_RESERVED                                    = 0x20000u
+typedef enum
+{
+  SFDP_PARAMID_UNKNOWN                                     = 0x00000u,
+  SFDP_PARAMID_VENDOR                                      = 0x00001u,
+  SFDP_PARAMID_FUNCTION_VENDOR                             = 0x00002u,
+  SFDP_PARAMID_FUNCTION_JEDEC                              = 0x00004u,
+  SFDP_PARAMID_BASIC_SPIPROTOCOL                           = 0x00008u,
+  SFDP_PARAMID_SECTORMAP                                   = 0x00010u,
+  SFDP_PARAMID_RPMC                                        = 0x00020u,
+  SFDP_PARAMID_4BYTE_ADDRESS_INSTRUCTION                   = 0x00040u,
+  SFDP_PARAMID_XSPI_V1_0                                   = 0x00080u,
+  SFDP_PARAMID_XSPI_V2_0                                   = 0x00100u,
+  SFDP_PARAMID_STATUS_CONTROL_CONFIG_REGISTER_MAP          = 0x00200u,
+  SFDP_PARAMID_STATUS_CONTROL_CONFIG_REGISTER_MAP_MULTICHIP= 0x00400u,
+  SFDP_PARAMID_STATUS_CONTROL_CONFIG_XSPI_V2_0             = 0x00800u,
+  SFDP_PARAMID_OCTAL_DDR                                   = 0x01000u,
+  SFDP_PARAMID_MSPT                                        = 0x02000u,
+  SFDP_PARAMID_X4QUAD_DS                                   = 0x04000u,
+  SFDP_PARAMID_QUAD_DDR                                    = 0x08000u,
+  SFDP_PARAMID_SECURE_PACKET_READ_WRITE                    = 0x10000u,
+  SFDP_PARAMID_RESERVED                                    = 0x20000u
 } SFDP_ParamID_TypeDef;
 
 /**
  * @brief SFDP status typedef
  */
-typedef enum {
-      EXTMEM_SFDP_OK,                            /*!< status OK */
-      EXTMEM_SFDP_ERROR_PARAM,
-      EXTMEM_SFDP_ERROR_NOREADFUNCTION,
-      EXTMEM_SFDP_ERROR_SFPDREAD,
-      EXTMEM_SFDP_ERROR_SIGNATURE,               /*!< the signature is invalid */
-      EXTMEM_SFDP_ERROR_SIGNATUREMTYPE,          /*!< the signature is invalid due to wrong memory type */
-      EXTMEM_SFDP_ERROR_PARAMTABLE_NOTFOUND,
-      EXTMEM_SFDP_ERROR_NO_PARAMTABLE_BASIC,
-      EXTMEM_SFDP_ERROR_NO_4BITADDRESSING,
-      EXTMEM_SFDP_ERROR_JEDECBASIC_D14,
-      EXTMEM_SFDP_ERROR_JEDECBASIC_D16,
-      EXTMEM_SFDP_ERROR_OCTALMODE,
-      EXTMEM_SFDP_ERROR_DRIVER,
-      EXTMEM_SFDP_ERROR_SETCLOCK,
-      EXTMEM_SFDP_ERROR_CONFIGDUMMY,
-      EXTMEM_SFDP_ERROR_NOTYETHANDLED
+typedef enum
+{
+  EXTMEM_SFDP_OK,                            /*!< status OK */
+  EXTMEM_SFDP_ERROR_PARAM,
+  EXTMEM_SFDP_ERROR_NOREADFUNCTION,
+  EXTMEM_SFDP_ERROR_SFDPREAD,
+  EXTMEM_SFDP_ERROR_SIGNATURE,               /*!< the signature is invalid */
+  EXTMEM_SFDP_ERROR_SIGNATUREMTYPE,          /*!< the signature is invalid due to wrong memory type */
+  EXTMEM_SFDP_ERROR_PARAMTABLE_NOTFOUND,
+  EXTMEM_SFDP_ERROR_NO_PARAMTABLE_BASIC,
+  EXTMEM_SFDP_ERROR_NO_32BITADDRESSING,
+  EXTMEM_SFDP_ERROR_JEDECBASIC_D14,
+  EXTMEM_SFDP_ERROR_JEDECBASIC_D16,
+  EXTMEM_SFDP_ERROR_OCTALMODE,
+  EXTMEM_SFDP_ERROR_DRIVER,
+  EXTMEM_SFDP_ERROR_SETCLOCK,
+  EXTMEM_SFDP_ERROR_CONFIGDUMMY,
+  EXTMEM_SFDP_ERROR_NOTYETHANDLED
 } SFDP_StatusTypeDef;
 
 /**
  * @brief SFDP header
  */
-typedef struct {
+typedef struct
+{
   uint32_t  Signature;       /*!< signature value */
   uint8_t  Minor_revision;   /*!< minor revision */
   uint8_t  Major_revision;   /*!< major revision */
   uint8_t  param_number;     /*!< number of param */
   uint8_t  AccessProtocol;   /*!< access protocol */
-} SFPD_HeaderTypeDef;
+} SFDP_HeaderTypeDef;
 
 /**
   * @}
@@ -118,7 +127,7 @@ typedef struct {
  * @return @ref SFDP_StatusTypeDef
  **/
 SFDP_StatusTypeDef SFDP_GetHeader(EXTMEM_DRIVER_NOR_SFDP_ObjectTypeDef *Object,
-                                  SFPD_HeaderTypeDef *sfdp_header);
+                                  SFDP_HeaderTypeDef *sfdp_header);
 
  /**
  * @brief This function reads the SFDP header for current configuration
@@ -127,10 +136,10 @@ SFDP_StatusTypeDef SFDP_GetHeader(EXTMEM_DRIVER_NOR_SFDP_ObjectTypeDef *Object,
  * @return @ref SFDP_StatusTypeDef
  **/
 SFDP_StatusTypeDef SFDP_ReadHeader(EXTMEM_DRIVER_NOR_SFDP_ObjectTypeDef *Object,
-                                   SFPD_HeaderTypeDef *sfdp_header);
+                                   SFDP_HeaderTypeDef *sfdp_header);
 
 /**
- * @brief This function collects all the SFPD information
+ * @brief This function collects all the SFDP information
  * @param Object memory instance object descriptor
  * @return @ref SFDP_StatusTypeDef
  */
